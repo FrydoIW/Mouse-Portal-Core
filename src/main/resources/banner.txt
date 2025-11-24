@@ -1,0 +1,14 @@
+🐀 TIKUS BOOT — VERSION ${spring-boot.version}
+
+   ████████╗██╗██╗  ██╗██╗   ██╗███████╗██████╗
+   ╚══██╔══╝██║██║ ██╔╝██║   ██║██╔════╝██╔══██╗
+      ██║   ██║█████╔╝ ██║   ██║█████╗  ██████╔╝
+      ██║   ██║██╔═██╗ ██║   ██║██╔══╝  ██╔══██╗
+      ██║   ██║██║  ██╗╚██████╔╝███████╗██║  ██║
+      ╚═╝   ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝
+
+             🐀  TIKUS BOOT ENGINE  🐀
+        Running fast on Java ${java.version}
+
+Application: ${spring.application.name}
+Java: ${java.version}
