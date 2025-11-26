@@ -1,11 +1,14 @@
 package com.example.back.backend.application.service;
 
+import com.example.back.backend.Exception.BizException;
 import com.example.back.backend.application.dto.TKD0100AInput;
 import com.example.back.backend.application.dto.TKD0100AOutput;
 import com.example.back.backend.common.Enum.AccountEnum;
+import com.example.back.backend.common.Enum.SysErrCode;
 import com.example.back.backend.common.util.CreateRefNo;
 import com.example.back.backend.domain.model.GlobalModel;
 import com.example.back.backend.domain.repository.RegisterRepository;
+import com.example.back.backend.infrastructure.jpa.DaoMemberJpa;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -14,7 +17,7 @@ import java.math.BigDecimal;
 
 /**
  * @fileName : TKD0100ASVC
- * @author   : vndrnext
+ * @author   : dodocool
  * @description : Member creation service / Register 🗿
  */
 
@@ -23,6 +26,7 @@ import java.math.BigDecimal;
 @RequiredArgsConstructor
 public class TKD0100ASVC {
 
+    private final DaoMemberJpa daoMemberJpa;
     private final RegisterRepository registerRepository;
     private final CreateRefNo createRef;
 
@@ -35,10 +39,11 @@ public class TKD0100ASVC {
 
     public TKD0100AOutput execute (TKD0100AInput input) throws Exception {
 
-        TKD0100ASVC.CtxSVC ctxSVC = new TKD0100ASVC.CtxSVC();
+        CtxSVC ctxSVC = new TKD0100ASVC.CtxSVC();
         ctxSVC.input = input;
         ctxSVC.output = new TKD0100AOutput();
 
+        checkExistingUser(ctxSVC);
         insertProcess(ctxSVC);
         putOutput(ctxSVC);
 
@@ -70,6 +75,14 @@ public class TKD0100ASVC {
 
         ctxSVC.output.setStatus("00");
         ctxSVC.output.setRemark("ALL DATA INSERTED");
+
+    }
+
+    private void checkExistingUser(CtxSVC ctxSVC) throws BizException{
+
+        if (daoMemberJpa.existsByEmail(ctxSVC.input.getEmail())){
+            throw new BizException(SysErrCode.USER_FOUNT);
+        }
 
     }
 

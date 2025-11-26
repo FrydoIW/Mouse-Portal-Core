@@ -54,4 +54,20 @@ public class AccountEnum {
         }
     }
 
+    public enum AuthProcType {
+
+        CHECK_EMAIL("VERIFY_EMAIL"),
+        CHANGE_PASS("CHANGE_PASS");
+
+        private final String value;
+
+        AuthProcType(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+    }
+
 }
