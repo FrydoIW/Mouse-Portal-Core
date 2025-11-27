@@ -20,21 +20,21 @@ public class TKDController {
     private final TKD0300ASVC tkd0300ASVC;
 
     @PostMapping("/register/tkd0100")
-    public TKD0100AOutput output(@RequestBody TKD0100AInput input) throws Exception {
+    public TKD0100AOutput register(@RequestBody TKD0100AInput input) throws Exception {
 
         return tkd0100ASVC.execute(input);
 
     }
 
-    @PostMapping("/login/tkd0100")
-    public TKD0200AOutput output(@RequestBody TKD0200AInput input) throws Exception {
+    @PostMapping("/login/tkd0200")
+    public TKD0200AOutput login(@RequestBody TKD0200AInput input) throws Exception {
 
         return tkd0200ASVC.execute(input);
 
     }
 
-    @PostMapping("/reset/tkd0100")
-    public TKD0300AOutput output(@RequestBody TKD0300AInput input) throws Exception {
+    @PostMapping("/reset/tkd0300")
+    public TKD0300AOutput reset(@RequestBody TKD0300AInput input) throws Exception {
 
         return tkd0300ASVC.execute(input);
 

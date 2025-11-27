@@ -13,5 +13,4 @@ import java.io.Serializable;
 @EqualsAndHashCode
 public class MemberCredentialPk implements Serializable {
     private String refNo;
-    private String passwordHash;
 }

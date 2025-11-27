@@ -22,7 +22,6 @@ public class MemberCredential {
 
     @Id
     private String refNo;
-    @Id
     private String passwordHash;
     private String role;
     private String status;
