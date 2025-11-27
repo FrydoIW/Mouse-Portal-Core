@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface DaoMemberJpa extends JpaRepository<Member,String> {
 
-    boolean existsByEmail(String email);
+    Member findMemberByEmail(String email);
 
+    boolean existsByEmail(String email);
 }

@@ -6,5 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface DaoMemberCredentialJpa extends JpaRepository<MemberCredential, MemberCredentialPk> {
 
+    MemberCredential findByRefNo(String refNo);
 
 }
