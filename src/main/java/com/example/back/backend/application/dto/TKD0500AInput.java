@@ -1,5 +1,6 @@
 package com.example.back.backend.application.dto;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -17,6 +18,7 @@ public class TKD0500AInput {
     String address;
     LocalDate birthDt;
     String gender;
+    @NotNull
     String email;
 
     // MEMBER_INFO
