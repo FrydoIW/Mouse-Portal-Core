@@ -13,6 +13,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+
+/**
+ * @fileName : TKD0300ASVC
+ * @author   : dodocool
+ * @description : validating email & password / Change Auth Process 🗿
+ */
+
 @Slf4j
 @RequiredArgsConstructor
 @Service

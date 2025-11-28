@@ -11,6 +11,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+
+/**
+ * @fileName : TKD0400ASVC
+ * @author   : dodocool
+ * @description : Get All Data / All users data 🗿
+ */
+
+
 @Slf4j
 @RequiredArgsConstructor
 @Service

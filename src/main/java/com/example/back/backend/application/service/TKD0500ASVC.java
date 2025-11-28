@@ -16,6 +16,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+/**
+ * @fileName : TKD0500ASVC
+ * @author   : dodocool
+ * @description : Update data / Update Member Process 🗿
+ */
+
+
 @Slf4j
 @RequiredArgsConstructor
 @Service
