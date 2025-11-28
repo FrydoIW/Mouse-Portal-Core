@@ -4,6 +4,7 @@ import com.example.back.backend.application.dto.*;
 import com.example.back.backend.application.service.TKD0100ASVC;
 import com.example.back.backend.application.service.TKD0200ASVC;
 import com.example.back.backend.application.service.TKD0300ASVC;
+import com.example.back.backend.application.service.TKD0400ASVC;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +19,8 @@ public class TKDController {
     private final TKD0200ASVC tkd0200ASVC;
 
     private final TKD0300ASVC tkd0300ASVC;
+
+    private final TKD0400ASVC tkd0400ASVC;
 
     @PostMapping("/register/tkd0100")
     public TKD0100AOutput register(@RequestBody TKD0100AInput input) throws Exception {
@@ -37,6 +40,13 @@ public class TKDController {
     public TKD0300AOutput reset(@RequestBody TKD0300AInput input) throws Exception {
 
         return tkd0300ASVC.execute(input);
+
+    }
+
+    @PostMapping("/getAllData/tkd0400")
+    public TKD0400AOutput reset(@RequestBody TKD0400AInput input) throws Exception {
+
+        return tkd0400ASVC.execute(input);
 
     }
 

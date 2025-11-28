@@ -7,7 +7,6 @@ import com.example.back.backend.common.Enum.AccountEnum;
 import com.example.back.backend.common.Enum.SysErrCode;
 import com.example.back.backend.domain.model.GlobalModel;
 import com.example.back.backend.domain.repository.AuthRepository;
-import com.example.back.backend.infrastructure.adapter.AuthAdapter;
 import com.example.back.backend.infrastructure.entity.Member;
 import com.example.back.backend.infrastructure.jpa.DaoMemberJpa;
 import lombok.RequiredArgsConstructor;
