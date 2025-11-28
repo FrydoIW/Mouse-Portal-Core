@@ -76,4 +76,21 @@ public class UpdateAdapter implements UpdateRepository {
 
     }
 
+    public void updateStatus(GlobalModel globalModel) throws Exception {
+
+
+        MemberInfo memberInfo = daoMemberInfoJpa.findById(globalModel.getRefNo()).orElseThrow(() -> new RuntimeException(SysErrCode.USER_FOUNT.getCode()));
+
+        memberInfo.setHisNo(daoHistoryJpa.findMaxHisNo(globalModel.getRefNo()));
+        memberInfo.setStatus(globalModel.getStatus());
+        memberInfo.setUpdDt(LocalDate.now());
+        memberInfo.setUpdTm(LocalTime.now());
+
+        log.debug("Update status memberInfo : [{}]", memberInfo);
+
+        daoMemberInfoJpa.save(memberInfo);
+
+        historyFactory.insertIntoMemberInfo(memberInfo);
+    }
+
 }

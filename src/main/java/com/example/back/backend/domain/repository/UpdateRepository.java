@@ -6,4 +6,6 @@ public interface UpdateRepository {
 
     public void updateData(GlobalModel globalModel) throws Exception;
 
+    public void updateStatus(GlobalModel globalModel) throws Exception;
+
 }

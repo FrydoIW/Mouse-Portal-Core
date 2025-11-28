@@ -18,7 +18,10 @@ public class TKDController {
     private final TKD0300ASVC tkd0300ASVC;
 
     private final TKD0400ASVC tkd0400ASVC;
+
     private final TKD0500ASVC tkd0500ASVC;
+
+    private final TKD0600ASVC tkd0600ASVC;
 
     @PostMapping("/register/tkd0100")
     public TKD0100AOutput register(@RequestBody TKD0100AInput input) throws Exception {
@@ -52,6 +55,13 @@ public class TKDController {
     public TKD0500AOutput updateData(@RequestBody TKD0500AInput input) throws Exception {
 
         return tkd0500ASVC.execute(input);
+
+    }
+
+    @PostMapping("/getAllData/tkd0600")
+    public TKD0600AOutput deleteAccount(@RequestBody TKD0600AInput input) throws Exception {
+
+        return tkd0600ASVC.execute(input);
 
     }
 
