@@ -51,14 +51,14 @@ public class TKDController {
 
     }
 
-    @PostMapping("/getAllData/tkd0500")
+    @PostMapping("/updateData/tkd0500")
     public TKD0500AOutput updateData(@RequestBody TKD0500AInput input) throws Exception {
 
         return tkd0500ASVC.execute(input);
 
     }
 
-    @PostMapping("/getAllData/tkd0600")
+    @PostMapping("/deleteData/tkd0600")
     public TKD0600AOutput deleteAccount(@RequestBody TKD0600AInput input) throws Exception {
 
         return tkd0600ASVC.execute(input);
