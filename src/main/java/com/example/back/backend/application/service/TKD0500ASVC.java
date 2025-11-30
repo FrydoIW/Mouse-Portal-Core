@@ -2,7 +2,6 @@ package com.example.back.backend.application.service;
 
 import com.example.back.backend.application.dto.TKD0500AInput;
 import com.example.back.backend.application.dto.TKD0500AOutput;
-import com.example.back.backend.common.Enum.AccountEnum;
 import com.example.back.backend.common.Enum.SysErrCode;
 import com.example.back.backend.domain.model.GlobalModel;
 import com.example.back.backend.infrastructure.adapter.UpdateAdapter;
