@@ -78,7 +78,7 @@ public class TKD0500ASVC {
         globalModel.setGender(ctxSVC.input.getGender());
         globalModel.setEmail(ctxSVC.input.getEmail());
         globalModel.setPosition(ctxSVC.input.getPosition());
-        globalModel.setTrxAmt(ctxSVC.input.getSalaryAmt());
+        globalModel.setTrxAmt(ctxSVC.input.getSalaryAmount());
 
         updateAdapter.updateData(globalModel);
 

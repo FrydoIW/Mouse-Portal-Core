@@ -25,6 +25,6 @@ public class TKD0500AInput {
     String position;
 
     // PAYROLL
-    BigDecimal salaryAmt;
+    BigDecimal salaryAmount;
 
 }
