@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {
+        "http://localhost:5173",
+        "https://lightfootedly-booted-phebe.ngrok-free.dev"
+})
 public class TKDController {
 
     private final TKD0100ASVC tkd0100ASVC;
