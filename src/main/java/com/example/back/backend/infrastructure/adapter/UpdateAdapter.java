@@ -5,12 +5,10 @@ import com.example.back.backend.common.util.HistoryFactory;
 import com.example.back.backend.domain.model.GlobalModel;
 import com.example.back.backend.domain.repository.UpdateRepository;
 import com.example.back.backend.infrastructure.entity.Member;
+import com.example.back.backend.infrastructure.entity.MemberCredential;
 import com.example.back.backend.infrastructure.entity.MemberInfo;
 import com.example.back.backend.infrastructure.entity.Payroll;
-import com.example.back.backend.infrastructure.jpa.DaoHistoryJpa;
-import com.example.back.backend.infrastructure.jpa.DaoMemberInfoJpa;
-import com.example.back.backend.infrastructure.jpa.DaoMemberJpa;
-import com.example.back.backend.infrastructure.jpa.DaoPayrollJpa;
+import com.example.back.backend.infrastructure.jpa.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
@@ -27,6 +25,7 @@ public class UpdateAdapter implements UpdateRepository {
     private final DaoHistoryJpa daoHistoryJpa;
     private final DaoPayrollJpa daoPayrollJpa;
     private final DaoMemberInfoJpa daoMemberInfoJpa;
+    private final DaoMemberCredentialJpa daoMemberCredentialJpa;
 
     private final HistoryFactory historyFactory;
 
@@ -91,6 +90,20 @@ public class UpdateAdapter implements UpdateRepository {
         daoMemberInfoJpa.save(memberInfo);
 
         historyFactory.insertIntoMemberInfo(memberInfo);
+
+        MemberCredential memberCredential = daoMemberCredentialJpa.findByRefNo(globalModel.getRefNo());
+
+        memberCredential.setHisNo(daoHistoryJpa.findMaxHisNo(globalModel.getRefNo()));
+        memberCredential.setStatus(globalModel.getStatus());
+        memberCredential.setUpdDt(LocalDate.now());
+        memberCredential.setUpdTm(LocalTime.now());
+
+        log.debug("Update status memberInfo : [{}]", memberInfo);
+
+        daoMemberCredentialJpa.save(memberCredential);
+
+        historyFactory.insertIntoCredential(memberCredential);
+
     }
 
 }

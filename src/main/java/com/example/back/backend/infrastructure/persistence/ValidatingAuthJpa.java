@@ -21,6 +21,7 @@ public class ValidatingAuthJpa {
                 JOIN MEMBER_CREDENTIAL B ON A.REF_NO = B.REF_NO
                 WHERE A.EMAIL = :email
                   AND B.PASSWORD_HASH = :password
+                  AND B.STATUS = '00'
             )
         """;
 
