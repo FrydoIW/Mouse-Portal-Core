@@ -24,7 +24,6 @@ public class TKD0100AInput {
     private String position;
     @NotNull
     private String email;
-    @NotNull
     private String passwordCredential;
 
 }

@@ -90,6 +90,8 @@ public class RegisterAdapter implements RegisterRepository {
 
     private void registerCredential(GlobalModel input) throws Exception{
 
+        if(input.getPasswordHash() == null) return;
+
         MemberCredentialModel credentialModel = new MemberCredentialModel();
 
         credentialModel.setPasswordHash(input.getPasswordHash());
