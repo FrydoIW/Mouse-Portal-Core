@@ -3,6 +3,7 @@ package com.example.back.backend.application.dto;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Getter
@@ -25,5 +26,6 @@ public class TKD0100AInput {
     @NotNull
     private String email;
     private String passwordCredential;
+    private BigDecimal salaryAmount;
 
 }

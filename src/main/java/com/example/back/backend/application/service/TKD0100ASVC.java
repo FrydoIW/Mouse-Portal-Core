@@ -64,7 +64,7 @@ public class TKD0100ASVC {
         globInput.setStatus(AccountEnum.AccountStatus.ACTIVE.getValue());
         globInput.setEmail(ctxSVC.input.getEmail());
         globInput.setPasswordHash(ctxSVC.input.getPasswordCredential());
-        globInput.setTrxAmt(BigDecimal.ZERO);
+        globInput.setTrxAmt(ctxSVC.input.getSalaryAmount());
         globInput.setPayrollRemark("REGISTER");
 
         registerRepository.insertMember(globInput);

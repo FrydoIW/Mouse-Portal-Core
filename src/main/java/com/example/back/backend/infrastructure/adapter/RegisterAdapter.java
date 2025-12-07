@@ -122,7 +122,7 @@ public class RegisterAdapter implements RegisterRepository {
 
         payrollModel.setRefNo(input.getRefNo());
         payrollModel.setTrxAmt(input.getTrxAmt());
-        payrollModel.setRemark("");
+        payrollModel.setRemark(input.getPayrollRemark());
 
         Payroll payroll = PayrollMapper.toPayrollEntity(payrollModel);
 
