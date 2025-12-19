@@ -30,6 +30,7 @@ public class GlobalModel {
 
     //MEMBER_CREDENTIAL TABLE
     private String passwordHash;
+    private String twoFactorSecret;
 
     //PAYROLL TABLE
     private BigDecimal trxAmt;

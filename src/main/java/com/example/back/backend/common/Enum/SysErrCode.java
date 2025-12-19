@@ -9,7 +9,8 @@ public enum SysErrCode {
 
     USER_FOUNT("0001","User is existing in database"),
     PASSWORD_INVALID("0002","Your password is incorrect"),
-    EMAIL_NOT_FOUNT("0003","Your email is wrong");
+    EMAIL_NOT_FOUNT("0003","Your email is wrong"),
+    INVALID_OTP("0004","Your OTP input is wrong");
 
     private final String code;
     private final String desc;

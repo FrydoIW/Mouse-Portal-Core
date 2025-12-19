@@ -36,6 +36,7 @@ public class History {
     private String status;
     private String position;
     private String passwordHash;
+    private String twoFactorSecret;
     private String typeDesc;
     private String email;
     private LocalDate regDt;

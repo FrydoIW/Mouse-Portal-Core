@@ -14,6 +14,7 @@ public class CredentialMapper {
         MemberCredential memberCredential = new MemberCredential();
 
         memberCredential.setPasswordHash(m.getPasswordHash());
+        memberCredential.setTwoFactorSecret(m.getTwoFactorSecret());
         memberCredential.setStatus(m.getStatus());
         memberCredential.setRole(m.getRole());
         memberCredential.setRefNo(m.getRefNo());

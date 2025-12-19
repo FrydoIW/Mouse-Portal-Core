@@ -23,6 +23,7 @@ public class MemberCredential {
     @Id
     private String refNo;
     private String passwordHash;
+    private String twoFactorSecret;
     private String role;
     private String status;
     private int hisNo;

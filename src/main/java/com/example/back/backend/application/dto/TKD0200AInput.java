@@ -11,5 +11,7 @@ public class TKD0200AInput {
 
     String email;
     String password;
+    String otp;
+    boolean verifyOtp = false;
 
 }

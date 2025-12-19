@@ -11,5 +11,6 @@ public class TKD0100AOutput {
 
     private String status;
     private String remark;
+    private String qrBase64;
 
 }

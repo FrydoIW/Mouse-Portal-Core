@@ -98,6 +98,7 @@ public class RegisterAdapter implements RegisterRepository {
         credentialModel.setRole(input.getPosition());
         credentialModel.setStatus(input.getStatus());
         credentialModel.setRefNo(input.getRefNo());
+        credentialModel.setTwoFactorSecret(input.getTwoFactorSecret());
 
         MemberCredential memberCredential = CredentialMapper.toMemberCredentialEntity(credentialModel);
 
@@ -112,7 +113,6 @@ public class RegisterAdapter implements RegisterRepository {
         credentialJpa.save(memberCredential);
 
         historyFactory.insertIntoCredential(memberCredential);
-
 
     }
 

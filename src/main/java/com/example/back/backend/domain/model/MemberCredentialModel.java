@@ -10,6 +10,7 @@ import lombok.ToString;
 public class MemberCredentialModel {
 
     private String passwordHash;
+    private String twoFactorSecret;
     private String role;
     private String status;
     private String refNo;

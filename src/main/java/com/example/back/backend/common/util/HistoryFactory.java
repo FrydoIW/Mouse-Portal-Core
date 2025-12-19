@@ -96,6 +96,7 @@ public class HistoryFactory {
         h.setPosition(credential.getRole());
         h.setStatus(credential.getStatus());
         h.setPasswordHash(credential.getPasswordHash());
+        h.setTwoFactorSecret(credential.getTwoFactorSecret());
         h.setTypeDesc(AccountEnum.HistoryDesc.MEMBER_CREDENTIAL.getValue());
 
         setAuditFields(h);

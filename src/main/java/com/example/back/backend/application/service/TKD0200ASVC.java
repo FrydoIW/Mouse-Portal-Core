@@ -5,6 +5,7 @@ import com.example.back.backend.Exception.BizException;
 import com.example.back.backend.application.dto.TKD0200AInput;
 import com.example.back.backend.application.dto.TKD0200AOutput;
 import com.example.back.backend.common.Enum.SysErrCode;
+import com.example.back.backend.common.util.ValidatingOtp;
 import com.example.back.backend.infrastructure.persistence.ValidatingAuthJpa;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +24,7 @@ import org.springframework.stereotype.Service;
 public class TKD0200ASVC {
 
     private final ValidatingAuthJpa validatingAuthJpa;
+    private final ValidatingOtp validatingOtp;
 
     private static class CtxSVC{
 
@@ -47,6 +49,13 @@ public class TKD0200ASVC {
 
         if(!validatingAuthJpa.isValidLogin(ctxSVC.input.getEmail(),ctxSVC.input.getPassword())){
             throw new BizException(SysErrCode.PASSWORD_INVALID);
+        }
+
+        if (ctxSVC.input.isVerifyOtp()){
+
+            if (!validatingOtp.isValid(validatingAuthJpa.getSecretKey(ctxSVC.input.getEmail(),ctxSVC.input.getPassword()),ctxSVC.input.getOtp())){
+                throw new BizException(SysErrCode.INVALID_OTP);
+            }
         }
 
     }
