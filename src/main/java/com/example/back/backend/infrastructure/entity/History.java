@@ -39,6 +39,16 @@ public class History {
     private String twoFactorSecret;
     private String typeDesc;
     private String email;
+    private LocalDate joinWorkDt;
+    private String religion;
+    private String workingWeb;
+    private BigDecimal foodAmount;
+    private BigDecimal thr;
+    private BigDecimal bonus;
+    private BigDecimal tiketAmt;
+    private LocalDate tiketBuyDt;
+    private String noRekening;
+    private LocalDate lastSalaryIncreaseDt;
     private LocalDate regDt;
     private LocalTime regTm;
     private LocalDate updDt;
