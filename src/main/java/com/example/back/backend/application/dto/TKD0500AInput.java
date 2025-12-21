@@ -18,8 +18,9 @@ public class TKD0500AInput {
     String address;
     LocalDate birthDt;
     String gender;
-    @NotNull
     String email;
+    @NotNull
+    String oldEmail;
 
     // MEMBER_INFO
     String position;

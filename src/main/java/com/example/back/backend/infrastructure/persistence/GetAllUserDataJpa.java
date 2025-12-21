@@ -26,6 +26,7 @@ public class GetAllUserDataJpa {
                 A.ADDRESS AS address,
                 A.SEX AS gender,
                 A.EMAIL AS email,
+                A.BIRTH_DATE AS birthDt,
                 -- MEMBER_INFO
                 B.POSITION AS position,
                 B.JOIN_WORK_DT AS joinWorkDt,
@@ -59,22 +60,23 @@ public class GetAllUserDataJpa {
             map.put("address", row[2]);
             map.put("gender", row[3]);
             map.put("email", row[4]);
+            map.put("birthDate", row[5]);
 
             // MEMBER_INFO fields
-            map.put("position", row[5]);
-            map.put("joinWorkDt", row[6]);
-            map.put("religion", row[7]);
-            map.put("workingWeb", row[8]);
+            map.put("position", row[6]);
+            map.put("joinWorkDt", row[7]);
+            map.put("religion", row[8]);
+            map.put("workingWeb", row[9]);
 
             // PAYROLL fields
-            map.put("trxAmt", row[9]);
-            map.put("foodAmt", row[10]);
-            map.put("thr", row[11]);
-            map.put("bonus", row[12]);
-            map.put("tiketAmt", row[13]);
-            map.put("tiketBuyDt", row[14]);
-            map.put("noRekening", row[15]);
-            map.put("lastSalaryIncreaseDt", row[16]);
+            map.put("trxAmt", row[10]);
+            map.put("foodAmt", row[11]);
+            map.put("thr", row[12]);
+            map.put("bonus", row[13]);
+            map.put("tiketAmt", row[14]);
+            map.put("tiketBuyDt", row[15]);
+            map.put("noRekening", row[16]);
+            map.put("lastSalaryIncreaseDt", row[17]);
 
             result.add(map);
         }

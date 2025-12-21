@@ -61,7 +61,7 @@ public class TKD0500ASVC {
 
     private void checkInputData(CtxSVC ctxSVC) throws RuntimeException {
 
-        ctxSVC.member = daoMemberJpa.findMemberByEmail(ctxSVC.input.getEmail());
+        ctxSVC.member = daoMemberJpa.findMemberByEmail(ctxSVC.input.getOldEmail());
 
         ctxSVC.memberInfo = daoMemberInfoJpa.findById(ctxSVC.member.getRefNo()).orElseThrow(() -> new RuntimeException(SysErrCode.USER_FOUNT.getCode()));
 
