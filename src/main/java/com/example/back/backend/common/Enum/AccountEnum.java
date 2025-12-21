@@ -70,4 +70,21 @@ public class AccountEnum {
         }
     }
 
+    public enum AddPurpose {
+
+        REGISTER("01"),
+        ADD_USER("02");
+
+        private final String value;
+
+        AddPurpose(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+    }
+
 }

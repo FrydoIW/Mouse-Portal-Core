@@ -67,6 +67,9 @@ public class HistoryFactory {
         h.setPosition(info.getPosition());
         h.setStatus(info.getStatus());
         h.setTypeDesc(AccountEnum.HistoryDesc.MEMBER_INFO.getValue());
+        h.setJoinWorkDt(info.getJoinWorkDt());
+        h.setReligion(info.getReligion());
+        h.setWorkingWeb(info.getWorkingWeb());
 
         setAuditFields(h);
         historyJpa.save(h);
@@ -127,6 +130,13 @@ public class HistoryFactory {
         h.setTrxAmt(payroll.getTrxAmt());
         h.setRemark(payroll.getRemark());
         h.setTypeDesc(AccountEnum.HistoryDesc.PAYROLL.getValue());
+        h.setFoodAmount(payroll.getFoodAmount());
+        h.setThr(payroll.getThr());
+        h.setBonus(payroll.getBonus());
+        h.setTiketAmt(payroll.getTiketAmt());
+        h.setTiketBuyDt(payroll.getTiketBuyDt());
+        h.setNoRekening(payroll.getNoRekening());
+        h.setLastSalaryIncreaseDt(payroll.getLastSalaryIncreaseDt());
 
         setAuditFields(h);
         historyJpa.save(h);
@@ -143,16 +153,30 @@ public class HistoryFactory {
             return;
         }
 
+        //MEMBER
         target.setName(base.getName());
         target.setAddress(base.getAddress());
         target.setBirthDate(base.getBirthDate());
         target.setSex(base.getSex());
         target.setEmail(base.getEmail());
 
+        // PAYROLL
         target.setTrxAmt(base.getTrxAmt());
         target.setRemark(base.getRemark());
+        target.setFoodAmount(base.getFoodAmount());
+        target.setThr(base.getThr());
+        target.setBonus(base.getBonus());
+        target.setTiketAmt(base.getTiketAmt());
+        target.setTiketBuyDt(base.getTiketBuyDt());
+        target.setNoRekening(base.getNoRekening());
+        target.setLastSalaryIncreaseDt(base.getLastSalaryIncreaseDt());
+
+        // PAYROLL INFO
         target.setStatus(base.getStatus());
         target.setPosition(base.getPosition());
+        target.setJoinWorkDt(base.getJoinWorkDt());
+        target.setReligion(base.getReligion());
+        target.setWorkingWeb(base.getWorkingWeb());
         target.setPasswordHash(base.getPasswordHash());
         // typeDesc akan di-set spesifik di masing-masing fungsi
     }

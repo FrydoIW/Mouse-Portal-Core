@@ -2,6 +2,7 @@ package com.example.back.backend.application.dto;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import org.springframework.cglib.core.Local;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -27,5 +28,16 @@ public class TKD0100AInput {
     private String email;
     private String passwordCredential;
     private BigDecimal salaryAmount;
+    private String openPurpose;
+    private LocalDate joinWorkDt;
+    private String religion;
+    private String workingWeb;
+    private BigDecimal foodAmount;
+    private BigDecimal thr;
+    private BigDecimal bonus;
+    private BigDecimal ticketAmt;
+    private LocalDate ticketBuyDt;
+    private String noRekening;
+    private LocalDate lastSalaryIncreaseDt;
 
 }

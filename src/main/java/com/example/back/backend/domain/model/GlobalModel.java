@@ -27,6 +27,9 @@ public class GlobalModel {
     //MEMBER_INFO TABLE
     private String position;
     private String status;
+    private LocalDate joinWorkDt;
+    private String religion;
+    private String workingWeb;
 
     //MEMBER_CREDENTIAL TABLE
     private String passwordHash;
@@ -34,6 +37,13 @@ public class GlobalModel {
 
     //PAYROLL TABLE
     private BigDecimal trxAmt;
-    private String payrollRemark;
     private String remark;
+    private BigDecimal foodAmount;
+    private BigDecimal thr;
+    private BigDecimal bonus;
+    private BigDecimal ticketAmt;
+    private LocalDate ticketBuyDt;
+    private String noRekening;
+    private LocalDate lastSalaryIncreaseDt;
+
 }

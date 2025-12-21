@@ -12,6 +12,7 @@ import com.example.back.backend.domain.repository.RegisterRepository;
 import com.example.back.backend.infrastructure.jpa.DaoMemberJpa;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.codec.binary.StringUtils;
 import org.springframework.stereotype.Service;
 
 /**
@@ -69,8 +70,19 @@ public class TKD0100ASVC {
         globInput.setEmail(ctxSVC.input.getEmail());
         globInput.setPasswordHash(ctxSVC.input.getPasswordCredential());
         globInput.setTrxAmt(ctxSVC.input.getSalaryAmount());
-        globInput.setPayrollRemark("REGISTER");
         globInput.setTwoFactorSecret(ctxSVC.secret);
+        globInput.setJoinWorkDt(ctxSVC.input.getJoinWorkDt());
+        globInput.setReligion(ctxSVC.input.getReligion());
+        globInput.setWorkingWeb(ctxSVC.input.getWorkingWeb());
+        globInput.setFoodAmount(ctxSVC.input.getFoodAmount());
+        globInput.setThr(ctxSVC.input.getThr());
+        globInput.setBonus(ctxSVC.input.getBonus());
+        globInput.setTicketAmt(ctxSVC.input.getTicketAmt());
+        globInput.setTicketBuyDt(ctxSVC.input.getTicketBuyDt());
+        globInput.setNoRekening(ctxSVC.input.getNoRekening());
+        globInput.setLastSalaryIncreaseDt(ctxSVC.input.getLastSalaryIncreaseDt());
+
+        log.debug("Global Input : [{}]",globInput);
 
         registerRepository.insertMember(globInput);
 
@@ -80,6 +92,9 @@ public class TKD0100ASVC {
 
         ctxSVC.output.setStatus("00");
         ctxSVC.output.setRemark("ALL DATA INSERTED");
+
+        if (StringUtils.equals(ctxSVC.input.getOpenPurpose(),AccountEnum.AddPurpose.ADD_USER.getValue())) return;
+
         ctxSVC.output.setQrBase64(ctxSVC.qrBase64);
 
     }
@@ -93,6 +108,8 @@ public class TKD0100ASVC {
     }
 
     private void generateTwoFactorSecret(CtxSVC ctxSVC) throws Exception {
+
+        if (StringUtils.equals(ctxSVC.input.getOpenPurpose(),AccountEnum.AddPurpose.ADD_USER.getValue())) return;
 
         ctxSVC.secret = genereateSecretKey.generateSecret();
         ctxSVC.qrBase64 = genereateSecretKey.generateQrBase64(ctxSVC.input.getEmail(), ctxSVC.secret);

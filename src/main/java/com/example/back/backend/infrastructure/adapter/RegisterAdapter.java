@@ -71,6 +71,9 @@ public class RegisterAdapter implements RegisterRepository {
         infoModel.setPosition(input.getPosition());
         infoModel.setStatus(input.getStatus());
         infoModel.setRefNo(input.getRefNo());
+        infoModel.setJoinWorkDt(input.getJoinWorkDt());
+        infoModel.setReligion(input.getReligion());
+        infoModel.setWorkingWeb(input.getWorkingWeb());
 
         MemberInfo memberInfo = MemberInfoMapper.toMemberInfoEntity(infoModel);
 
@@ -122,7 +125,13 @@ public class RegisterAdapter implements RegisterRepository {
 
         payrollModel.setRefNo(input.getRefNo());
         payrollModel.setTrxAmt(input.getTrxAmt());
-        payrollModel.setRemark(input.getPayrollRemark());
+        payrollModel.setFoodAmount(input.getFoodAmount());
+        payrollModel.setThr(input.getThr());
+        payrollModel.setBonus(input.getBonus());
+        payrollModel.setTicketAmt(input.getTicketAmt());
+        payrollModel.setTicketBuyDt(input.getTicketBuyDt());
+        payrollModel.setNoRekening(input.getNoRekening());
+        payrollModel.setLastSalaryIncreaseDt(input.getLastSalaryIncreaseDt());
 
         Payroll payroll = PayrollMapper.toPayrollEntity(payrollModel);
 
