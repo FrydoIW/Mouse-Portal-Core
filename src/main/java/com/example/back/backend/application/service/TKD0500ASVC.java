@@ -15,6 +15,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+
 /**
  * @fileName : TKD0500ASVC
  * @author   : dodocool
@@ -72,16 +74,104 @@ public class TKD0500ASVC {
         GlobalModel globalModel = new GlobalModel();
 
         globalModel.setRefNo(ctxSVC.member.getRefNo());
-        globalModel.setName(ctxSVC.input.getName());
-        globalModel.setAddress(ctxSVC.input.getAddress());
-        globalModel.setBirthDate(ctxSVC.input.getBirthDt());
-        globalModel.setGender(ctxSVC.input.getGender());
-        globalModel.setEmail(ctxSVC.input.getEmail());
-        globalModel.setPosition(ctxSVC.input.getPosition());
-        globalModel.setTrxAmt(ctxSVC.input.getSalaryAmount());
+
+        globalModel.setName(getValueOrDefault(
+                ctxSVC.input.getName(),
+                ctxSVC.member.getName()
+        ));
+        globalModel.setAddress(getValueOrDefault(
+                ctxSVC.input.getAddress(),
+                ctxSVC.member.getAddress()
+        ));
+        globalModel.setBirthDate(getValueOrDefault(
+                ctxSVC.input.getBirthDt(),
+                ctxSVC.member.getBirthDate()
+        ));
+        globalModel.setGender(getValueOrDefault(
+                ctxSVC.input.getGender(),
+                ctxSVC.member.getSex()
+        ));
+        globalModel.setEmail(getValueOrDefault(
+                ctxSVC.input.getEmail(),
+                ctxSVC.member.getEmail()
+        ));
+
+        // MEMBER_INFO
+        globalModel.setPosition(getValueOrDefault(
+                ctxSVC.input.getPosition(),
+                ctxSVC.memberInfo.getPosition()
+        ));
+        globalModel.setJoinWorkDt(getValueOrDefault(
+                ctxSVC.input.getJoinWorkDt(),
+                ctxSVC.memberInfo.getJoinWorkDt()
+        ));
+        globalModel.setReligion(getValueOrDefault(
+                ctxSVC.input.getReligion(),
+                ctxSVC.memberInfo.getReligion()
+        ));
+        globalModel.setWorkingWeb(getValueOrDefault(
+                ctxSVC.input.getWorkingWeb(),
+                ctxSVC.memberInfo.getWorkingWeb()
+        ));
+
+        // PAYROLL
+        globalModel.setTrxAmt(getValueOrDefault(
+                ctxSVC.input.getSalaryAmount(),
+                ctxSVC.payroll.getTrxAmt()
+        ));
+        globalModel.setFoodAmount(getValueOrDefault(
+                ctxSVC.input.getFoodAmount(),
+                ctxSVC.payroll.getFoodAmount()
+        ));
+        globalModel.setThr(getValueOrDefault(
+                ctxSVC.input.getThr(),
+                ctxSVC.payroll.getThr()
+        ));
+        globalModel.setBonus(getValueOrDefault(
+                ctxSVC.input.getBonus(),
+                ctxSVC.payroll.getBonus()
+        ));
+        globalModel.setTicketAmt(getValueOrDefault(
+                ctxSVC.input.getTicketAmt(),
+                ctxSVC.payroll.getTiketAmt()
+        ));
+        globalModel.setTicketBuyDt(getValueOrDefault(
+                ctxSVC.input.getTicketBuyDt(),
+                ctxSVC.payroll.getTiketBuyDt()
+        ));
+        globalModel.setNoRekening(getValueOrDefault(
+                ctxSVC.input.getNoRekening(),
+                ctxSVC.payroll.getNoRekening()
+        ));
+        globalModel.setLastSalaryIncreaseDt(getValueOrDefault(
+                ctxSVC.input.getLastSalaryIncreaseDt(),
+                ctxSVC.payroll.getLastSalaryIncreaseDt()
+        ));
 
         updateAdapter.updateData(globalModel);
 
+    }
+
+    private <T> T getValueOrDefault(T inputValue, T defaultValue) {
+        if (inputValue == null) {
+            return defaultValue;
+        }
+
+        if (inputValue instanceof String) {
+            String str = (String) inputValue;
+            if (str.trim().isEmpty()) {
+                return defaultValue;
+            }
+        }
+
+        if (inputValue instanceof BigDecimal) {
+            BigDecimal bd = (BigDecimal) inputValue;
+            if (bd.compareTo(BigDecimal.ZERO) == 0) {
+                return defaultValue;
+            }
+        }
+
+        return inputValue;
     }
 
     private void putOutput(CtxSVC ctxSVC) throws Exception {

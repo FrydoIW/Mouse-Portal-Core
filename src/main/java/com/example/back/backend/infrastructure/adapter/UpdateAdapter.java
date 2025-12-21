@@ -52,6 +52,9 @@ public class UpdateAdapter implements UpdateRepository {
 
         memberInfo.setHisNo(daoHistoryJpa.findMaxHisNo(globalModel.getRefNo()));
         memberInfo.setPosition(globalModel.getPosition());
+        memberInfo.setJoinWorkDt(globalModel.getJoinWorkDt());
+        memberInfo.setReligion(globalModel.getReligion());
+        memberInfo.setWorkingWeb(globalModel.getWorkingWeb());
         memberInfo.setUpdDt(LocalDate.now());
         memberInfo.setUpdTm(LocalTime.now());
 
@@ -64,6 +67,13 @@ public class UpdateAdapter implements UpdateRepository {
         Payroll payroll = daoPayrollJpa.findById(globalModel.getRefNo()).orElseThrow(() -> new RuntimeException(SysErrCode.USER_FOUNT.getCode()));
 
         payroll.setTrxAmt(globalModel.getTrxAmt());
+        payroll.setFoodAmount(globalModel.getFoodAmount());
+        payroll.setThr(globalModel.getThr());
+        payroll.setBonus(globalModel.getBonus());
+        payroll.setTiketAmt(globalModel.getTicketAmt());
+        payroll.setTiketBuyDt(globalModel.getTicketBuyDt());
+        payroll.setNoRekening(globalModel.getNoRekening());
+        payroll.setLastSalaryIncreaseDt(globalModel.getLastSalaryIncreaseDt());
         payroll.setUpdDt(LocalDate.now());
         payroll.setUpdTm(LocalTime.now());
 

@@ -23,8 +23,17 @@ public class TKD0500AInput {
 
     // MEMBER_INFO
     String position;
+    private LocalDate joinWorkDt;
+    private String religion;
+    private String workingWeb;
 
     // PAYROLL
-    BigDecimal salaryAmount;
-
+    private BigDecimal salaryAmount;
+    private BigDecimal foodAmount;
+    private BigDecimal thr;
+    private BigDecimal bonus;
+    private BigDecimal ticketAmt;
+    private LocalDate ticketBuyDt;
+    private String noRekening;
+    private LocalDate lastSalaryIncreaseDt;
 }

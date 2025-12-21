@@ -47,7 +47,7 @@ public class TKD0400ASVC {
 
     private void inquiryAllData(CtxSVC ctxSVC) throws Exception {
 
-        List<HashMap<String,Object>> inquiryResult = new ArrayList<>();
+        List<HashMap<String,Object>> inquiryResult;
 
         inquiryResult = getAllUserDataJpa.getAllUserInformation();
 
