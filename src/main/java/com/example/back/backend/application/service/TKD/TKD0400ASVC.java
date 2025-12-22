@@ -1,4 +1,4 @@
-package com.example.back.backend.application.service;
+package com.example.back.backend.application.service.TKD;
 
 import com.example.back.backend.application.dto.TKD0400AInput;
 import com.example.back.backend.application.dto.TKD0400AOutput;
@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 

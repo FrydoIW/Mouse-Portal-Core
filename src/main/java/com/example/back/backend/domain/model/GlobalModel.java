@@ -46,4 +46,10 @@ public class GlobalModel {
     private String noRekening;
     private LocalDate lastSalaryIncreaseDt;
 
+    //REKENING
+    private String nomorRekening;
+    private String bank;
+    private String owner;
+    private BigDecimal amount;
+
 }

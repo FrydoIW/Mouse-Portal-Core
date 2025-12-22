@@ -1,4 +1,4 @@
-package com.example.back.backend.application.service;
+package com.example.back.backend.application.service.TKD;
 
 import com.example.back.backend.application.dto.TKD0500AInput;
 import com.example.back.backend.application.dto.TKD0500AOutput;
