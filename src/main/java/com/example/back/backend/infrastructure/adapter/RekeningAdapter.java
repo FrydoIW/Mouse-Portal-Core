@@ -42,4 +42,22 @@ public class RekeningAdapter implements AtmRepository {
         rekeningJpa.save(rekening);
 
     }
+
+
+    @Override
+    public void editAtm(GlobalModel globalModel) throws Exception {
+
+        Rekening rekening = rekeningJpa.findById(globalModel.getRekeningId()).orElseThrow(() -> new Exception("Data Not Found"));
+
+        rekening.setNomorRekening(globalModel.getNomorRekening());
+        rekening.setBank(globalModel.getBank());
+        rekening.setOwner(globalModel.getOwner());
+        rekening.setAmount(globalModel.getAmount());
+        rekening.setUpdDt(LocalDate.now());
+
+        log.debug("Update Rekening : [{}]",rekening);
+
+        rekeningJpa.save(rekening);
+
+    }
 }

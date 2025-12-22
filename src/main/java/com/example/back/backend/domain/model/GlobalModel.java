@@ -47,6 +47,7 @@ public class GlobalModel {
     private LocalDate lastSalaryIncreaseDt;
 
     //REKENING
+    private Long rekeningId;
     private String nomorRekening;
     private String bank;
     private String owner;

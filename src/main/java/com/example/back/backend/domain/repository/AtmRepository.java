@@ -6,4 +6,6 @@ public interface AtmRepository {
 
     void insertNewAtm(GlobalModel globalModel) throws Exception;
 
+    void editAtm(GlobalModel globalModel) throws Exception;
+
 }
