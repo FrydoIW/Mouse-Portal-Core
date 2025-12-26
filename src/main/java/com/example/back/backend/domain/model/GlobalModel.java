@@ -53,4 +53,9 @@ public class GlobalModel {
     private String owner;
     private BigDecimal amount;
 
+    //EXPENSE
+    private String expenseName;
+    private BigDecimal cost;
+    private LocalDate dueDate;
+
 }
