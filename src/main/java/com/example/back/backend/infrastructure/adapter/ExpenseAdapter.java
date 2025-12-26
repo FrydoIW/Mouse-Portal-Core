@@ -38,4 +38,17 @@ public class ExpenseAdapter implements ExpenseRepository {
 
     }
 
+    @Override
+    public void editExpense(GlobalModel globalModel) throws Exception {
+
+        Expense expense = expenseJpa.findById(globalModel.getExpenseId()).orElseThrow(() -> new Exception("Data not Found"));
+
+        expense.setExpenseName(globalModel.getExpenseName());
+        expense.setCost(globalModel.getCost());
+        expense.setDueDate(globalModel.getDueDate());
+        expense.setUpdDt(LocalDate.now());
+
+        expenseJpa.save(expense);
+
+    }
 }

@@ -47,7 +47,7 @@ public class ATM0300ASVC {
         ctxSVC.output = new ATM0300AOutput();
 
         checkInput(ctxSVC);
-        checkExistingData(ctxSVC);
+        editExistingData(ctxSVC);
         putOutput(ctxSVC);
 
         return ctxSVC.output;
@@ -65,7 +65,7 @@ public class ATM0300ASVC {
 
     }
 
-    private void checkExistingData(CtxSVC ctxSVC) throws Exception {
+    private void editExistingData(CtxSVC ctxSVC) throws Exception {
 
         GlobalModel globalModel = new GlobalModel();
 

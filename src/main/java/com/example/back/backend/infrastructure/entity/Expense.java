@@ -1,6 +1,5 @@
 package com.example.back.backend.infrastructure.entity;
 
-import com.example.back.backend.infrastructure.entity.PK.HistoryPk;
 import jakarta.persistence.*;
 import lombok.*;
 

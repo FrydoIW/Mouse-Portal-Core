@@ -11,7 +11,9 @@ public enum SysErrCode {
     PASSWORD_INVALID("0002","Your password is incorrect"),
     EMAIL_NOT_FOUNT("0003","Your email is wrong"),
     INVALID_OTP("0004","Your OTP input is wrong"),
-    ATM_ID_NULL("0005","Input ID for edit atm may not be null");
+    ATM_ID_NULL("0005","Input ID for edit atm may not be null"),
+    EXPENSE_ID_NULL("0006","Input ID for edit atm may not be null");
+
 
     private final String code;
     private final String desc;

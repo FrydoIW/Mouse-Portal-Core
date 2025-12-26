@@ -6,4 +6,6 @@ public interface ExpenseRepository {
 
     void insertNewExpense(GlobalModel globalModel) throws Exception;
 
+    void editExpense(GlobalModel globalModel) throws Exception;
+
 }
