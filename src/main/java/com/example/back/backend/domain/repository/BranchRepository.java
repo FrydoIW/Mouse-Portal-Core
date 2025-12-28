@@ -6,4 +6,6 @@ public interface BranchRepository {
 
     public void insertBranchInfo(GlobalModel globalModel);
 
+    public void editBranch(GlobalModel globalModel) throws Exception;
+
 }

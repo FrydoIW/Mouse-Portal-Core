@@ -36,4 +36,17 @@ public class BranchAdapter implements BranchRepository {
         branchJpa.save(branch);
 
     }
+
+    @Override
+    public void editBranch(GlobalModel globalModel) throws Exception {
+
+        Branch branch = branchJpa.findById(globalModel.getBranchId()).orElseThrow(() -> new Exception("Data Not Found"));
+        branch.setBranchName(globalModel.getBranchName());
+        branch.setUpdDt(LocalDate.now());
+
+        log.debug("Edit Branch : [{}]",branch);
+
+        branchJpa.save(branch);
+
+    }
 }
