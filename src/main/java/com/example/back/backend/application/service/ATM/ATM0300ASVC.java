@@ -1,8 +1,8 @@
 package com.example.back.backend.application.service.ATM;
 
 import com.example.back.backend.Exception.BizException;
-import com.example.back.backend.application.dto.ATM0300AInput;
-import com.example.back.backend.application.dto.ATM0300AOutput;
+import com.example.back.backend.application.dto.atm.ATM0300AInput;
+import com.example.back.backend.application.dto.atm.ATM0300AOutput;
 import com.example.back.backend.common.Enum.SysErrCode;
 import com.example.back.backend.domain.model.GlobalModel;
 import com.example.back.backend.domain.repository.AtmRepository;
@@ -10,8 +10,6 @@ import com.example.back.backend.infrastructure.entity.Rekening;
 import com.example.back.backend.infrastructure.jpa.DaoRekeningJpa;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.aspectj.apache.bcel.ExceptionConstants;
-import org.hibernate.tool.schema.spi.SqlScriptException;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;

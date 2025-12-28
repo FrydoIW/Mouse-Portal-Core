@@ -59,4 +59,8 @@ public class GlobalModel {
     private BigDecimal cost;
     private LocalDate dueDate;
 
+    //BRANCH
+    private Long branchId;
+    private String branchName;
+
 }

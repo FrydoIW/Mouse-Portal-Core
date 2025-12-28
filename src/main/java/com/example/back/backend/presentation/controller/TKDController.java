@@ -1,6 +1,6 @@
 package com.example.back.backend.presentation.controller;
 
-import com.example.back.backend.application.dto.*;
+import com.example.back.backend.application.dto.tkd.*;
 import com.example.back.backend.application.service.TKD.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

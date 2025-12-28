@@ -2,8 +2,8 @@ package com.example.back.backend.application.service.TKD;
 
 
 import com.example.back.backend.Exception.BizException;
-import com.example.back.backend.application.dto.TKD0900AInput;
-import com.example.back.backend.application.dto.TKD0900AOutput;
+import com.example.back.backend.application.dto.tkd.TKD0900AInput;
+import com.example.back.backend.application.dto.tkd.TKD0900AOutput;
 import com.example.back.backend.common.Enum.SysErrCode;
 import com.example.back.backend.infrastructure.jpa.DaoExpenseJpa;
 import lombok.RequiredArgsConstructor;

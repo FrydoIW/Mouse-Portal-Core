@@ -1,4 +1,4 @@
-package com.example.back.backend.application.dto;
+package com.example.back.backend.application.dto.atm;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.*;

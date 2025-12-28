@@ -1,8 +1,7 @@
-package com.example.back.backend.application.dto;
+package com.example.back.backend.application.dto.tkd;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.springframework.cglib.core.Local;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -10,28 +9,27 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
+@RequiredArgsConstructor
 @ToString
-public class TKD0100AInput {
+public class TKD0500AInput {
 
+    //MEMBER
+    String name;
+    String address;
+    LocalDate birthDt;
+    String gender;
+    String email;
     @NotNull
-    private String name;
-    @NotNull
-    private String address;
-    @NotNull
-    private String gender;
-    @NotNull
-    private LocalDate birthDate;
-    @NotNull
-    private String position;
-    @NotNull
-    private String email;
-    private String passwordCredential;
-    private BigDecimal salaryAmount;
-    private String openPurpose;
+    String oldEmail;
+
+    // MEMBER_INFO
+    String position;
     private LocalDate joinWorkDt;
     private String religion;
     private String workingWeb;
+
+    // PAYROLL
+    private BigDecimal salaryAmount;
     private BigDecimal foodAmount;
     private BigDecimal thr;
     private BigDecimal bonus;
@@ -39,5 +37,4 @@ public class TKD0100AInput {
     private LocalDate ticketBuyDt;
     private String noRekening;
     private LocalDate lastSalaryIncreaseDt;
-
 }

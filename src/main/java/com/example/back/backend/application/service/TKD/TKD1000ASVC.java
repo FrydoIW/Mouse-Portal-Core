@@ -1,8 +1,7 @@
 package com.example.back.backend.application.service.TKD;
 
-import com.example.back.backend.application.dto.TKD0100AOutput;
-import com.example.back.backend.application.dto.TKD1000AInput;
-import com.example.back.backend.application.dto.TKD1000AOutput;
+import com.example.back.backend.application.dto.tkd.TKD1000AInput;
+import com.example.back.backend.application.dto.tkd.TKD1000AOutput;
 import com.example.back.backend.infrastructure.entity.Expense;
 import com.example.back.backend.infrastructure.jpa.DaoExpenseJpa;
 import lombok.RequiredArgsConstructor;

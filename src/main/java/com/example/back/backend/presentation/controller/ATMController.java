@@ -1,6 +1,6 @@
 package com.example.back.backend.presentation.controller;
 
-import com.example.back.backend.application.dto.*;
+import com.example.back.backend.application.dto.atm.*;
 import com.example.back.backend.application.service.ATM.ATM0100ASVC;
 import com.example.back.backend.application.service.ATM.ATM0200ASVC;
 import com.example.back.backend.application.service.ATM.ATM0300ASVC;

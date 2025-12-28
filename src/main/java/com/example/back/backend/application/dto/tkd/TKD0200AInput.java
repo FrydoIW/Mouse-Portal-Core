@@ -1,4 +1,4 @@
-package com.example.back.backend.application.dto;
+package com.example.back.backend.application.dto.tkd;
 
 import lombok.*;
 

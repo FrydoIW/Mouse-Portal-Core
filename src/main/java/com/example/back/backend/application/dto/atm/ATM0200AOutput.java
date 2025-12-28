@@ -1,4 +1,4 @@
-package com.example.back.backend.application.dto;
+package com.example.back.backend.application.dto.atm;
 
 import lombok.*;
 
@@ -9,9 +9,9 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
-@RequiredArgsConstructor
+@NoArgsConstructor
 @ToString
-public class TKD0400AOutput {
+public class ATM0200AOutput {
 
     private List<HashMap<String,Object>> resultList = new ArrayList<>();
 

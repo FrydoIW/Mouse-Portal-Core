@@ -1,4 +1,4 @@
-package com.example.back.backend.application.dto;
+package com.example.back.backend.application.dto.atm;
 
 import lombok.*;
 
@@ -9,8 +9,9 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class ATM0100AInput {
+public class ATM0300AInput {
 
+    Long id;
     String nomorRekening;
     String bank;
     String owner;

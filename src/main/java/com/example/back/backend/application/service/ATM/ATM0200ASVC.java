@@ -1,7 +1,7 @@
 package com.example.back.backend.application.service.ATM;
 
-import com.example.back.backend.application.dto.ATM0200AInput;
-import com.example.back.backend.application.dto.ATM0200AOutput;
+import com.example.back.backend.application.dto.atm.ATM0200AInput;
+import com.example.back.backend.application.dto.atm.ATM0200AOutput;
 import com.example.back.backend.infrastructure.entity.Rekening;
 import com.example.back.backend.infrastructure.jpa.DaoRekeningJpa;
 import lombok.RequiredArgsConstructor;

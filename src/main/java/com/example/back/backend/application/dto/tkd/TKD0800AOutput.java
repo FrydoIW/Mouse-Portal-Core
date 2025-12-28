@@ -1,13 +1,13 @@
-package com.example.back.backend.application.dto;
+package com.example.back.backend.application.dto.tkd;
 
 import lombok.*;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
-public class TKD0200AOutput {
+public class TKD0800AOutput {
 
     String status;
     String remark;

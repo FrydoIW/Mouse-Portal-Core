@@ -1,8 +1,8 @@
 package com.example.back.backend.application.service.TKD;
 
 import com.example.back.backend.Exception.BizException;
-import com.example.back.backend.application.dto.TKD0100AInput;
-import com.example.back.backend.application.dto.TKD0100AOutput;
+import com.example.back.backend.application.dto.tkd.TKD0100AInput;
+import com.example.back.backend.application.dto.tkd.TKD0100AOutput;
 import com.example.back.backend.common.Enum.AccountEnum;
 import com.example.back.backend.common.Enum.SysErrCode;
 import com.example.back.backend.common.util.CreateRefNo;

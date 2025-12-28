@@ -1,4 +1,4 @@
-package com.example.back.backend.application.dto;
+package com.example.back.backend.application.dto.tkd;
 
 import lombok.*;
 
@@ -7,10 +7,10 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class ATM0400AOutput {
+public class TKD0100AOutput {
 
     private String status;
     private String remark;
-
+    private String qrBase64;
 
 }

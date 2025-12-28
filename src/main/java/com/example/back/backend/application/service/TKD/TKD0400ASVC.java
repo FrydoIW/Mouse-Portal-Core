@@ -1,7 +1,7 @@
 package com.example.back.backend.application.service.TKD;
 
-import com.example.back.backend.application.dto.TKD0400AInput;
-import com.example.back.backend.application.dto.TKD0400AOutput;
+import com.example.back.backend.application.dto.tkd.TKD0400AInput;
+import com.example.back.backend.application.dto.tkd.TKD0400AOutput;
 import com.example.back.backend.infrastructure.persistence.GetAllUserDataJpa;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
