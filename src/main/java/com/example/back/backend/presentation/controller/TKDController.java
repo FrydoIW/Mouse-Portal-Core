@@ -25,8 +25,12 @@ public class TKDController {
     private final TKD0500ASVC tkd0500ASVC;
 
     private final TKD0600ASVC tkd0600ASVC;
+
     private final TKD0700ASVC tkd0700ASVC;
+
     private final TKD0800ASVC tkd0800ASVC;
+
+    private final TKD0900ASVC tkd0900ASVC;
 
     @PostMapping("/register/tkd0100")
     public TKD0100AOutput register(@RequestBody TKD0100AInput input) throws Exception {
@@ -81,6 +85,13 @@ public class TKDController {
     public TKD0800AOutput editExpense(@RequestBody TKD0800AInput input) throws Exception {
 
         return tkd0800ASVC.execute(input);
+
+    }
+
+    @PostMapping("/deleteExpense/tkd0900")
+    public TKD0900AOutput deleteExpense(@RequestBody TKD0900AInput input) throws Exception {
+
+        return tkd0900ASVC.execute(input);
 
     }
 

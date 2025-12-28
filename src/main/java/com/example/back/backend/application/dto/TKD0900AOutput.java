@@ -1,0 +1,16 @@
+package com.example.back.backend.application.dto;
+
+import lombok.*;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+public class TKD0900AOutput {
+
+    String status;
+    String remark;
+
+
+}
