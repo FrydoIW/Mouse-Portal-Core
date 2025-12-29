@@ -18,6 +18,7 @@ public class Rekening {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Long branchId;
     private String nomorRekening;
     private String bank;
     private String owner;

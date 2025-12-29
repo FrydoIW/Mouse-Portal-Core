@@ -27,6 +27,7 @@ public class RekeningAdapter implements AtmRepository {
 
         RekeningModel rekModel = new RekeningModel();
 
+        rekModel.setBranchId(globalModel.getBranchId());
         rekModel.setNomorRekening(globalModel.getNomorRekening());
         rekModel.setBank(globalModel.getBank());
         rekModel.setOwner(globalModel.getOwner());

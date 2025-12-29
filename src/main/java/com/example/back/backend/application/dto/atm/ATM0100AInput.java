@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 @ToString
 public class ATM0100AInput {
 
+    Long branchId;
     String nomorRekening;
     String bank;
     String owner;

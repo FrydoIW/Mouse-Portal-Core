@@ -47,17 +47,20 @@ public class BRO0400ASVC {
 
         List<Branch> branch;
         List<HashMap<String,Object>> outputMap = new ArrayList<>();
+        int num = 1;
 
         branch = branchJpa.findAll();
 
         for(Branch b : branch){
 
             HashMap<String,Object> hashMap = new HashMap<>();
+            hashMap.put("number",num);
             hashMap.put("branchId",b.getBranchId());
             hashMap.put("branchName",b.getBranchName());
 
             outputMap.add(hashMap);
 
+            num++;
         }
 
         ctxSVC.output.setResultList(outputMap);

@@ -19,6 +19,7 @@ public class RekeningMapper {
         rekening.setBank(model.getBank());
         rekening.setOwner(model.getOwner());
         rekening.setAmount(model.getAmount() == null ? BigDecimal.ZERO : model.getAmount());
+        rekening.setBranchId(model.getBranchId());
 
         return rekening;
 

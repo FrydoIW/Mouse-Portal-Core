@@ -52,6 +52,7 @@ public class ATM0100ASVC {
     private void insertIntoRekening(CtxSVC ctxSVC) throws Exception {
 
         GlobalModel globalModel = new GlobalModel();
+        globalModel.setBranchId(ctxSVC.input.getBranchId());
         globalModel.setNomorRekening(ctxSVC.input.getNomorRekening());
         globalModel.setBank(ctxSVC.input.getBank());
         globalModel.setOwner(ctxSVC.input.getOwner());

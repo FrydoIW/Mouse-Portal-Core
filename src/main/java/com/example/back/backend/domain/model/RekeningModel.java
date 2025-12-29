@@ -15,5 +15,6 @@ public class RekeningModel {
     private String bank;
     private String owner;
     private BigDecimal amount;
+    private Long branchId;
 
 }
