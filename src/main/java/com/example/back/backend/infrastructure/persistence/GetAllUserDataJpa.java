@@ -44,7 +44,7 @@ public class GetAllUserDataJpa {
             FROM MEMBER A
             JOIN MEMBER_INFO B ON A.REF_NO = B.REF_NO
             JOIN PAYROLL C ON A.REF_NO = C.REF_NO
-            WHERE B.STATUS = '00'
+            WHERE B.STATUS = '00' AND A.USER_MASTER = 'NULL'
             """;
 
         @SuppressWarnings("unchecked")

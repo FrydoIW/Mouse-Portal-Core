@@ -86,6 +86,8 @@ public class TKD0100ASVC {
 
         if (ctxSVC.input.getOpenPurpose().equals(AccountEnum.AddPurpose.REGISTER.getValue())){
             globInput.setUserMaster("TRUE");
+        }else{
+            globInput.setUserMaster("FALSE");
         }
 
         log.debug("Global Input : [{}]",globInput);

@@ -48,6 +48,8 @@ public class TKD0700ASVC {
         globalModel.setExpenseName(ctxSVC.input.getExpenseName());
         globalModel.setCost(ctxSVC.input.getCost());
         globalModel.setDueDate(ctxSVC.input.getDueDate());
+        globalModel.setMemo(ctxSVC.input.getMemo());
+        globalModel.setBranchId(ctxSVC.input.getBranchId());
 
         expenseRepository.insertNewExpense(globalModel);
 

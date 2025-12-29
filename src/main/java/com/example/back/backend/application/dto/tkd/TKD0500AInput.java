@@ -21,12 +21,14 @@ public class TKD0500AInput {
     String email;
     @NotNull
     String oldEmail;
+    Long branchId;
 
     // MEMBER_INFO
     String position;
     private LocalDate joinWorkDt;
     private String religion;
     private String workingWeb;
+    private String cuti;
 
     // PAYROLL
     private BigDecimal salaryAmount;

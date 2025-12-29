@@ -16,5 +16,7 @@ public class TKD0800AInput {
     private String expenseName;
     private BigDecimal cost;
     private LocalDate dueDate;
+    private Long branchId;
+    private String memo;
 
 }

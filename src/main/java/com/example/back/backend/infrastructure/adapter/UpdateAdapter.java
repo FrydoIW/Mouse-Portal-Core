@@ -39,6 +39,7 @@ public class UpdateAdapter implements UpdateRepository {
         member.setBirthDate(globalModel.getBirthDate());
         member.setSex(globalModel.getGender());
         member.setEmail(globalModel.getEmail());
+        member.setBranchId(globalModel.getBranchId());
         member.setUpdDt(LocalDate.now());
         member.setUpdTm(LocalTime.now());
 
@@ -55,6 +56,7 @@ public class UpdateAdapter implements UpdateRepository {
         memberInfo.setJoinWorkDt(globalModel.getJoinWorkDt());
         memberInfo.setReligion(globalModel.getReligion());
         memberInfo.setWorkingWeb(globalModel.getWorkingWeb());
+        memberInfo.setCuti(globalModel.getCuti());
         memberInfo.setUpdDt(LocalDate.now());
         memberInfo.setUpdTm(LocalTime.now());
 

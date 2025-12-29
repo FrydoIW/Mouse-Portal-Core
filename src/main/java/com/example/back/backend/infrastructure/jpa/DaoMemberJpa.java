@@ -14,8 +14,8 @@ public interface DaoMemberJpa extends JpaRepository<Member,String> {
     boolean existByUserMaster(String email);
 
     @Query(value = """
-       SELECT * FROM MEMBER WHERE EMAIL = :email AND USER_MASTER = 'TRUE'
+       SELECT * FROM MEMBER WHERE EMAIL = :email AND USER_MASTER = :userMaster
         """,
             nativeQuery = true)
-    Member findByEmailAndUserMaster(@Param("email") String email);
+    Member findByEmailAndUserMaster(@Param("email") String email, @Param("userMaster") String userMaster);
 }

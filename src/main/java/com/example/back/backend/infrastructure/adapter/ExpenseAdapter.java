@@ -26,6 +26,8 @@ public class ExpenseAdapter implements ExpenseRepository {
         expenseModel.setExpenseName(globalModel.getExpenseName());
         expenseModel.setCost(globalModel.getCost());
         expenseModel.setDueDate(globalModel.getDueDate());
+        expenseModel.setBranchId(globalModel.getBranchId());
+        expenseModel.setCost(globalModel.getCost());
 
         Expense expense = ExpenseMapper.toExpenseEntity(expenseModel);
 
@@ -45,6 +47,8 @@ public class ExpenseAdapter implements ExpenseRepository {
 
         expense.setExpenseName(globalModel.getExpenseName());
         expense.setCost(globalModel.getCost());
+        expense.setBranchId(globalModel.getBranchId());
+        expense.setMemo(globalModel.getMemo());
         expense.setDueDate(globalModel.getDueDate());
         expense.setUpdDt(LocalDate.now());
 

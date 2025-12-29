@@ -61,7 +61,7 @@ public class TKD0500ASVC {
 
     private void checkInputData(CtxSVC ctxSVC) throws RuntimeException {
 
-        ctxSVC.member = daoMemberJpa.findMemberByEmail(ctxSVC.input.getOldEmail());
+        ctxSVC.member = daoMemberJpa.findByEmailAndUserMaster(ctxSVC.input.getOldEmail(),"NULL");
 
         ctxSVC.memberInfo = daoMemberInfoJpa.findById(ctxSVC.member.getRefNo()).orElseThrow(() -> new RuntimeException(SysErrCode.USER_FOUNT.getCode()));
 
@@ -75,6 +75,7 @@ public class TKD0500ASVC {
 
         globalModel.setRefNo(ctxSVC.member.getRefNo());
 
+        // SET MEMBER
         globalModel.setName(getValueOrDefault(
                 ctxSVC.input.getName(),
                 ctxSVC.member.getName()
@@ -95,6 +96,11 @@ public class TKD0500ASVC {
                 ctxSVC.input.getEmail(),
                 ctxSVC.member.getEmail()
         ));
+        globalModel.setBranchId(getValueOrDefault(
+                ctxSVC.input.getBranchId(),
+                ctxSVC.member.getBranchId()
+        ));
+
 
         // MEMBER_INFO
         globalModel.setPosition(getValueOrDefault(
@@ -112,6 +118,10 @@ public class TKD0500ASVC {
         globalModel.setWorkingWeb(getValueOrDefault(
                 ctxSVC.input.getWorkingWeb(),
                 ctxSVC.memberInfo.getWorkingWeb()
+        ));
+        globalModel.setCuti(getValueOrDefault(
+                ctxSVC.input.getCuti(),
+                ctxSVC.memberInfo.getCuti()
         ));
 
         // PAYROLL

@@ -16,6 +16,8 @@ public class ExpenseMapper {
         expense.setExpenseName(model.getExpenseName());
         expense.setCost(model.getCost());
         expense.setDueDate(model.getDueDate());
+        expense.setBranchId(model.getBranchId());
+        expense.setMemo(model.getMemo());
 
         return expense;
 

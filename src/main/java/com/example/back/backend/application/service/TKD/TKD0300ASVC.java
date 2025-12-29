@@ -56,7 +56,7 @@ public class TKD0300ASVC {
     }
 
     private void loadInputData(CtxSVC ctx) throws Exception {
-        ctx.member = daoMemberJpa.findByEmailAndUserMaster(ctx.input.getEmail());
+        ctx.member = daoMemberJpa.findByEmailAndUserMaster(ctx.input.getEmail(),"TRUE");
 
         if (ctx.member == null)
             throw new BizException(SysErrCode.EMAIL_NOT_FOUNT);

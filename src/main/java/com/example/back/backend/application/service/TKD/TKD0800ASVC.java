@@ -69,6 +69,8 @@ public class TKD0800ASVC {
         globalModel.setExpenseName(getValueOrDefault(ctxSVC.input.getExpenseName(),ctxSVC.expense.getExpenseName()));
         globalModel.setCost(getValueOrDefault(ctxSVC.input.getCost(),ctxSVC.expense.getCost()));
         globalModel.setDueDate(getValueOrDefault(ctxSVC.input.getDueDate(),ctxSVC.expense.getDueDate()));
+        globalModel.setBranchId(getValueOrDefault(ctxSVC.input.getBranchId(),ctxSVC.expense.getBranchId()));
+        globalModel.setMemo(getValueOrDefault(ctxSVC.input.getMemo(),ctxSVC.expense.getMemo()));
 
         expenseRepository.editExpense(globalModel);
     }

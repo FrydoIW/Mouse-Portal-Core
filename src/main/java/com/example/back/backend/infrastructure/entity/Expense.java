@@ -21,6 +21,8 @@ public class Expense {
     private String expenseName;
     private BigDecimal cost;
     private LocalDate dueDate;
+    private Long branchId;
+    private String memo;
     private LocalDate updDt;
     private LocalDate regDt;
 

@@ -48,18 +48,22 @@ public class TKD1000ASVC {
 
         List<Expense> expense;
         List<HashMap<String,Object>> outputMap = new ArrayList<>();
+        int number = 1;
 
         expense = daoExpenseJpa.findAll();
 
         for (Expense e : expense) {
 
             HashMap<String,Object> hashMap = new HashMap<>();
+            hashMap.put("number",number);
             hashMap.put("id",e.getId());
             hashMap.put("expenseName",e.getExpenseName());
             hashMap.put("cost",e.getCost());
             hashMap.put("dueDate",e.getDueDate());
 
             outputMap.add(hashMap);
+
+            number++;
         }
 
         ctxSVC.output.setResultList(outputMap);

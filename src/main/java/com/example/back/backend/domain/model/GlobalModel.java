@@ -60,6 +60,7 @@ public class GlobalModel {
     private String expenseName;
     private BigDecimal cost;
     private LocalDate dueDate;
+    private String memo;
 
     //BRANCH
     private Long branchId;
