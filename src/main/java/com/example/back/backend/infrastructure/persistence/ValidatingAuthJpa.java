@@ -44,6 +44,7 @@ public class ValidatingAuthJpa {
         WHERE A.EMAIL = :email
           AND B.PASSWORD_HASH = :password
           AND B.STATUS = '00'
+          AND A.USER_MASTER = 'TRUE'
     """;
 
         Object result = em.createNativeQuery(sql)
