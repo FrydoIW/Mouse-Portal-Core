@@ -25,6 +25,7 @@ public class MemberInfo {
     private String religion;
     private String workingWeb;
     private LocalDate joinWorkDt;
+    private String cuti;
     private LocalDate regDt;
     private LocalTime regTm;
     private LocalDate updDt;

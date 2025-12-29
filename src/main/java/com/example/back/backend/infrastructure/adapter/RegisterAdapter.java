@@ -47,6 +47,8 @@ public class RegisterAdapter implements RegisterRepository {
         memberModel.setBirthDate(input.getBirthDate());
         memberModel.setRefNo(input.getRefNo());
         memberModel.setEmail(input.getEmail());
+        memberModel.setBranchId(input.getBranchId());
+        memberModel.setUserMaster(input.getUserMaster());
 
         Member member = MemberMapper.toMemberEntity(memberModel);
 
@@ -74,6 +76,7 @@ public class RegisterAdapter implements RegisterRepository {
         infoModel.setJoinWorkDt(input.getJoinWorkDt());
         infoModel.setReligion(input.getReligion());
         infoModel.setWorkingWeb(input.getWorkingWeb());
+        infoModel.setCuti(input.getCuti());
 
         MemberInfo memberInfo = MemberInfoMapper.toMemberInfoEntity(infoModel);
 

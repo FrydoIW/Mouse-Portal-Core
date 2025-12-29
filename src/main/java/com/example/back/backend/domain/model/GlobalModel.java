@@ -19,6 +19,7 @@ public class GlobalModel {
     private LocalDate birthDate;
     private String gender;
     private String email;
+    private String userMaster;
 
     //HISTORY TABLE
     private String hisType;
@@ -30,6 +31,7 @@ public class GlobalModel {
     private LocalDate joinWorkDt;
     private String religion;
     private String workingWeb;
+    private String cuti;
 
     //MEMBER_CREDENTIAL TABLE
     private String passwordHash;

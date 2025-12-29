@@ -17,6 +17,8 @@ public class MemberModel {
     private LocalDate birthDate;
     private String gender;
     private String email;
+    private Long branchId;
+    private String userMaster;
 
 
 }

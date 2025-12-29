@@ -19,6 +19,8 @@ public class MemberMapper {
         member.setBirthDate(m.getBirthDate());
         member.setSex(m.getGender());
         member.setEmail(m.getEmail());
+        member.setBranchId(m.getBranchId());
+        member.setUserMaster(m.getUserMaster());
 
         return member;
     }

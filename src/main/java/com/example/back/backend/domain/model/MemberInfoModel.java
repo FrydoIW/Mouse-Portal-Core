@@ -17,5 +17,6 @@ public class MemberInfoModel {
     private LocalDate joinWorkDt;
     private String religion;
     private String workingWeb;
+    private String cuti;
 
 }

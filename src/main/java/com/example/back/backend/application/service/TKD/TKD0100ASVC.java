@@ -81,6 +81,12 @@ public class TKD0100ASVC {
         globInput.setTicketBuyDt(ctxSVC.input.getTicketBuyDt());
         globInput.setNoRekening(ctxSVC.input.getNoRekening());
         globInput.setLastSalaryIncreaseDt(ctxSVC.input.getLastSalaryIncreaseDt());
+        globInput.setBranchId(ctxSVC.input.getBranchId());
+        globInput.setCuti(ctxSVC.input.getCuti());
+
+        if (ctxSVC.input.getOpenPurpose().equals(AccountEnum.AddPurpose.REGISTER.getValue())){
+            globInput.setUserMaster("TRUE");
+        }
 
         log.debug("Global Input : [{}]",globInput);
 
@@ -101,8 +107,12 @@ public class TKD0100ASVC {
 
     private void checkExistingUser(CtxSVC ctxSVC) throws BizException{
 
-        if (daoMemberJpa.existsByEmail(ctxSVC.input.getEmail())){
+        if (AccountEnum.AddPurpose.REGISTER.getValue().equals(ctxSVC.input.getOpenPurpose())
+                && daoMemberJpa.existsByEmail(ctxSVC.input.getEmail())
+                    && daoMemberJpa.existByUserMaster(ctxSVC.input.getEmail())){
+
             throw new BizException(SysErrCode.USER_FOUNT);
+
         }
 
     }

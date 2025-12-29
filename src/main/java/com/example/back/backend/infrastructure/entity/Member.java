@@ -25,6 +25,8 @@ public class Member {
     private String sex;
     private String email;
     private Integer hisNo;
+    private Long branchId;
+    private String userMaster;
     private LocalDate regDt;
     private LocalTime regTm;
     private LocalDate updDt;

@@ -19,6 +19,8 @@ public class MemberInfoMapper {
         memberInfo.setJoinWorkDt(m.getJoinWorkDt());
         memberInfo.setReligion(m.getReligion());
         memberInfo.setWorkingWeb(m.getWorkingWeb());
+        memberInfo.setCuti(m.getCuti());
+
 
         return memberInfo;
     }

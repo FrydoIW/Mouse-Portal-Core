@@ -38,6 +38,8 @@ public class HistoryFactory {
         h.setSex(member.getSex());
         h.setEmail(member.getEmail());
         h.setTypeDesc(AccountEnum.HistoryDesc.MEMBER.getValue());
+        h.setBranchId(member.getBranchId());
+        h.setUserMaster(member.getUserMaster());
 
         setAuditFields(h);
         historyJpa.save(h);
@@ -70,6 +72,7 @@ public class HistoryFactory {
         h.setJoinWorkDt(info.getJoinWorkDt());
         h.setReligion(info.getReligion());
         h.setWorkingWeb(info.getWorkingWeb());
+        h.setCuti(info.getCuti());
 
         setAuditFields(h);
         historyJpa.save(h);

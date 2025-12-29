@@ -49,6 +49,9 @@ public class History {
     private LocalDate tiketBuyDt;
     private String noRekening;
     private LocalDate lastSalaryIncreaseDt;
+    private Long branchId;
+    private String userMaster;
+    private String cuti;
     private LocalDate regDt;
     private LocalTime regTm;
     private LocalDate updDt;

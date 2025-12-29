@@ -39,5 +39,7 @@ public class TKD0100AInput {
     private LocalDate ticketBuyDt;
     private String noRekening;
     private LocalDate lastSalaryIncreaseDt;
+    private Long branchId;
+    private String cuti;
 
 }

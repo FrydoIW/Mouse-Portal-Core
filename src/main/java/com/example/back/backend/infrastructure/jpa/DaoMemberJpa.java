@@ -8,4 +8,6 @@ public interface DaoMemberJpa extends JpaRepository<Member,String> {
     Member findMemberByEmail(String email);
 
     boolean existsByEmail(String email);
+
+    boolean existByUserMaster(String email);
 }
