@@ -2,6 +2,8 @@ package com.example.back.backend.infrastructure.jpa;
 
 import com.example.back.backend.infrastructure.entity.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 public interface DaoMemberJpa extends JpaRepository<Member,String> {
 
@@ -10,4 +12,10 @@ public interface DaoMemberJpa extends JpaRepository<Member,String> {
     boolean existsByEmail(String email);
 
     boolean existByUserMaster(String email);
+
+    @Query(value = """
+       SELECT * FROM MEMBER WHERE EMAIL = :email AND USER_MASTER = 'TRUE'
+        """,
+            nativeQuery = true)
+    Member findByEmailAndUserMaster(@Param("email") String email);
 }
