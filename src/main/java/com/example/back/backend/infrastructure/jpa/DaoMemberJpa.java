@@ -7,15 +7,10 @@ import org.springframework.data.repository.query.Param;
 
 public interface DaoMemberJpa extends JpaRepository<Member,String> {
 
-    Member findMemberByEmail(String email);
-
-    boolean existsByEmail(String email);
-
-    boolean existByUserMaster(String email);
-
     @Query(value = """
        SELECT * FROM MEMBER WHERE EMAIL = :email AND USER_MASTER = :userMaster
         """,
             nativeQuery = true)
     Member findByEmailAndUserMaster(@Param("email") String email, @Param("userMaster") String userMaster);
+
 }

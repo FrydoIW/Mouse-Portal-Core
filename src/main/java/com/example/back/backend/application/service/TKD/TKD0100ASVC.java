@@ -9,6 +9,7 @@ import com.example.back.backend.common.util.CreateRefNo;
 import com.example.back.backend.common.util.GenereateSecretKey;
 import com.example.back.backend.domain.model.GlobalModel;
 import com.example.back.backend.domain.repository.RegisterRepository;
+import com.example.back.backend.infrastructure.entity.Member;
 import com.example.back.backend.infrastructure.jpa.DaoMemberJpa;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -109,9 +110,10 @@ public class TKD0100ASVC {
 
     private void checkExistingUser(CtxSVC ctxSVC) throws BizException{
 
+        Member member = daoMemberJpa.findByEmailAndUserMaster(ctxSVC.input.getEmail(),"TRUE");
+
         if (AccountEnum.AddPurpose.REGISTER.getValue().equals(ctxSVC.input.getOpenPurpose())
-                && daoMemberJpa.existsByEmail(ctxSVC.input.getEmail())
-                    && daoMemberJpa.existByUserMaster(ctxSVC.input.getEmail())){
+                && member != null){
 
             throw new BizException(SysErrCode.USER_FOUNT);
 
