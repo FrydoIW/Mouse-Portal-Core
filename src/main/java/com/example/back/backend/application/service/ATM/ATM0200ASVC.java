@@ -46,19 +46,24 @@ public class ATM0200ASVC {
 
         List<Rekening> rekening;
         List<HashMap<String,Object>> outputMap = new ArrayList<>();
+        int number = 1;
 
         rekening = rekeningJpa.findAll();
 
         for(Rekening n : rekening){
 
             HashMap<String,Object> hashMap = new HashMap<>();
+            hashMap.put("number",number);
             hashMap.put("id",n.getId());
             hashMap.put("nomorRekening",n.getNomorRekening());
             hashMap.put("bank",n.getBank());
             hashMap.put("owner",n.getOwner());
             hashMap.put("amount",n.getAmount());
+            hashMap.put("branchId",n.getBranchId());
 
             outputMap.add(hashMap);
+
+            number++;
 
         }
 
