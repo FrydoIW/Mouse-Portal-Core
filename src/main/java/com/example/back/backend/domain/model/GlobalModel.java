@@ -66,4 +66,14 @@ public class GlobalModel {
     private Long branchId;
     private String branchName;
 
+    //ADMIN
+    private String adminName;
+    private String adminAddress;
+    private LocalDate adminBrithDt;
+    private String adminGender;
+    private String adminEmail;
+    private String adminPasswordHash;
+    private String adminTwoFactorSecret;
+    private String adminProfilePict;
+
 }

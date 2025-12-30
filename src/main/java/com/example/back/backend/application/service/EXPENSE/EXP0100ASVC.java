@@ -1,7 +1,7 @@
-package com.example.back.backend.application.service.TKD;
+package com.example.back.backend.application.service.EXPENSE;
 
-import com.example.back.backend.application.dto.tkd.TKD0700AInput;
-import com.example.back.backend.application.dto.tkd.TKD0700AOutput;
+import com.example.back.backend.application.dto.expense.EXP0100AInput;
+import com.example.back.backend.application.dto.expense.EXP0100AOutput;
 import com.example.back.backend.domain.model.GlobalModel;
 import com.example.back.backend.domain.repository.ExpenseRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,22 +18,22 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class TKD0700ASVC {
+public class EXP0100ASVC {
 
     private final ExpenseRepository expenseRepository;
 
     public class CtxSVC {
 
-        TKD0700AInput input;
-        TKD0700AOutput output;
+        EXP0100AInput input;
+        EXP0100AOutput output;
 
     }
 
-    public TKD0700AOutput execute(TKD0700AInput input) throws Exception {
+    public EXP0100AOutput execute(EXP0100AInput input) throws Exception {
 
         CtxSVC ctxSVC = new CtxSVC();
         ctxSVC.input = input;
-        ctxSVC.output = new TKD0700AOutput();
+        ctxSVC.output = new EXP0100AOutput();
 
         insertNewProcess(ctxSVC);
         putOutput(ctxSVC);

@@ -7,7 +7,7 @@ import lombok.Getter;
 @Getter
 public enum SysErrCode {
 
-    USER_FOUNT("0001","Any user should have only one Master Key"),
+    USER_FOUNT("0001","Admin already have an account please go to Forget password"),
     PASSWORD_INVALID("0002","Your password is incorrect"),
     EMAIL_NOT_FOUNT("0003","Your email is wrong"),
     INVALID_OTP("0004","Your OTP input is wrong"),

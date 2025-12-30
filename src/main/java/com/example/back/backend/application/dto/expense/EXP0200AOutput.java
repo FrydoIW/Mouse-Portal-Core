@@ -1,4 +1,4 @@
-package com.example.back.backend.application.dto.tkd;
+package com.example.back.backend.application.dto.expense;
 
 import lombok.*;
 
@@ -7,7 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class TKD0800AOutput {
+public class EXP0200AOutput {
 
     String status;
     String remark;

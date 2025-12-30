@@ -1,9 +1,9 @@
-package com.example.back.backend.application.service.TKD;
+package com.example.back.backend.application.service.EXPENSE;
 
 
 import com.example.back.backend.Exception.BizException;
-import com.example.back.backend.application.dto.tkd.TKD0900AInput;
-import com.example.back.backend.application.dto.tkd.TKD0900AOutput;
+import com.example.back.backend.application.dto.expense.EXP0300AInput;
+import com.example.back.backend.application.dto.expense.EXP0300AOutput;
 import com.example.back.backend.common.Enum.SysErrCode;
 import com.example.back.backend.infrastructure.jpa.DaoExpenseJpa;
 import lombok.RequiredArgsConstructor;
@@ -19,20 +19,20 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class TKD0900ASVC {
+public class EXP0300ASVC {
 
     private final DaoExpenseJpa expenseJpa;
 
     public class CtxSVC{
-        TKD0900AInput input;
-        TKD0900AOutput output;
+        EXP0300AInput input;
+        EXP0300AOutput output;
     }
 
-    public TKD0900AOutput execute(TKD0900AInput input) throws Exception {
+    public EXP0300AOutput execute(EXP0300AInput input) throws Exception {
 
         CtxSVC ctxSVC = new CtxSVC();
         ctxSVC.input = input;
-        ctxSVC.output = new TKD0900AOutput();
+        ctxSVC.output = new EXP0300AOutput();
 
         checkInput(ctxSVC);
         deleteProcess(ctxSVC);

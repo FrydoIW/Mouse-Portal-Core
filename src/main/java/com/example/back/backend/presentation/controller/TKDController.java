@@ -1,6 +1,11 @@
 package com.example.back.backend.presentation.controller;
 
+import com.example.back.backend.application.dto.expense.*;
 import com.example.back.backend.application.dto.tkd.*;
+import com.example.back.backend.application.service.EXPENSE.EXP0100ASVC;
+import com.example.back.backend.application.service.EXPENSE.EXP0200ASVC;
+import com.example.back.backend.application.service.EXPENSE.EXP0300ASVC;
+import com.example.back.backend.application.service.EXPENSE.EXP0400ASVC;
 import com.example.back.backend.application.service.TKD.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -25,14 +30,6 @@ public class TKDController {
     private final TKD0500ASVC tkd0500ASVC;
 
     private final TKD0600ASVC tkd0600ASVC;
-
-    private final TKD0700ASVC tkd0700ASVC;
-
-    private final TKD0800ASVC tkd0800ASVC;
-
-    private final TKD0900ASVC tkd0900ASVC;
-
-    private final TKD1000ASVC tkd1000ASVC;
 
     @PostMapping("/register/tkd0100")
     public TKD0100AOutput register(@RequestBody TKD0100AInput input) throws Exception {
@@ -73,34 +70,6 @@ public class TKDController {
     public TKD0600AOutput deleteAccount(@RequestBody TKD0600AInput input) throws Exception {
 
         return tkd0600ASVC.execute(input);
-
-    }
-
-    @PostMapping("/insertExpense/tkd0700")
-    public TKD0700AOutput insertExpense(@RequestBody TKD0700AInput input) throws Exception {
-
-        return tkd0700ASVC.execute(input);
-
-    }
-
-    @PostMapping("/editExpense/tkd0800")
-    public TKD0800AOutput editExpense(@RequestBody TKD0800AInput input) throws Exception {
-
-        return tkd0800ASVC.execute(input);
-
-    }
-
-    @PostMapping("/deleteExpense/tkd0900")
-    public TKD0900AOutput deleteExpense(@RequestBody TKD0900AInput input) throws Exception {
-
-        return tkd0900ASVC.execute(input);
-
-    }
-
-    @PostMapping("/getAllExpense/tkd1000")
-    public TKD1000AOutput deleteExpense(@RequestBody TKD1000AInput input) throws Exception {
-
-        return tkd1000ASVC.execute(input);
 
     }
 

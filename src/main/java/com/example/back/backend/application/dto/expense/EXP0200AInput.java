@@ -1,4 +1,4 @@
-package com.example.back.backend.application.dto.tkd;
+package com.example.back.backend.application.dto.expense;
 
 import lombok.*;
 
@@ -10,12 +10,13 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class TKD0700AInput {
+public class EXP0200AInput {
 
+    private Long id;
     private String expenseName;
     private BigDecimal cost;
     private LocalDate dueDate;
-    private String memo;
     private Long branchId;
+    private String memo;
 
 }

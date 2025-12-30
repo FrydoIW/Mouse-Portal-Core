@@ -1,9 +1,9 @@
-package com.example.back.backend.application.service.TKD;
+package com.example.back.backend.application.service.EXPENSE;
 
 
 import com.example.back.backend.Exception.BizException;
-import com.example.back.backend.application.dto.tkd.TKD0800AInput;
-import com.example.back.backend.application.dto.tkd.TKD0800AOutput;
+import com.example.back.backend.application.dto.expense.EXP0200AInput;
+import com.example.back.backend.application.dto.expense.EXP0200AOutput;
 import com.example.back.backend.common.Enum.SysErrCode;
 import com.example.back.backend.domain.model.GlobalModel;
 import com.example.back.backend.domain.repository.ExpenseRepository;
@@ -25,24 +25,24 @@ import java.math.BigDecimal;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class TKD0800ASVC {
+public class EXP0200ASVC {
 
     private final DaoExpenseJpa expenseJpa;
 
     private final ExpenseRepository expenseRepository;
 
     public class CtxSVC {
-        TKD0800AInput input;
-        TKD0800AOutput output;
+        EXP0200AInput input;
+        EXP0200AOutput output;
         Expense expense;
 
     }
 
-    public TKD0800AOutput execute(TKD0800AInput input) throws Exception {
+    public EXP0200AOutput execute(EXP0200AInput input) throws Exception {
 
         CtxSVC ctxSVC = new CtxSVC();
         ctxSVC.input = input;
-        ctxSVC.output = new TKD0800AOutput();
+        ctxSVC.output = new EXP0200AOutput();
 
         checkInput(ctxSVC);
         editExpense(ctxSVC);

@@ -1,7 +1,7 @@
-package com.example.back.backend.application.service.TKD;
+package com.example.back.backend.application.service.EXPENSE;
 
-import com.example.back.backend.application.dto.tkd.TKD1000AInput;
-import com.example.back.backend.application.dto.tkd.TKD1000AOutput;
+import com.example.back.backend.application.dto.expense.EXP0400AInput;
+import com.example.back.backend.application.dto.expense.EXP0400AOutput;
 import com.example.back.backend.infrastructure.entity.Expense;
 import com.example.back.backend.infrastructure.jpa.DaoExpenseJpa;
 import lombok.RequiredArgsConstructor;
@@ -21,22 +21,22 @@ import java.util.List;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class TKD1000ASVC {
+public class EXP0400ASVC {
 
     private final DaoExpenseJpa daoExpenseJpa;
 
     public class CtxSVC {
 
-        TKD1000AInput input;
-        TKD1000AOutput output;
+        EXP0400AInput input;
+        EXP0400AOutput output;
 
     }
 
-    public TKD1000AOutput execute(TKD1000AInput input) throws Exception {
+    public EXP0400AOutput execute(EXP0400AInput input) throws Exception {
 
         CtxSVC ctxSVC = new CtxSVC();
         ctxSVC.input = input;
-        ctxSVC.output = new TKD1000AOutput();
+        ctxSVC.output = new EXP0400AOutput();
 
         getAllData(ctxSVC);
 
