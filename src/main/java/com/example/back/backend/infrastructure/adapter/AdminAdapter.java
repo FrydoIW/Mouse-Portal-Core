@@ -42,5 +42,32 @@ public class AdminAdapter implements AdminRepository {
 
     }
 
+    @Override
+    public void insertAdmin2FA(GlobalModel globalModel) throws Exception {
 
+        Admin admin = adminJpa.findAdminByEmail(globalModel.getAdminEmail());
+
+        admin.setTwoFactorSecret(globalModel.getAdminTwoFactorSecret());
+        admin.setUpdDt(LocalDate.now());
+
+        log.debug("Admin : [{}]",admin);
+
+        adminJpa.save(admin);
+
+    }
+
+    @Override
+    public void insertTokenVerificaiton(GlobalModel globalModel) throws Exception {
+
+        Admin admin = adminJpa.findAdminByEmail(globalModel.getAdminEmail());
+
+        admin.setVerificationToken(globalModel.getVerificationToken());
+        admin.setEmailVerification(globalModel.getEmailVerification());
+        admin.setUpdDt(LocalDate.now());
+
+        log.debug("Admin : [{}]",admin);
+
+        adminJpa.save(admin);
+
+    }
 }

@@ -6,4 +6,9 @@ public interface AdminRepository {
 
     public void insertAdminRegis(GlobalModel globalModel) throws Exception;
 
+    public void insertAdmin2FA(GlobalModel globalModel) throws Exception;
+
+    public void insertTokenVerificaiton(GlobalModel globalModel) throws Exception;
+
+
 }

@@ -75,5 +75,7 @@ public class GlobalModel {
     private String adminPasswordHash;
     private String adminTwoFactorSecret;
     private String adminProfilePict;
+    private Boolean emailVerification;
+    private String verificationToken;
 
 }

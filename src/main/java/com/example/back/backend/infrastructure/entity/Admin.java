@@ -21,6 +21,8 @@ public class Admin {
     String address;
     String gender;
     String email;
+    Boolean emailVerification;
+    String verificationToken;
     String passwordHash;
     String twoFactorSecret;
     String profilePicture;

@@ -44,6 +44,7 @@ public class ADM0100ASVC {
         checkExistingAdmin(ctxSVC);
         encryptPassword(ctxSVC);
         createNewAccount(ctxSVC);
+        putOutput(ctxSVC);
 
         return ctxSVC.output;
 
@@ -78,6 +79,13 @@ public class ADM0100ASVC {
         globalModel.setAdminPasswordHash(ctxSVC.hashPassword);
 
         adminRepository.insertAdminRegis(globalModel);
+
+    }
+
+    private void putOutput(CtxSVC ctxSVC) throws Exception {
+
+        ctxSVC.output.setStatus("00");
+        ctxSVC.output.setRemark("SUCCESS REGISTER ADMIN");
 
     }
 
