@@ -10,5 +10,7 @@ public interface AdminRepository {
 
     public void insertTokenVerificaiton(GlobalModel globalModel) throws Exception;
 
+    public void editPassword(GlobalModel globalModel) throws Exception;
+
 
 }

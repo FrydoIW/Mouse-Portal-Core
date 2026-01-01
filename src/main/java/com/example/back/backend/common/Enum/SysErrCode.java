@@ -15,7 +15,8 @@ public enum SysErrCode {
     EXPENSE_ID_NULL("0006","Input ID for edit may not be null"),
     DEL_ID_NULL("0007","Input ID for delete may not be null"),
     EDIT_ID_NULL("0008","Edit ID should not be null"),
-    TOKEN_NOT_FOUND("0009","Verification token Should not be null");
+    TOKEN_NOT_FOUND("0009","Verification token Should not be null"),
+    EMAIL_INPUT_NULL("0010","Input email may not be null");
 
     private final String code;
     private final String desc;

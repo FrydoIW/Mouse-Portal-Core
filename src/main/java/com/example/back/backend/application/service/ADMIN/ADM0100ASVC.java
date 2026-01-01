@@ -52,7 +52,7 @@ public class ADM0100ASVC {
 
     private void checkExistingAdmin(CtxSVC ctxSVC) throws Exception {
 
-        Admin admin = adminJpa.findAdminByEmail(ctxSVC.input.getEmail());
+        Admin admin = adminJpa.findAdminByEmailVerified(ctxSVC.input.getEmail());
 
         if (admin != null) {
 
