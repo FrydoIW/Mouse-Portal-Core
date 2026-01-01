@@ -73,6 +73,7 @@ public class GlobalModel {
     private LocalDate adminBrithDt;
     private String adminGender;
     private String adminEmail;
+    private String adminOldEmail;
     private String adminPasswordHash;
     private String adminTwoFactorSecret;
     private String adminProfilePict;

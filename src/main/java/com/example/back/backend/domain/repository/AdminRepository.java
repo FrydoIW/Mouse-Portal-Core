@@ -13,4 +13,6 @@ public interface AdminRepository {
     public void editPassword(GlobalModel globalModel) throws Exception;
 
     public void editAdminAccount(GlobalModel globalModel) throws Exception;
+
+    public void editAdminEmail(GlobalModel globalModel) throws Exception;
 }
