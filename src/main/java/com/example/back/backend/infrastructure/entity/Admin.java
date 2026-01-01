@@ -20,6 +20,7 @@ public class Admin {
     String name;
     String address;
     String gender;
+    LocalDate birthDt;
     String email;
     Boolean emailVerification;
     String verificationToken;

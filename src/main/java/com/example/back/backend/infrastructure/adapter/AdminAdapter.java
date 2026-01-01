@@ -1,5 +1,7 @@
 package com.example.back.backend.infrastructure.adapter;
 
+import com.example.back.backend.Exception.BizException;
+import com.example.back.backend.common.Enum.SysErrCode;
 import com.example.back.backend.common.util.AdminMapper;
 import com.example.back.backend.domain.model.AdminModel;
 import com.example.back.backend.domain.model.GlobalModel;
@@ -76,12 +78,30 @@ public class AdminAdapter implements AdminRepository {
 
         Admin admin = adminJpa.findAdminByEmailVerified(globalModel.getAdminEmail());
 
-        admin.setPasswordHash(globalModel.getPasswordHash());
+        admin.setPasswordHash(globalModel.getAdminPasswordHash());
         admin.setUpdDt(LocalDate.now());
 
         log.debug("Admin : [{}]",admin);
 
         adminJpa.save(admin);
+
+    }
+
+    @Override
+    public void editAdminAccount(GlobalModel globalModel) throws Exception {
+
+        Admin admin = adminJpa.findById(globalModel.getAdminId()).orElseThrow(() -> new BizException(SysErrCode.ACCOUNT_NOT_FOUND));
+
+        admin.setName(globalModel.getAdminName());
+        admin.setGender(globalModel.getAdminGender());
+        admin.setBirthDt(globalModel.getAdminBrithDt());
+        admin.setProfilePicture(globalModel.getAdminProfilePict());
+        admin.setUpdDt(LocalDate.now());
+
+        log.debug("Admin : [{}]",admin);
+
+        adminJpa.save(admin);
+
 
     }
 }

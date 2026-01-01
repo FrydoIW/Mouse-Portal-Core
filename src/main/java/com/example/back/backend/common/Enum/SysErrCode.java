@@ -16,7 +16,8 @@ public enum SysErrCode {
     DEL_ID_NULL("0007","Input ID for delete may not be null"),
     EDIT_ID_NULL("0008","Edit ID should not be null"),
     TOKEN_NOT_FOUND("0009","Verification token Should not be null"),
-    EMAIL_INPUT_NULL("0010","Input email may not be null");
+    EMAIL_INPUT_NULL("0010","Input email may not be null"),
+    ACCOUNT_NOT_FOUND("0011","Account inquiry not found");
 
     private final String code;
     private final String desc;

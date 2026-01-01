@@ -1,9 +1,7 @@
 package com.example.back.backend.presentation.controller;
 
 import com.example.back.backend.application.dto.admin.*;
-import com.example.back.backend.application.service.ADMIN.ADM0100ASVC;
-import com.example.back.backend.application.service.ADMIN.ADM0200ASVC;
-import com.example.back.backend.application.service.ADMIN.ADM0300ASVC;
+import com.example.back.backend.application.service.ADMIN.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +17,8 @@ public class ADMController {
     private final ADM0100ASVC adm0100ASVC;
     private final ADM0200ASVC adm0200ASVC;
     private final ADM0300ASVC adm0300ASVC;
+    private final ADM0400ASVC adm0400ASVC;
+    private final ADM0500ASVC adm0500ASVC;
 
     @PostMapping("/register/adm0100")
     public ADM0100AOutput register(@RequestBody ADM0100AInput input) throws Exception {
@@ -38,6 +38,20 @@ public class ADMController {
     public ADM0300AOutput resetPass(@RequestBody ADM0300AInput input) throws Exception {
 
         return adm0300ASVC.execute(input);
+
+    }
+
+    @PostMapping("/verifyPass/adm0400")
+    public ADM0400AOutput resetPass(@RequestBody ADM0400AInput input) throws Exception {
+
+        return adm0400ASVC.execute(input);
+
+    }
+
+    @PostMapping("/editProfile/adm0500")
+    public ADM0500AOutput editProfile(@RequestBody ADM0500AInput input) throws Exception {
+
+        return adm0500ASVC.execute(input);
 
     }
 

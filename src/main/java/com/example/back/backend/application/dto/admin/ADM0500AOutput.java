@@ -1,6 +1,5 @@
 package com.example.back.backend.application.dto.admin;
 
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Getter
@@ -8,11 +7,9 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class ADM0400AInput {
+public class ADM0500AOutput {
 
-    @NotNull
-    String password;
-    @NotNull
-    String email;
+    private String status;
+    private String remark;
 
 }
