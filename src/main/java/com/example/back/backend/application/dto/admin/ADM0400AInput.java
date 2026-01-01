@@ -9,6 +9,7 @@ import lombok.*;
 @ToString
 public class ADM0400AInput {
 
-
+    String password;
+    String email;
 
 }
