@@ -5,7 +5,6 @@ import com.example.back.backend.common.util.HistoryFactory;
 import com.example.back.backend.domain.model.GlobalModel;
 import com.example.back.backend.domain.repository.UpdateRepository;
 import com.example.back.backend.infrastructure.entity.Member;
-import com.example.back.backend.infrastructure.entity.MemberCredential;
 import com.example.back.backend.infrastructure.entity.MemberInfo;
 import com.example.back.backend.infrastructure.entity.Payroll;
 import com.example.back.backend.infrastructure.jpa.*;

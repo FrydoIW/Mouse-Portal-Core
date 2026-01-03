@@ -4,14 +4,11 @@ import lombok.*;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@RequiredArgsConstructor
 @ToString
 public class TKD0200AInput {
 
-    String email;
-    String password;
-    String otp;
-    boolean verifyOtp = false;
+    private String showAllData;
 
 }

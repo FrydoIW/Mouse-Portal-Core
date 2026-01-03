@@ -1,11 +1,6 @@
 package com.example.back.backend.presentation.controller;
 
-import com.example.back.backend.application.dto.expense.*;
 import com.example.back.backend.application.dto.tkd.*;
-import com.example.back.backend.application.service.EXPENSE.EXP0100ASVC;
-import com.example.back.backend.application.service.EXPENSE.EXP0200ASVC;
-import com.example.back.backend.application.service.EXPENSE.EXP0300ASVC;
-import com.example.back.backend.application.service.EXPENSE.EXP0400ASVC;
 import com.example.back.backend.application.service.TKD.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -27,10 +22,6 @@ public class TKDController {
 
     private final TKD0400ASVC tkd0400ASVC;
 
-    private final TKD0500ASVC tkd0500ASVC;
-
-    private final TKD0600ASVC tkd0600ASVC;
-
     @PostMapping("/register/tkd0100")
     public TKD0100AOutput register(@RequestBody TKD0100AInput input) throws Exception {
 
@@ -38,38 +29,24 @@ public class TKDController {
 
     }
 
-    @PostMapping("/login/tkd0200")
-    public TKD0200AOutput login(@RequestBody TKD0200AInput input) throws Exception {
+    @PostMapping("/getAllData/tkd0200")
+    public TKD0200AOutput getAllData(@RequestBody TKD0200AInput input) throws Exception {
 
         return tkd0200ASVC.execute(input);
 
     }
 
-    @PostMapping("/reset/tkd0300")
-    public TKD0300AOutput reset(@RequestBody TKD0300AInput input) throws Exception {
+    @PostMapping("/updateData/tkd0300")
+    public TKD0300AOutput updateData(@RequestBody TKD0300AInput input) throws Exception {
 
         return tkd0300ASVC.execute(input);
 
     }
 
-    @PostMapping("/getAllData/tkd0400")
-    public TKD0400AOutput getAllData(@RequestBody TKD0400AInput input) throws Exception {
+    @PostMapping("/deleteData/tkd0400")
+    public TKD0400AOutput deleteAccount(@RequestBody TKD0400AInput input) throws Exception {
 
         return tkd0400ASVC.execute(input);
-
-    }
-
-    @PostMapping("/updateData/tkd0500")
-    public TKD0500AOutput updateData(@RequestBody TKD0500AInput input) throws Exception {
-
-        return tkd0500ASVC.execute(input);
-
-    }
-
-    @PostMapping("/deleteData/tkd0600")
-    public TKD0600AOutput deleteAccount(@RequestBody TKD0600AInput input) throws Exception {
-
-        return tkd0600ASVC.execute(input);
 
     }
 

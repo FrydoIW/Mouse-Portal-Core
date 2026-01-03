@@ -1,30 +1,29 @@
 package com.example.back.backend.application.service.TKD;
 
-
-import com.example.back.backend.Exception.BizException;
 import com.example.back.backend.application.dto.tkd.TKD0200AInput;
 import com.example.back.backend.application.dto.tkd.TKD0200AOutput;
-import com.example.back.backend.common.Enum.SysErrCode;
-import com.example.back.backend.common.util.ValidatingOtp;
-import com.example.back.backend.infrastructure.persistence.ValidatingAuthJpa;
+import com.example.back.backend.infrastructure.persistence.GetAllUserDataJpa;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.List;
+
+
 /**
- * @fileName : TKD0200ASVC
+ * @fileName : TKD0400ASVC
  * @author   : dodocool
- * @description : validating email & password / Auth Process 🗿
+ * @description : Get All Data / All users data 🗿
  */
 
 
 @Slf4j
-@Service
 @RequiredArgsConstructor
+@Service
 public class TKD0200ASVC {
 
-    private final ValidatingAuthJpa validatingAuthJpa;
-    private final ValidatingOtp validatingOtp;
+    private final GetAllUserDataJpa getAllUserDataJpa;
 
     private static class CtxSVC{
 
@@ -39,31 +38,19 @@ public class TKD0200ASVC {
         ctxSVC.input = input;
         ctxSVC.output = new TKD0200AOutput();
 
-        checkAuthProcess(ctxSVC);
-        putOutput(ctxSVC);
+        inquiryAllData(ctxSVC);
 
         return ctxSVC.output;
-    }
-
-    private void checkAuthProcess(CtxSVC ctxSVC) throws BizException {
-
-        if(!validatingAuthJpa.isValidLogin(ctxSVC.input.getEmail(),ctxSVC.input.getPassword())){
-            throw new BizException(SysErrCode.PASSWORD_INVALID);
-        }
-
-        if (ctxSVC.input.isVerifyOtp()){
-
-            if (!validatingOtp.isValid(validatingAuthJpa.getSecretKey(ctxSVC.input.getEmail(),ctxSVC.input.getPassword()),ctxSVC.input.getOtp())){
-                throw new BizException(SysErrCode.INVALID_OTP);
-            }
-        }
 
     }
 
-    private void putOutput(CtxSVC ctxSVC) throws Exception {
+    private void inquiryAllData(CtxSVC ctxSVC) throws Exception {
 
-        ctxSVC.output.setStatus("00");
-        ctxSVC.output.setRemark("Validating Auth Complete");
+        List<HashMap<String,Object>> inquiryResult;
+
+        inquiryResult = getAllUserDataJpa.getAllUserInformation();
+
+        ctxSVC.output.setResultList(inquiryResult);
 
     }
 

@@ -2,14 +2,17 @@ package com.example.back.backend.application.dto.tkd;
 
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@RequiredArgsConstructor
 @ToString
 public class TKD0200AOutput {
 
-    String status;
-    String remark;
+    private List<HashMap<String,Object>> resultList = new ArrayList<>();
 
 }

@@ -1,7 +1,6 @@
 package com.example.back.backend.common.util;
 
 import com.example.back.backend.domain.model.MemberCredentialModel;
-import com.example.back.backend.infrastructure.entity.MemberCredential;
 import lombok.Getter;
 import lombok.Setter;
 
