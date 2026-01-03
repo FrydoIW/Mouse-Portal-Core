@@ -19,6 +19,7 @@ public class ADMController {
     private final ADM0300ASVC adm0300ASVC;
     private final ADM0400ASVC adm0400ASVC;
     private final ADM0500ASVC adm0500ASVC;
+    private final ADM0600ASVC adm0600ASVC;
 
     @PostMapping("/register/adm0100")
     public ADM0100AOutput register(@RequestBody ADM0100AInput input) throws Exception {
@@ -52,6 +53,13 @@ public class ADMController {
     public ADM0500AOutput editProfile(@RequestBody ADM0500AInput input) throws Exception {
 
         return adm0500ASVC.execute(input);
+
+    }
+
+    @PostMapping("/getData/adm0600")
+    public ADM0600AOutput getData(@RequestBody ADM0600AInput input) throws Exception {
+
+        return adm0600ASVC.execute(input);
 
     }
 
