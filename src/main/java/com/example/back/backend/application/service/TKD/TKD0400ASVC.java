@@ -1,6 +1,5 @@
 package com.example.back.backend.application.service.TKD;
 
-import com.example.back.backend.Exception.BizException;
 import com.example.back.backend.application.dto.tkd.TKD0400AInput;
 import com.example.back.backend.application.dto.tkd.TKD0400AOutput;
 import com.example.back.backend.common.Enum.SysErrCode;
@@ -41,30 +40,26 @@ public class TKD0400ASVC {
         ctxSVC.input = input;
         ctxSVC.output = new TKD0400AOutput();
 
-        loadInputData(ctxSVC);
-        updateStatus(ctxSVC);
+        checkInput(ctxSVC);
+        deleteProcess(ctxSVC);
         putOutput(ctxSVC);
 
         return ctxSVC.output;
 
      }
 
-    private void loadInputData(CtxSVC ctx) throws Exception {
+    private void checkInput(CtxSVC ctxSVC) throws Exception {
 
-        ctx.member = daoMemberJpa.findByEmailAndUserMaster(ctx.input.getEmail(),"NULL");
-
-        if (ctx.member == null)
-            throw new BizException(SysErrCode.EMAIL_NOT_FOUNT);
+        ctxSVC.member = daoMemberJpa.findById(ctxSVC.input.getRefNo()).orElseThrow(() -> new RuntimeException(SysErrCode.ACCOUNT_NOT_FOUND.getCode()));
 
     }
 
-     private void updateStatus(CtxSVC ctxSVC) throws Exception {
+     private void deleteProcess(CtxSVC ctxSVC) throws Exception {
 
          GlobalModel globalModel = new GlobalModel();
-         globalModel.setStatus(ctxSVC.input.getStatus());
          globalModel.setRefNo(ctxSVC.member.getRefNo());
 
-         updateRepository.updateStatus(globalModel);
+         updateRepository.deleteUser(globalModel);
 
      }
 

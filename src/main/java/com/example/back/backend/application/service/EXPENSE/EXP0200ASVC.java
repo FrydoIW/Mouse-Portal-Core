@@ -5,6 +5,7 @@ import com.example.back.backend.Exception.BizException;
 import com.example.back.backend.application.dto.expense.EXP0200AInput;
 import com.example.back.backend.application.dto.expense.EXP0200AOutput;
 import com.example.back.backend.common.Enum.SysErrCode;
+import com.example.back.backend.common.util.CompareUtil;
 import com.example.back.backend.domain.model.GlobalModel;
 import com.example.back.backend.domain.repository.ExpenseRepository;
 import com.example.back.backend.infrastructure.entity.Expense;
@@ -66,35 +67,13 @@ public class EXP0200ASVC {
         GlobalModel globalModel = new GlobalModel();
 
         globalModel.setExpenseId(ctxSVC.input.getId());
-        globalModel.setExpenseName(getValueOrDefault(ctxSVC.input.getExpenseName(),ctxSVC.expense.getExpenseName()));
-        globalModel.setCost(getValueOrDefault(ctxSVC.input.getCost(),ctxSVC.expense.getCost()));
-        globalModel.setDueDate(getValueOrDefault(ctxSVC.input.getDueDate(),ctxSVC.expense.getDueDate()));
-        globalModel.setBranchId(getValueOrDefault(ctxSVC.input.getBranchId(),ctxSVC.expense.getBranchId()));
-        globalModel.setMemo(getValueOrDefault(ctxSVC.input.getMemo(),ctxSVC.expense.getMemo()));
+        globalModel.setExpenseName(CompareUtil.getValueOrDefault(ctxSVC.input.getExpenseName(),ctxSVC.expense.getExpenseName()));
+        globalModel.setCost(CompareUtil.getValueOrDefault(ctxSVC.input.getCost(),ctxSVC.expense.getCost()));
+        globalModel.setDueDate(CompareUtil.getValueOrDefault(ctxSVC.input.getDueDate(),ctxSVC.expense.getDueDate()));
+        globalModel.setBranchId(CompareUtil.getValueOrDefault(ctxSVC.input.getBranchId(),ctxSVC.expense.getBranchId()));
+        globalModel.setMemo(CompareUtil.getValueOrDefault(ctxSVC.input.getMemo(),ctxSVC.expense.getMemo()));
 
         expenseRepository.editExpense(globalModel);
-    }
-
-    private <T> T getValueOrDefault(T inputValue, T defaultValue) {
-        if (inputValue == null) {
-            return defaultValue;
-        }
-
-        if (inputValue instanceof String) {
-            String str = (String) inputValue;
-            if (str.trim().isEmpty()) {
-                return defaultValue;
-            }
-        }
-
-        if (inputValue instanceof BigDecimal) {
-            BigDecimal bd = (BigDecimal) inputValue;
-            if (bd.compareTo(BigDecimal.ZERO) == 0) {
-                return defaultValue;
-            }
-        }
-
-        return inputValue;
     }
 
     private void putOutput(CtxSVC ctxSVC) {

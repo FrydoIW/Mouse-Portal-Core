@@ -3,6 +3,7 @@ package com.example.back.backend.application.service.TKD;
 import com.example.back.backend.application.dto.tkd.TKD0300AInput;
 import com.example.back.backend.application.dto.tkd.TKD0300AOutput;
 import com.example.back.backend.common.Enum.SysErrCode;
+import com.example.back.backend.common.util.CompareUtil;
 import com.example.back.backend.domain.model.GlobalModel;
 import com.example.back.backend.infrastructure.adapter.UpdateAdapter;
 import com.example.back.backend.infrastructure.entity.Member;
@@ -61,11 +62,11 @@ public class TKD0300ASVC {
 
     private void checkInputData(CtxSVC ctxSVC) throws RuntimeException {
 
-        ctxSVC.member = daoMemberJpa.findByEmailAndUserMaster(ctxSVC.input.getOldEmail(),"NULL");
+        ctxSVC.member = daoMemberJpa.findById(ctxSVC.input.getRefNo()).orElseThrow(() -> new RuntimeException(SysErrCode.ACCOUNT_NOT_FOUND.getCode()));
 
-        ctxSVC.memberInfo = daoMemberInfoJpa.findById(ctxSVC.member.getRefNo()).orElseThrow(() -> new RuntimeException(SysErrCode.USER_FOUNT.getCode()));
+        ctxSVC.memberInfo = daoMemberInfoJpa.findById(ctxSVC.member.getRefNo()).orElseThrow(() -> new RuntimeException(SysErrCode.ACCOUNT_NOT_FOUND.getCode()));
 
-        ctxSVC.payroll = daoPayrollJpa.findById(ctxSVC.member.getRefNo()).orElseThrow(() -> new RuntimeException(SysErrCode.USER_FOUNT.getCode()));
+        ctxSVC.payroll = daoPayrollJpa.findById(ctxSVC.member.getRefNo()).orElseThrow(() -> new RuntimeException(SysErrCode.ACCOUNT_NOT_FOUND.getCode()));
 
     }
 
@@ -73,115 +74,86 @@ public class TKD0300ASVC {
 
         GlobalModel globalModel = new GlobalModel();
 
-        globalModel.setRefNo(ctxSVC.member.getRefNo());
+        //FOR GLOBAL
+        globalModel.setRefNo(ctxSVC.input.getRefNo());
 
-        // SET MEMBER
-        globalModel.setName(getValueOrDefault(
-                ctxSVC.input.getName(),
-                ctxSVC.member.getName()
-        ));
-        globalModel.setAddress(getValueOrDefault(
-                ctxSVC.input.getAddress(),
-                ctxSVC.member.getAddress()
-        ));
-        globalModel.setBirthDate(getValueOrDefault(
-                ctxSVC.input.getBirthDt(),
-                ctxSVC.member.getBirthDate()
-        ));
-        globalModel.setGender(getValueOrDefault(
-                ctxSVC.input.getGender(),
-                ctxSVC.member.getSex()
-        ));
-        globalModel.setEmail(getValueOrDefault(
-                ctxSVC.input.getEmail(),
-                ctxSVC.member.getEmail()
-        ));
-        globalModel.setBranchId(getValueOrDefault(
+        globalModel.setBranchId(CompareUtil.getValueOrDefault(
                 ctxSVC.input.getBranchId(),
                 ctxSVC.member.getBranchId()
         ));
 
+        // SET MEMBER
+        globalModel.setName(CompareUtil.getValueOrDefault(
+                ctxSVC.input.getName(),
+                ctxSVC.member.getName()
+        ));
+        globalModel.setAddress(CompareUtil.getValueOrDefault(
+                ctxSVC.input.getAddress(),
+                ctxSVC.member.getAddress()
+        ));
+        globalModel.setGender(CompareUtil.getValueOrDefault(
+                ctxSVC.input.getGender(),
+                ctxSVC.member.getAddress()
+        ));
+        globalModel.setEmail(CompareUtil.getValueOrDefault(
+                ctxSVC.input.getEmail(),
+                ctxSVC.member.getEmail()
+        ));
 
         // MEMBER_INFO
-        globalModel.setPosition(getValueOrDefault(
+        globalModel.setPosition(CompareUtil.getValueOrDefault(
                 ctxSVC.input.getPosition(),
                 ctxSVC.memberInfo.getPosition()
         ));
-        globalModel.setJoinWorkDt(getValueOrDefault(
+        globalModel.setJoinWorkDt(CompareUtil.getValueOrDefault(
                 ctxSVC.input.getJoinWorkDt(),
                 ctxSVC.memberInfo.getJoinWorkDt()
         ));
-        globalModel.setReligion(getValueOrDefault(
+        globalModel.setReligion(CompareUtil.getValueOrDefault(
                 ctxSVC.input.getReligion(),
                 ctxSVC.memberInfo.getReligion()
         ));
-        globalModel.setWorkingWeb(getValueOrDefault(
+        globalModel.setWorkingWeb(CompareUtil.getValueOrDefault(
                 ctxSVC.input.getWorkingWeb(),
                 ctxSVC.memberInfo.getWorkingWeb()
         ));
-        globalModel.setCuti(getValueOrDefault(
+        globalModel.setCuti(CompareUtil.getValueOrDefault(
                 ctxSVC.input.getCuti(),
                 ctxSVC.memberInfo.getCuti()
         ));
 
         // PAYROLL
-        globalModel.setTrxAmt(getValueOrDefault(
-                ctxSVC.input.getSalaryAmount(),
-                ctxSVC.payroll.getTrxAmt()
+        globalModel.setSalaryAmt(CompareUtil.getValueOrDefault(
+                ctxSVC.input.getSalaryAmt(),
+                ctxSVC.payroll.getSalaryAmt()
         ));
-        globalModel.setFoodAmount(getValueOrDefault(
+        globalModel.setRemark(CompareUtil.getValueOrDefault(
+                ctxSVC.input.getRemark(),
+                ctxSVC.payroll.getRemark()
+        ));
+        globalModel.setFoodAmount(CompareUtil.getValueOrDefault(
                 ctxSVC.input.getFoodAmount(),
                 ctxSVC.payroll.getFoodAmount()
         ));
-        globalModel.setThr(getValueOrDefault(
+        globalModel.setThr(CompareUtil.getValueOrDefault(
                 ctxSVC.input.getThr(),
                 ctxSVC.payroll.getThr()
         ));
-        globalModel.setBonus(getValueOrDefault(
+        globalModel.setBonus(CompareUtil.getValueOrDefault(
                 ctxSVC.input.getBonus(),
                 ctxSVC.payroll.getBonus()
         ));
-        globalModel.setTicketAmt(getValueOrDefault(
-                ctxSVC.input.getTicketAmt(),
-                ctxSVC.payroll.getTiketAmt()
-        ));
-        globalModel.setTicketBuyDt(getValueOrDefault(
-                ctxSVC.input.getTicketBuyDt(),
-                ctxSVC.payroll.getTiketBuyDt()
-        ));
-        globalModel.setNoRekening(getValueOrDefault(
+        globalModel.setNoRekening(CompareUtil.getValueOrDefault(
                 ctxSVC.input.getNoRekening(),
                 ctxSVC.payroll.getNoRekening()
         ));
-        globalModel.setLastSalaryIncreaseDt(getValueOrDefault(
+        globalModel.setLastSalaryIncreaseDt(CompareUtil.getValueOrDefault(
                 ctxSVC.input.getLastSalaryIncreaseDt(),
                 ctxSVC.payroll.getLastSalaryIncreaseDt()
         ));
 
         updateAdapter.updateData(globalModel);
 
-    }
-
-    private <T> T getValueOrDefault(T inputValue, T defaultValue) {
-        if (inputValue == null) {
-            return defaultValue;
-        }
-
-        if (inputValue instanceof String) {
-            String str = (String) inputValue;
-            if (str.trim().isEmpty()) {
-                return defaultValue;
-            }
-        }
-
-        if (inputValue instanceof BigDecimal) {
-            BigDecimal bd = (BigDecimal) inputValue;
-            if (bd.compareTo(BigDecimal.ZERO) == 0) {
-                return defaultValue;
-            }
-        }
-
-        return inputValue;
     }
 
     private void putOutput(CtxSVC ctxSVC) throws Exception {

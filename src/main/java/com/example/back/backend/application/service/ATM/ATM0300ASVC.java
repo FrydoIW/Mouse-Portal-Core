@@ -4,6 +4,7 @@ import com.example.back.backend.Exception.BizException;
 import com.example.back.backend.application.dto.atm.ATM0300AInput;
 import com.example.back.backend.application.dto.atm.ATM0300AOutput;
 import com.example.back.backend.common.Enum.SysErrCode;
+import com.example.back.backend.common.util.CompareUtil;
 import com.example.back.backend.domain.model.GlobalModel;
 import com.example.back.backend.domain.repository.AtmRepository;
 import com.example.back.backend.infrastructure.entity.Rekening;
@@ -11,8 +12,6 @@ import com.example.back.backend.infrastructure.jpa.DaoRekeningJpa;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
-import java.math.BigDecimal;
 
 /**
  * @fileName : ATM0300ASVC
@@ -68,10 +67,10 @@ public class ATM0300ASVC {
         GlobalModel globalModel = new GlobalModel();
 
         globalModel.setRekeningId(ctxSVC.input.getId());
-        globalModel.setNomorRekening(getValueOrDefault(ctxSVC.input.getNomorRekening(),ctxSVC.rek.getNomorRekening()));
-        globalModel.setBank(getValueOrDefault(ctxSVC.input.getBank(),ctxSVC.rek.getBank()));
-        globalModel.setOwner(getValueOrDefault(ctxSVC.input.getOwner(),ctxSVC.rek.getOwner()));
-        globalModel.setAmount(getValueOrDefault(ctxSVC.input.getAmount(),ctxSVC.rek.getAmount()));
+        globalModel.setNomorRekening(CompareUtil.getValueOrDefault(ctxSVC.input.getNomorRekening(),ctxSVC.rek.getNomorRekening()));
+        globalModel.setBank(CompareUtil.getValueOrDefault(ctxSVC.input.getBank(),ctxSVC.rek.getBank()));
+        globalModel.setOwner(CompareUtil.getValueOrDefault(ctxSVC.input.getOwner(),ctxSVC.rek.getOwner()));
+        globalModel.setAmount(CompareUtil.getValueOrDefault(ctxSVC.input.getAmount(),ctxSVC.rek.getAmount()));
 
         atmRepository.editAtm(globalModel);
 
@@ -82,28 +81,6 @@ public class ATM0300ASVC {
         ctxSVC.output.setStatus("00");
         ctxSVC.output.setRemark("ALL DATA UPDATED");
 
-    }
-
-    private <T> T getValueOrDefault(T inputValue, T defaultValue) {
-        if (inputValue == null) {
-            return defaultValue;
-        }
-
-        if (inputValue instanceof String) {
-            String str = (String) inputValue;
-            if (str.trim().isEmpty()) {
-                return defaultValue;
-            }
-        }
-
-        if (inputValue instanceof BigDecimal) {
-            BigDecimal bd = (BigDecimal) inputValue;
-            if (bd.compareTo(BigDecimal.ZERO) == 0) {
-                return defaultValue;
-            }
-        }
-
-        return inputValue;
     }
 
 }

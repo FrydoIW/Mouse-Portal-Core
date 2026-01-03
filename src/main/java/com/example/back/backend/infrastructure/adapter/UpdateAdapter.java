@@ -26,12 +26,11 @@ public class UpdateAdapter implements UpdateRepository {
 
     public void updateData(GlobalModel globalModel) throws RuntimeException {
 
-        Member member = daoMemberJpa.findById(globalModel.getRefNo()).orElseThrow(() -> new RuntimeException(SysErrCode.USER_FOUNT.getCode()));
+        Member member = daoMemberJpa.findById(globalModel.getRefNo()).orElseThrow(() -> new RuntimeException(SysErrCode.ACCOUNT_NOT_FOUND.getCode()));
 
         member.setName(globalModel.getName());
         member.setAddress(globalModel.getAddress());
-        member.setBirthDate(globalModel.getBirthDate());
-        member.setSex(globalModel.getGender());
+        member.setGender(globalModel.getGender());
         member.setEmail(globalModel.getEmail());
         member.setBranchId(globalModel.getBranchId());
         member.setUpdDt(LocalDate.now());
@@ -42,7 +41,7 @@ public class UpdateAdapter implements UpdateRepository {
         daoMemberJpa.save(member);
 
 
-        MemberInfo memberInfo = daoMemberInfoJpa.findById(globalModel.getRefNo()).orElseThrow(() -> new RuntimeException(SysErrCode.USER_FOUNT.getCode()));
+        MemberInfo memberInfo = daoMemberInfoJpa.findById(globalModel.getRefNo()).orElseThrow(() -> new RuntimeException(SysErrCode.ACCOUNT_NOT_FOUND.getCode()));
 
         memberInfo.setPosition(globalModel.getPosition());
         memberInfo.setJoinWorkDt(globalModel.getJoinWorkDt());
@@ -57,14 +56,13 @@ public class UpdateAdapter implements UpdateRepository {
         daoMemberInfoJpa.save(memberInfo);
 
 
-        Payroll payroll = daoPayrollJpa.findById(globalModel.getRefNo()).orElseThrow(() -> new RuntimeException(SysErrCode.USER_FOUNT.getCode()));
+        Payroll payroll = daoPayrollJpa.findById(globalModel.getRefNo()).orElseThrow(() -> new RuntimeException(SysErrCode.ACCOUNT_NOT_FOUND.getCode()));
 
-        payroll.setTrxAmt(globalModel.getTrxAmt());
+        payroll.setSalaryAmt(globalModel.getSalaryAmt());
+        payroll.setRemark(globalModel.getRemark());
         payroll.setFoodAmount(globalModel.getFoodAmount());
         payroll.setThr(globalModel.getThr());
         payroll.setBonus(globalModel.getBonus());
-        payroll.setTiketAmt(globalModel.getTicketAmt());
-        payroll.setTiketBuyDt(globalModel.getTicketBuyDt());
         payroll.setNoRekening(globalModel.getNoRekening());
         payroll.setLastSalaryIncreaseDt(globalModel.getLastSalaryIncreaseDt());
         payroll.setUpdDt(LocalDate.now());
@@ -74,22 +72,21 @@ public class UpdateAdapter implements UpdateRepository {
 
         daoPayrollJpa.save(payroll);
 
-
     }
 
-    public void updateStatus(GlobalModel globalModel) throws Exception {
+    @Override
+    public void deleteUser(GlobalModel globalModel) throws Exception {
 
+        Member member = daoMemberJpa.findById(globalModel.getRefNo()).orElseThrow(()-> new RuntimeException(SysErrCode.ACCOUNT_NOT_FOUND.getCode()));
 
-        MemberInfo memberInfo = daoMemberInfoJpa.findById(globalModel.getRefNo()).orElseThrow(() -> new RuntimeException(SysErrCode.USER_FOUNT.getCode()));
+        MemberInfo memberInfo = daoMemberInfoJpa.findById(globalModel.getRefNo()).orElseThrow(() -> new RuntimeException(SysErrCode.ACCOUNT_NOT_FOUND.getCode()));
 
-        memberInfo.setStatus(globalModel.getStatus());
-        memberInfo.setUpdDt(LocalDate.now());
-        memberInfo.setUpdTm(LocalTime.now());
+        Payroll payroll = daoPayrollJpa.findById(globalModel.getRefNo()).orElseThrow(() -> new RuntimeException(SysErrCode.ACCOUNT_NOT_FOUND.getCode()));
 
-        log.debug("Update status memberInfo : [{}]", memberInfo);
+        log.debug("DELETE PROCESS START");
 
-        daoMemberInfoJpa.save(memberInfo);
-
+        daoMemberJpa.deleteById(member.getRefNo());
+        daoMemberInfoJpa.deleteById(memberInfo.getRefNo());
+        daoPayrollJpa.deleteById(payroll.getRefNo());
     }
-
 }

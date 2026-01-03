@@ -13,14 +13,14 @@ import java.time.LocalDate;
 @ToString
 public class TKD0300AInput {
 
+    // PK INFO
+    String refNo;
+
     //MEMBER
     String name;
     String address;
-    LocalDate birthDt;
     String gender;
     String email;
-    @NotNull
-    String oldEmail;
     Long branchId;
 
     // MEMBER_INFO
@@ -31,12 +31,11 @@ public class TKD0300AInput {
     private String cuti;
 
     // PAYROLL
-    private BigDecimal salaryAmount;
+    private BigDecimal salaryAmt;
+    private String remark;
     private BigDecimal foodAmount;
     private BigDecimal thr;
     private BigDecimal bonus;
-    private BigDecimal ticketAmt;
-    private LocalDate ticketBuyDt;
     private String noRekening;
     private LocalDate lastSalaryIncreaseDt;
 }

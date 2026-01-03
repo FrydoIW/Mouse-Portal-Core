@@ -9,7 +9,6 @@ import lombok.*;
 @ToString
 public class TKD0400AInput {
 
-    String email;
-    String status;
+    String refNo;
 
 }
