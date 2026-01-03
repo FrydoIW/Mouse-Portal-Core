@@ -30,15 +30,11 @@ public class TKD0100ASVC {
     private final DaoMemberJpa daoMemberJpa;
     private final RegisterRepository registerRepository;
     private final CreateRefNo createRef;
-    private final GenereateSecretKey genereateSecretKey;
 
     private static class CtxSVC{
 
         TKD0100AInput input;
         TKD0100AOutput output;
-
-        String qrBase64;
-        String secret;
 
     }
 
@@ -49,7 +45,6 @@ public class TKD0100ASVC {
         ctxSVC.output = new TKD0100AOutput();
 
         checkExistingUser(ctxSVC);
-        generateTwoFactorSecret(ctxSVC);
         insertProcess(ctxSVC);
         putOutput(ctxSVC);
 
@@ -57,39 +52,47 @@ public class TKD0100ASVC {
 
     }
 
+    private void checkExistingUser(CtxSVC ctxSVC) throws BizException{
+
+        Member member = daoMemberJpa.findUserByEmail(ctxSVC.input.getEmail());
+
+        if (member != null){
+
+            throw new BizException(SysErrCode.USER_FOUNT);
+
+        }
+
+    }
+
     private void insertProcess(CtxSVC ctxSVC) throws Exception{
 
         GlobalModel globInput = new GlobalModel();
 
+        // MEMBER
         globInput.setRefNo(createRef.makeRef());
         globInput.setName(ctxSVC.input.getName());
         globInput.setAddress(ctxSVC.input.getAddress());
-        globInput.setBirthDate(ctxSVC.input.getBirthDate());
         globInput.setGender(ctxSVC.input.getGender());
-        globInput.setPosition(ctxSVC.input.getPosition());
-        globInput.setStatus(AccountEnum.AccountStatus.ACTIVE.getValue());
         globInput.setEmail(ctxSVC.input.getEmail());
-        globInput.setPasswordHash(ctxSVC.input.getPasswordCredential());
-        globInput.setTrxAmt(ctxSVC.input.getSalaryAmount());
-        globInput.setTwoFactorSecret(ctxSVC.secret);
+
+        // MEMBER_INFO
+        globInput.setPosition(ctxSVC.input.getPosition());
         globInput.setJoinWorkDt(ctxSVC.input.getJoinWorkDt());
         globInput.setReligion(ctxSVC.input.getReligion());
         globInput.setWorkingWeb(ctxSVC.input.getWorkingWeb());
+        globInput.setCuti(ctxSVC.input.getCuti());
+
+        // PAYROLL
+        globInput.setSalaryAmt(ctxSVC.input.getSalaryAmt());
+        globInput.setRemark(ctxSVC.input.getRemark());
         globInput.setFoodAmount(ctxSVC.input.getFoodAmount());
         globInput.setThr(ctxSVC.input.getThr());
         globInput.setBonus(ctxSVC.input.getBonus());
-        globInput.setTicketAmt(ctxSVC.input.getTicketAmt());
-        globInput.setTicketBuyDt(ctxSVC.input.getTicketBuyDt());
         globInput.setNoRekening(ctxSVC.input.getNoRekening());
         globInput.setLastSalaryIncreaseDt(ctxSVC.input.getLastSalaryIncreaseDt());
-        globInput.setBranchId(ctxSVC.input.getBranchId());
-        globInput.setCuti(ctxSVC.input.getCuti());
 
-        if (ctxSVC.input.getOpenPurpose().equals(AccountEnum.AddPurpose.REGISTER.getValue())){
-            globInput.setUserMaster("TRUE");
-        }else{
-            globInput.setUserMaster("FALSE");
-        }
+        // BRANCH INFORMATION
+        globInput.setBranchId(ctxSVC.input.getBranchId());
 
         log.debug("Global Input : [{}]",globInput);
 
@@ -102,34 +105,7 @@ public class TKD0100ASVC {
         ctxSVC.output.setStatus("00");
         ctxSVC.output.setRemark("ALL DATA INSERTED");
 
-        if (StringUtils.equals(ctxSVC.input.getOpenPurpose(),AccountEnum.AddPurpose.ADD_USER.getValue())) return;
-
-        ctxSVC.output.setQrBase64(ctxSVC.qrBase64);
-
     }
-
-    private void checkExistingUser(CtxSVC ctxSVC) throws BizException{
-
-        Member member = daoMemberJpa.findByEmailAndUserMaster(ctxSVC.input.getEmail(),"TRUE");
-
-        if (AccountEnum.AddPurpose.REGISTER.getValue().equals(ctxSVC.input.getOpenPurpose())
-                && member != null){
-
-            throw new BizException(SysErrCode.USER_FOUNT);
-
-        }
-
-    }
-
-    private void generateTwoFactorSecret(CtxSVC ctxSVC) throws Exception {
-
-        if (StringUtils.equals(ctxSVC.input.getOpenPurpose(),AccountEnum.AddPurpose.ADD_USER.getValue())) return;
-
-        ctxSVC.secret = genereateSecretKey.generateSecret();
-        ctxSVC.qrBase64 = genereateSecretKey.generateQrBase64(ctxSVC.input.getEmail(), ctxSVC.secret);
-
-    }
-
 
 
 }

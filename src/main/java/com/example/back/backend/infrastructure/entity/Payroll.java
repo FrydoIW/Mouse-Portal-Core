@@ -20,19 +20,16 @@ public class Payroll {
 
     @Id
     private String refNo;
-    private BigDecimal trxAmt;
-    private BigDecimal foodAmount;
-    private BigDecimal thr;
-    private BigDecimal bonus;
-    private BigDecimal tiketAmt;
-    private Integer hisNo;
-    private String noRekening;
+    private BigDecimal salaryAmt;
     private String remark;
-    private LocalDate lastSalaryIncreaseDt;
-    private LocalDate tiketBuyDt;
     private LocalDate regDt;
     private LocalTime regTm;
     private LocalDate updDt;
     private LocalTime updTm;
+    private BigDecimal foodAmount;
+    private BigDecimal thr;
+    private BigDecimal bonus;
+    private String noRekening;
+    private LocalDate lastSalaryIncreaseDt;
 
 }

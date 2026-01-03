@@ -12,15 +12,12 @@ import java.time.LocalDate;
 @ToString
 public class PayrollModel {
 
-    BigDecimal trxAmt = BigDecimal.ZERO;
     String refNo;
+    BigDecimal salaryAmt = BigDecimal.ZERO;
     String remark;
-    String payrollRemark;
     private BigDecimal foodAmount;
     private BigDecimal thr;
     private BigDecimal bonus;
-    private BigDecimal ticketAmt;
-    private LocalDate ticketBuyDt;
     private String noRekening;
     private LocalDate lastSalaryIncreaseDt;
 

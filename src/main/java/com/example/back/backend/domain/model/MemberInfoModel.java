@@ -11,9 +11,8 @@ import java.time.LocalDate;
 @ToString
 public class MemberInfoModel {
 
-    String position;
-    String status;
     String refNo;
+    String position;
     private LocalDate joinWorkDt;
     private String religion;
     private String workingWeb;

@@ -16,35 +16,22 @@ public class GlobalModel {
     private String refNo;
     private String name;
     private String address;
-    private LocalDate birthDate;
     private String gender;
     private String email;
-    private String userMaster;
-
-    //HISTORY TABLE
-    private String hisType;
-    private int hisNo;
 
     //MEMBER_INFO TABLE
     private String position;
-    private String status;
     private LocalDate joinWorkDt;
     private String religion;
     private String workingWeb;
     private String cuti;
 
-    //MEMBER_CREDENTIAL TABLE
-    private String passwordHash;
-    private String twoFactorSecret;
-
     //PAYROLL TABLE
-    private BigDecimal trxAmt;
+    private BigDecimal salaryAmt;
     private String remark;
     private BigDecimal foodAmount;
     private BigDecimal thr;
     private BigDecimal bonus;
-    private BigDecimal ticketAmt;
-    private LocalDate ticketBuyDt;
     private String noRekening;
     private LocalDate lastSalaryIncreaseDt;
 

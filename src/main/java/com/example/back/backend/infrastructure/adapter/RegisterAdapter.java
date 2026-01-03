@@ -20,11 +20,8 @@ import java.time.LocalTime;
 public class RegisterAdapter implements RegisterRepository {
 
     private final DaoMemberJpa memberJpa;
-    private final DaoHistoryJpa historyJpa;
     private final DaoMemberInfoJpa memberInfoJpa;
-    private final DaoMemberCredentialJpa credentialJpa;
     private final DaoPayrollJpa payrollJpa;
-    private final HistoryFactory historyFactory;
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
@@ -32,7 +29,6 @@ public class RegisterAdapter implements RegisterRepository {
 
         registerMember(input);
         registerMemberInfo(input);
-        registerCredential(input);
         registerPayroll(input);
 
     }
@@ -41,18 +37,15 @@ public class RegisterAdapter implements RegisterRepository {
 
         MemberModel memberModel = new MemberModel();
 
+        memberModel.setRefNo(input.getRefNo());
+        memberModel.setName(input.getName());
         memberModel.setAddress(input.getAddress());
         memberModel.setGender(input.getGender());
-        memberModel.setName(input.getName());
-        memberModel.setBirthDate(input.getBirthDate());
-        memberModel.setRefNo(input.getRefNo());
         memberModel.setEmail(input.getEmail());
         memberModel.setBranchId(input.getBranchId());
-        memberModel.setUserMaster(input.getUserMaster());
 
         Member member = MemberMapper.toMemberEntity(memberModel);
 
-        member.setHisNo(historyJpa.findMaxHisNo(member.getRefNo()));
         member.setRegDt(LocalDate.now());
         member.setRegTm(LocalTime.now());
         member.setUpdDt(LocalDate.now());
@@ -62,17 +55,14 @@ public class RegisterAdapter implements RegisterRepository {
 
         memberJpa.save(member);
 
-        historyFactory.insertToMember(member);
-
     }
 
     private void registerMemberInfo(GlobalModel input) throws Exception{
 
         MemberInfoModel infoModel = new MemberInfoModel();
 
-        infoModel.setPosition(input.getPosition());
-        infoModel.setStatus(input.getStatus());
         infoModel.setRefNo(input.getRefNo());
+        infoModel.setPosition(input.getPosition());
         infoModel.setJoinWorkDt(input.getJoinWorkDt());
         infoModel.setReligion(input.getReligion());
         infoModel.setWorkingWeb(input.getWorkingWeb());
@@ -80,7 +70,6 @@ public class RegisterAdapter implements RegisterRepository {
 
         MemberInfo memberInfo = MemberInfoMapper.toMemberInfoEntity(infoModel);
 
-        memberInfo.setHisNo(historyJpa.findMaxHisNo(memberInfo.getRefNo()));
         memberInfo.setRegDt(LocalDate.now());
         memberInfo.setRegTm(LocalTime.now());
         memberInfo.setUpdDt(LocalDate.now());
@@ -89,37 +78,6 @@ public class RegisterAdapter implements RegisterRepository {
         log.debug("Insert Member Info : [{}]",memberInfo);
 
         memberInfoJpa.save(memberInfo);
-
-        historyFactory.insertIntoMemberInfo(memberInfo);
-
-    }
-
-    private void registerCredential(GlobalModel input) throws Exception{
-
-        if(input.getPasswordHash() == null) return;
-
-        MemberCredentialModel credentialModel = new MemberCredentialModel();
-
-        credentialModel.setPasswordHash(input.getPasswordHash());
-        credentialModel.setRole(input.getPosition());
-        credentialModel.setStatus(input.getStatus());
-        credentialModel.setRefNo(input.getRefNo());
-        credentialModel.setTwoFactorSecret(input.getTwoFactorSecret());
-
-        MemberCredential memberCredential = CredentialMapper.toMemberCredentialEntity(credentialModel);
-
-        memberCredential.setHisNo(historyJpa.findMaxHisNo(input.getRefNo()));
-        memberCredential.setRegDt(LocalDate.now());
-        memberCredential.setRegTm(LocalTime.now());
-        memberCredential.setUpdDt(LocalDate.now());
-        memberCredential.setUpdTm(LocalTime.now());
-
-        log.debug("Insert memberCredential : [{}]",memberCredential);
-
-        credentialJpa.save(memberCredential);
-
-        historyFactory.insertIntoCredential(memberCredential);
-
     }
 
     private void registerPayroll(GlobalModel input) throws Exception{
@@ -127,18 +85,16 @@ public class RegisterAdapter implements RegisterRepository {
         PayrollModel payrollModel = new PayrollModel();
 
         payrollModel.setRefNo(input.getRefNo());
-        payrollModel.setTrxAmt(input.getTrxAmt());
+        payrollModel.setSalaryAmt(input.getSalaryAmt());
+        payrollModel.setRemark(input.getRemark());
         payrollModel.setFoodAmount(input.getFoodAmount());
         payrollModel.setThr(input.getThr());
         payrollModel.setBonus(input.getBonus());
-        payrollModel.setTicketAmt(input.getTicketAmt());
-        payrollModel.setTicketBuyDt(input.getTicketBuyDt());
         payrollModel.setNoRekening(input.getNoRekening());
         payrollModel.setLastSalaryIncreaseDt(input.getLastSalaryIncreaseDt());
 
         Payroll payroll = PayrollMapper.toPayrollEntity(payrollModel);
 
-        payroll.setHisNo(historyJpa.findMaxHisNo(input.getRefNo()));
         payroll.setRegDt(LocalDate.now());
         payroll.setRegTm(LocalTime.now());
         payroll.setUpdDt(LocalDate.now());
@@ -147,9 +103,6 @@ public class RegisterAdapter implements RegisterRepository {
         log.debug("Insert payroll : [{}]",payroll);
 
         payrollJpa.save(payroll);
-
-        historyFactory.insertIntoPayroll(payroll);
-
     }
 }
 

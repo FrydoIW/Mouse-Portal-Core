@@ -21,15 +21,13 @@ public class Member {
     private String refNo;
     private String name;
     private String address;
-    private LocalDate birthDate;
-    private String sex;
-    private String email;
-    private Integer hisNo;
-    private Long branchId;
-    private String userMaster;
+    private String gender;
     private LocalDate regDt;
     private LocalTime regTm;
     private LocalDate updDt;
     private LocalTime updTm;
+    private String email;
+    private Long branchId;
+
 
 }

@@ -19,16 +19,15 @@ public class MemberInfo {
 
     @Id
     private String refNo;
-    private String status;
     private String position;
-    private Integer hisNo;
-    private String religion;
-    private String workingWeb;
-    private LocalDate joinWorkDt;
-    private String cuti;
     private LocalDate regDt;
     private LocalTime regTm;
     private LocalDate updDt;
     private LocalTime updTm;
+    private LocalDate joinWorkDt;
+    private String religion;
+    private String workingWeb;
+    private String cuti;
+
 
 }

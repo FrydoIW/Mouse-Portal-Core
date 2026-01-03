@@ -22,29 +22,28 @@ public class GetAllUserDataJpa {
             SELECT
                 -- MEMBER
                 A.REF_NO AS refNo,
+                A.BRANCH_ID AS branchId,
                 A.NAME AS name,
                 A.ADDRESS AS address,
-                A.SEX AS gender,
+                A.GENDER AS gender,
                 A.EMAIL AS email,
-                A.BIRTH_DATE AS birthDt,
                 -- MEMBER_INFO
                 B.POSITION AS position,
                 B.JOIN_WORK_DT AS joinWorkDt,
                 B.RELIGION AS religion,
                 B.WORKING_WEB AS workingWeb,
+                B.CUTI AS cuti,
                 -- PAYROLL
-                C.TRX_AMT AS trxAmt,
-                C.FOOD_AMOUNT AS foodAmt,
+                C.SALARY_AMT AS salaryAmt,
+                C.REMARK AS remark,
+                C.FOOD_AMOUNT AS foodAmount,
                 C.THR AS thr,
                 C.BONUS AS bonus,
-                C.TIKET_AMT AS tiketAmt,
-                C.TIKET_BUY_DT AS tiketBuyDt,
                 C.NO_REKENING AS noRekening,
                 C.LAST_SALARY_INCREASE_DT AS lastSalaryIncreaseDt
             FROM MEMBER A
-            JOIN MEMBER_INFO B ON A.REF_NO = B.REF_NO
-            JOIN PAYROLL C ON A.REF_NO = C.REF_NO
-            WHERE B.STATUS = '00' AND A.USER_MASTER = 'NULL'
+                     JOIN MEMBER_INFO B ON A.REF_NO = B.REF_NO
+                     JOIN PAYROLL C ON A.REF_NO = C.REF_NO
             """;
 
         @SuppressWarnings("unchecked")
@@ -56,25 +55,25 @@ public class GetAllUserDataJpa {
             HashMap<String, Object> map = new HashMap<>();
             // MEMBER fields
             map.put("refNo", row[0]);
-            map.put("name", row[1]);
-            map.put("address", row[2]);
-            map.put("gender", row[3]);
-            map.put("email", row[4]);
-            map.put("birthDate", row[5]);
+            map.put("branchId", row[1]);
+            map.put("name", row[2]);
+            map.put("address", row[3]);
+            map.put("gender", row[4]);
+            map.put("email", row[5]);
 
             // MEMBER_INFO fields
             map.put("position", row[6]);
             map.put("joinWorkDt", row[7]);
             map.put("religion", row[8]);
             map.put("workingWeb", row[9]);
+            map.put("cuti", row[10]);
 
             // PAYROLL fields
-            map.put("trxAmt", row[10]);
-            map.put("foodAmt", row[11]);
-            map.put("thr", row[12]);
-            map.put("bonus", row[13]);
-            map.put("tiketAmt", row[14]);
-            map.put("tiketBuyDt", row[15]);
+            map.put("salaryAmt", row[11]);
+            map.put("remark", row[12]);
+            map.put("foodAmount", row[13]);
+            map.put("thr", row[14]);
+            map.put("bonus", row[15]);
             map.put("noRekening", row[16]);
             map.put("lastSalaryIncreaseDt", row[17]);
 

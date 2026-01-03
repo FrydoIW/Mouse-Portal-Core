@@ -12,13 +12,11 @@ public class PayrollMapper {
         Payroll payroll = new Payroll();
 
         payroll.setRefNo(m.getRefNo());
-        payroll.setTrxAmt(m.getTrxAmt());
+        payroll.setSalaryAmt(m.getSalaryAmt());
         payroll.setRemark(m.getRemark());
         payroll.setFoodAmount(m.getFoodAmount());
         payroll.setThr(m.getThr());
         payroll.setBonus(m.getBonus());
-        payroll.setTiketAmt(m.getTicketAmt());
-        payroll.setTiketBuyDt(m.getTicketBuyDt());
         payroll.setNoRekening(m.getNoRekening());
         payroll.setLastSalaryIncreaseDt(m.getLastSalaryIncreaseDt());
 
