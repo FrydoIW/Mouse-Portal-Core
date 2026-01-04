@@ -14,7 +14,7 @@ public interface DaoAdminJpa extends JpaRepository<Admin,Long> {
     Admin findAdminByEmail(@Param("email") String email);
 
     @Query(value = """
-            SELECT * FROM ADMIN WHERE EMAIL = :email AND EMAIL_VERIFICATION = 0
+            SELECT * FROM ADMIN WHERE EMAIL = :email AND EMAIL_VERIFICATION = 1
         """,
             nativeQuery = true)
     Admin findAdminByEmailVerified(@Param("email") String email);

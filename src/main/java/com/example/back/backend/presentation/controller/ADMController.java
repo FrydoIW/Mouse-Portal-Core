@@ -43,7 +43,7 @@ public class ADMController {
     }
 
     @PostMapping("/verifyPass/adm0400")
-    public ADM0400AOutput resetPass(@RequestBody ADM0400AInput input) throws Exception {
+    public ADM0400AOutput verifyPass(@RequestBody ADM0400AInput input) throws Exception {
 
         return adm0400ASVC.execute(input);
 

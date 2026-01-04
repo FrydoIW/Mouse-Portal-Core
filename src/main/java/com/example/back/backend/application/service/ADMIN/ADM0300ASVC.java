@@ -32,7 +32,6 @@ public class ADM0300ASVC {
         String passwordHash;
         ADM0300AInput input;
         ADM0300AOutput output;
-
     }
 
     public ADM0300AOutput execute(ADM0300AInput input) throws Exception {

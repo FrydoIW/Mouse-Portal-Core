@@ -15,6 +15,7 @@ public class AdminMapper {
 
         admin.setName(adminModel.getName());
         admin.setAddress(adminModel.getAddress());
+        admin.setBirthDt(adminModel.getBirthDt());
         admin.setGender(adminModel.getGender());
         admin.setEmail(adminModel.getEmail());
         admin.setPasswordHash(adminModel.getPasswordHash());

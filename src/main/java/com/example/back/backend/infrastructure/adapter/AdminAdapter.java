@@ -107,7 +107,7 @@ public class AdminAdapter implements AdminRepository {
     @Override
     public void editAdminEmail(GlobalModel globalModel) throws Exception {
 
-        Admin admin = adminJpa.findAdminByEmailVerified(globalModel.getAdminEmail());
+        Admin admin = adminJpa.findAdminByEmailVerified(globalModel.getAdminOldEmail());
 
         admin.setEmail(globalModel.getAdminEmail());
         admin.setEmailVerification(globalModel.getEmailVerification());
