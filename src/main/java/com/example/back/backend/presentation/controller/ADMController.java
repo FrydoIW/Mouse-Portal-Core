@@ -20,6 +20,7 @@ public class ADMController {
     private final ADM0400ASVC adm0400ASVC;
     private final ADM0500ASVC adm0500ASVC;
     private final ADM0600ASVC adm0600ASVC;
+    private final ADM0700ASVC adm0700ASVC;
 
     @PostMapping("/register/adm0100")
     public ADM0100AOutput register(@RequestBody ADM0100AInput input) throws Exception {
@@ -60,6 +61,13 @@ public class ADMController {
     public ADM0600AOutput getData(@RequestBody ADM0600AInput input) throws Exception {
 
         return adm0600ASVC.execute(input);
+
+    }
+
+    @PostMapping("/verify2fa/adm0700")
+    public ADM0700AOutput verify2fa(@RequestBody ADM0700AInput input) throws Exception {
+
+        return adm0700ASVC.execute(input);
 
     }
 
