@@ -85,8 +85,9 @@ public class UpdateAdapter implements UpdateRepository {
 
         log.debug("DELETE PROCESS START");
 
-        daoMemberJpa.deleteById(member.getRefNo());
-        daoMemberInfoJpa.deleteById(memberInfo.getRefNo());
         daoPayrollJpa.deleteById(payroll.getRefNo());
+        daoMemberInfoJpa.deleteById(memberInfo.getRefNo());
+        daoMemberJpa.deleteById(member.getRefNo());
+
     }
 }
