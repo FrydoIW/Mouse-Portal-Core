@@ -37,10 +37,33 @@ public class GlobalModel {
 
     //REKENING
     private Long rekeningId;
-    private String nomorRekening;
-    private String bank;
-    private String owner;
-    private BigDecimal amount;
+    private Long branchIdRekening;
+    private String rekeningNm;
+    private String ktpNo;
+    private String motherNm;
+    private String birthPlace;
+    private String homeAddr;
+    private String rt;
+    private String rw;
+    private String kelurahan;
+    private String kecamatan;
+    private String kabupaten;
+    private String province;
+    private String genderRekening;
+    private LocalDate expiredKtpDt;
+    private String rekNo;
+    private String pinNo;
+    private String atmNo;
+    private String rekType;
+    private LocalDate atmExpiredDt;
+    private String userIdMobile;
+    private String passMBanking;
+    private String bankNm;
+    private String remarkRekening;
+    private String noHp;
+    private String emailRekening;
+    private String passEmail;
+    private Integer masaSewaBank;
 
     //EXPENSE
     private Long expenseId;

@@ -27,11 +27,33 @@ public class RekeningAdapter implements AtmRepository {
 
         RekeningModel rekModel = new RekeningModel();
 
-        rekModel.setBranchId(globalModel.getBranchId());
-        rekModel.setNomorRekening(globalModel.getNomorRekening());
-        rekModel.setBank(globalModel.getBank());
-        rekModel.setOwner(globalModel.getOwner());
-        rekModel.setAmount(globalModel.getAmount());
+        rekModel.setBranchId(globalModel.getBranchIdRekening());
+        rekModel.setRekeningNm(globalModel.getRekeningNm());
+        rekModel.setKtpNo(globalModel.getKtpNo());
+        rekModel.setMotherNm(globalModel.getMotherNm());
+        rekModel.setBirthPlace(globalModel.getBirthPlace());
+        rekModel.setHomeAddr(globalModel.getHomeAddr());
+        rekModel.setRt(globalModel.getRt());
+        rekModel.setRw(globalModel.getRw());
+        rekModel.setKelurahan(globalModel.getKelurahan());
+        rekModel.setKecamatan(globalModel.getKecamatan());
+        rekModel.setKabupaten(globalModel.getKabupaten());
+        rekModel.setProvince(globalModel.getProvince());
+        rekModel.setGender(globalModel.getGenderRekening());
+        rekModel.setExpiredKtpDt(globalModel.getExpiredKtpDt());
+        rekModel.setRekNo(globalModel.getRekNo());
+        rekModel.setPinNo(globalModel.getPinNo());
+        rekModel.setAtmNo(globalModel.getAtmNo());
+        rekModel.setRekType(globalModel.getRekType());
+        rekModel.setAtmExpiredDt(globalModel.getAtmExpiredDt());
+        rekModel.setUserIdMobile(globalModel.getUserIdMobile());
+        rekModel.setPassMBanking(globalModel.getPassMBanking());
+        rekModel.setBankNm(globalModel.getBankNm());
+        rekModel.setRemark(globalModel.getRemarkRekening());
+        rekModel.setNoHp(globalModel.getNoHp());
+        rekModel.setEmail(globalModel.getEmailRekening());
+        rekModel.setPassEmail(globalModel.getPassEmail());
+        rekModel.setMasaSewaBank(globalModel.getMasaSewaBank());
 
         Rekening rekening = RekeningMapper.toRekeningEntity(rekModel);
 
@@ -50,10 +72,33 @@ public class RekeningAdapter implements AtmRepository {
 
         Rekening rekening = rekeningJpa.findById(globalModel.getRekeningId()).orElseThrow(() -> new Exception("Data Not Found"));
 
-        rekening.setNomorRekening(globalModel.getNomorRekening());
-        rekening.setBank(globalModel.getBank());
-        rekening.setOwner(globalModel.getOwner());
-        rekening.setAmount(globalModel.getAmount());
+        rekening.setBranchId(globalModel.getBranchIdRekening());
+        rekening.setRekeningNm(globalModel.getRekeningNm());
+        rekening.setKtpNo(globalModel.getKtpNo());
+        rekening.setMotherNm(globalModel.getMotherNm());
+        rekening.setBirthPlace(globalModel.getBirthPlace());
+        rekening.setHomeAddr(globalModel.getHomeAddr());
+        rekening.setRt(globalModel.getRt());
+        rekening.setRw(globalModel.getRw());
+        rekening.setKelurahan(globalModel.getKelurahan());
+        rekening.setKecamatan(globalModel.getKecamatan());
+        rekening.setKabupaten(globalModel.getKabupaten());
+        rekening.setProvince(globalModel.getProvince());
+        rekening.setGender(globalModel.getGenderRekening());
+        rekening.setExpiredKtpDt(globalModel.getExpiredKtpDt());
+        rekening.setRekNo(globalModel.getRekNo());
+        rekening.setPinNo(globalModel.getPinNo());
+        rekening.setAtmNo(globalModel.getAtmNo());
+        rekening.setRekType(globalModel.getRekType());
+        rekening.setAtmExpiredDt(globalModel.getAtmExpiredDt());
+        rekening.setUserIdMobile(globalModel.getUserIdMobile());
+        rekening.setPassMBanking(globalModel.getPassMBanking());
+        rekening.setBankNm(globalModel.getBankNm());
+        rekening.setRemark(globalModel.getRemarkRekening());
+        rekening.setNoHp(globalModel.getNoHp());
+        rekening.setEmail(globalModel.getEmailRekening());
+        rekening.setPassEmail(globalModel.getPassEmail());
+        rekening.setMasaSewaBank(globalModel.getMasaSewaBank());
         rekening.setUpdDt(LocalDate.now());
 
         log.debug("Update Rekening : [{}]",rekening);

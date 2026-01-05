@@ -66,11 +66,34 @@ public class ATM0300ASVC {
 
         GlobalModel globalModel = new GlobalModel();
 
-        globalModel.setRekeningId(ctxSVC.input.getId());
-        globalModel.setNomorRekening(CompareUtil.getValueOrDefault(ctxSVC.input.getNomorRekening(),ctxSVC.rek.getNomorRekening()));
-        globalModel.setBank(CompareUtil.getValueOrDefault(ctxSVC.input.getBank(),ctxSVC.rek.getBank()));
-        globalModel.setOwner(CompareUtil.getValueOrDefault(ctxSVC.input.getOwner(),ctxSVC.rek.getOwner()));
-        globalModel.setAmount(CompareUtil.getValueOrDefault(ctxSVC.input.getAmount(),ctxSVC.rek.getAmount()));
+        globalModel.setRekeningId(ctxSVC.rek.getId());
+        globalModel.setBranchIdRekening(CompareUtil.getValueOrDefault(ctxSVC.input.getBranchId(), ctxSVC.rek.getBranchId()));
+        globalModel.setRekeningNm(CompareUtil.getValueOrDefault(ctxSVC.input.getRekeningNm(), ctxSVC.rek.getRekeningNm()));
+        globalModel.setKtpNo(CompareUtil.getValueOrDefault(ctxSVC.input.getKtpNo(), ctxSVC.rek.getKtpNo()));
+        globalModel.setMotherNm(CompareUtil.getValueOrDefault(ctxSVC.input.getMotherNm(), ctxSVC.rek.getMotherNm()));
+        globalModel.setBirthPlace(CompareUtil.getValueOrDefault(ctxSVC.input.getBirthPlace(), ctxSVC.rek.getBirthPlace()));
+        globalModel.setHomeAddr(CompareUtil.getValueOrDefault(ctxSVC.input.getHomeAddr(), ctxSVC.rek.getHomeAddr()));
+        globalModel.setRt(CompareUtil.getValueOrDefault(ctxSVC.input.getRt(), ctxSVC.rek.getRt()));
+        globalModel.setRw(CompareUtil.getValueOrDefault(ctxSVC.input.getRw(), ctxSVC.rek.getRw()));
+        globalModel.setKelurahan(CompareUtil.getValueOrDefault(ctxSVC.input.getKelurahan(), ctxSVC.rek.getKelurahan()));
+        globalModel.setKecamatan(CompareUtil.getValueOrDefault(ctxSVC.input.getKecamatan(), ctxSVC.rek.getKecamatan()));
+        globalModel.setKabupaten(CompareUtil.getValueOrDefault(ctxSVC.input.getKabupaten(), ctxSVC.rek.getKabupaten()));
+        globalModel.setProvince(CompareUtil.getValueOrDefault(ctxSVC.input.getProvince(), ctxSVC.rek.getProvince()));
+        globalModel.setGenderRekening(CompareUtil.getValueOrDefault(ctxSVC.input.getGender(), ctxSVC.rek.getGender()));
+        globalModel.setExpiredKtpDt(CompareUtil.getValueOrDefault(ctxSVC.input.getExpiredKtpDt(), ctxSVC.rek.getExpiredKtpDt()));
+        globalModel.setRekNo(CompareUtil.getValueOrDefault(ctxSVC.input.getRekNo(), ctxSVC.rek.getRekNo()));
+        globalModel.setPinNo(CompareUtil.getValueOrDefault(ctxSVC.input.getPinNo(), ctxSVC.rek.getPinNo()));
+        globalModel.setAtmNo(CompareUtil.getValueOrDefault(ctxSVC.input.getAtmNo(), ctxSVC.rek.getAtmNo()));
+        globalModel.setRekType(CompareUtil.getValueOrDefault(ctxSVC.input.getRekType(), ctxSVC.rek.getRekType()));
+        globalModel.setAtmExpiredDt(CompareUtil.getValueOrDefault(ctxSVC.input.getAtmExpiredDt(), ctxSVC.rek.getAtmExpiredDt()));
+        globalModel.setUserIdMobile(CompareUtil.getValueOrDefault(ctxSVC.input.getUserIdMobile(), ctxSVC.rek.getUserIdMobile()));
+        globalModel.setPassMBanking(CompareUtil.getValueOrDefault(ctxSVC.input.getPassMBanking(), ctxSVC.rek.getPassMBanking()));
+        globalModel.setBankNm(CompareUtil.getValueOrDefault(ctxSVC.input.getBankNm(), ctxSVC.rek.getBankNm()));
+        globalModel.setRemarkRekening(CompareUtil.getValueOrDefault(ctxSVC.input.getRemark(), ctxSVC.rek.getRemark()));
+        globalModel.setNoHp(CompareUtil.getValueOrDefault(ctxSVC.input.getNoHp(), ctxSVC.rek.getNoHp()));
+        globalModel.setEmailRekening(CompareUtil.getValueOrDefault(ctxSVC.input.getEmail(), ctxSVC.rek.getEmail()));
+        globalModel.setPassEmail(CompareUtil.getValueOrDefault(ctxSVC.input.getPassEmail(), ctxSVC.rek.getPassEmail()));
+        globalModel.setMasaSewaBank(CompareUtil.getValueOrDefault(ctxSVC.input.getMasaSewaBank(), ctxSVC.rek.getMasaSewaBank()));
 
         atmRepository.editAtm(globalModel);
 

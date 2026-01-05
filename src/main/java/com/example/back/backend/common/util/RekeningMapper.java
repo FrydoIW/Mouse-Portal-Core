@@ -15,11 +15,33 @@ public class RekeningMapper {
 
         Rekening rekening = new Rekening();
 
-        rekening.setNomorRekening(model.getNomorRekening());
-        rekening.setBank(model.getBank());
-        rekening.setOwner(model.getOwner());
-        rekening.setAmount(model.getAmount() == null ? BigDecimal.ZERO : model.getAmount());
         rekening.setBranchId(model.getBranchId());
+        rekening.setRekeningNm(model.getRekeningNm());
+        rekening.setKtpNo(model.getKtpNo());
+        rekening.setMotherNm(model.getMotherNm());
+        rekening.setBirthPlace(model.getBirthPlace());
+        rekening.setHomeAddr(model.getHomeAddr());
+        rekening.setRt(model.getRt());
+        rekening.setRw(model.getRw());
+        rekening.setKelurahan(model.getKelurahan());
+        rekening.setKecamatan(model.getKecamatan());
+        rekening.setKabupaten(model.getKabupaten());
+        rekening.setProvince(model.getProvince());
+        rekening.setGender(model.getGender());
+        rekening.setExpiredKtpDt(model.getExpiredKtpDt());
+        rekening.setRekNo(model.getRekNo());
+        rekening.setPinNo(model.getPinNo());
+        rekening.setAtmNo(model.getAtmNo());
+        rekening.setRekType(model.getRekType());
+        rekening.setAtmExpiredDt(model.getAtmExpiredDt());
+        rekening.setUserIdMobile(model.getUserIdMobile());
+        rekening.setPassMBanking(model.getPassMBanking());
+        rekening.setBankNm(model.getBankNm());
+        rekening.setRemark(model.getRemark());
+        rekening.setNoHp(model.getNoHp());
+        rekening.setEmail(model.getEmail());
+        rekening.setPassEmail(model.getPassEmail());
+        rekening.setMasaSewaBank(model.getMasaSewaBank());
 
         return rekening;
 

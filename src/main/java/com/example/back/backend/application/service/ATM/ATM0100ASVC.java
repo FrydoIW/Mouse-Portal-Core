@@ -52,11 +52,33 @@ public class ATM0100ASVC {
     private void insertIntoRekening(CtxSVC ctxSVC) throws Exception {
 
         GlobalModel globalModel = new GlobalModel();
-        globalModel.setBranchId(ctxSVC.input.getBranchId());
-        globalModel.setNomorRekening(ctxSVC.input.getNomorRekening());
-        globalModel.setBank(ctxSVC.input.getBank());
-        globalModel.setOwner(ctxSVC.input.getOwner());
-        globalModel.setAmount(ctxSVC.input.getAmount());
+        globalModel.setBranchIdRekening(ctxSVC.input.getBranchId());
+        globalModel.setRekeningNm(ctxSVC.input.getRekeningNm());
+        globalModel.setKtpNo(ctxSVC.input.getKtpNo());
+        globalModel.setMotherNm(ctxSVC.input.getMotherNm());
+        globalModel.setBirthPlace(ctxSVC.input.getBirthPlace());
+        globalModel.setHomeAddr(ctxSVC.input.getHomeAddr());
+        globalModel.setRt(ctxSVC.input.getRt());
+        globalModel.setRw(ctxSVC.input.getRw());
+        globalModel.setKelurahan(ctxSVC.input.getKelurahan());
+        globalModel.setKecamatan(ctxSVC.input.getKecamatan());
+        globalModel.setKabupaten(ctxSVC.input.getKabupaten());
+        globalModel.setProvince(ctxSVC.input.getProvince());
+        globalModel.setGenderRekening(ctxSVC.input.getGender());
+        globalModel.setExpiredKtpDt(ctxSVC.input.getExpiredKtpDt());
+        globalModel.setRekNo(ctxSVC.input.getRekNo());
+        globalModel.setPinNo(ctxSVC.input.getPinNo());
+        globalModel.setAtmNo(ctxSVC.input.getAtmNo());
+        globalModel.setRekType(ctxSVC.input.getRekType());
+        globalModel.setAtmExpiredDt(ctxSVC.input.getAtmExpiredDt());
+        globalModel.setUserIdMobile(ctxSVC.input.getUserIdMobile());
+        globalModel.setPassMBanking(ctxSVC.input.getPassMBanking());
+        globalModel.setBankNm(ctxSVC.input.getBankNm());
+        globalModel.setRemarkRekening(ctxSVC.input.getRemark());
+        globalModel.setNoHp(ctxSVC.input.getNoHp());
+        globalModel.setEmailRekening(ctxSVC.input.getEmail());
+        globalModel.setPassEmail(ctxSVC.input.getPassEmail());
+        globalModel.setMasaSewaBank(ctxSVC.input.getMasaSewaBank());
 
         log.debug("Global Input : [{}]",globalModel);
 
