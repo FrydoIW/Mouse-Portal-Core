@@ -70,7 +70,7 @@ public class EMA0300ASVC {
 
     private void sendEmail(CtxSVC ctxSVC) throws Exception {
 
-        String verificationUrl = "http://localhost:8080/verifyMail/ema0200?token=" + ctxSVC.token;
+        String verificationUrl = "http://localhost:8080/api/verifyMail/ema0200?token=" + ctxSVC.token;
 
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("sologankerfrydo99@gmail.com");
