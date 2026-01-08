@@ -54,9 +54,9 @@ public class ADM0200ASVC {
 
         Admin admin = adminJpa.findAdminByEmailVerified(ctxSVC.input.getAdminEmail());
 
-        if (admin != null) {
+        if (admin == null) {
 
-            throw new BizException(SysErrCode.USER_FOUNT);
+            throw new BizException(SysErrCode.EMAIL_NOT_FOUNT);
 
         }
 
