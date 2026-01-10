@@ -64,6 +64,7 @@ public class GlobalModel {
     private String emailRekening;
     private String passEmail;
     private Integer masaSewaBank;
+    private BigDecimal saldo;
 
     //EXPENSE
     private Long expenseId;

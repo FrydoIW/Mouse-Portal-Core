@@ -2,6 +2,7 @@ package com.example.back.backend.application.dto.atm;
 
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Getter
@@ -40,4 +41,5 @@ public class ATM0300AInput {
     private String email;
     private String passEmail;
     private Integer masaSewaBank;
+    private BigDecimal saldo;
 }

@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Getter
@@ -38,5 +39,6 @@ public class RekeningModel {
     private String email;
     private String passEmail;
     private Integer masaSewaBank;
+    private BigDecimal saldo;
 
 }

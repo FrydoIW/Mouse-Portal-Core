@@ -42,6 +42,7 @@ public class RekeningMapper {
         rekening.setEmail(model.getEmail());
         rekening.setPassEmail(model.getPassEmail());
         rekening.setMasaSewaBank(model.getMasaSewaBank());
+        rekening.setSaldo(model.getSaldo());
 
         return rekening;
 

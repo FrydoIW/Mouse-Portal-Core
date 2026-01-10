@@ -84,6 +84,7 @@ public class ATM0200ASVC {
             hashMap.put("masaSewaBank", n.getMasaSewaBank());
             hashMap.put("regDt", n.getRegDt());
             hashMap.put("updDt", n.getUpdDt());
+            hashMap.put("saldo",n.getSaldo());
 
             outputMap.add(hashMap);
 

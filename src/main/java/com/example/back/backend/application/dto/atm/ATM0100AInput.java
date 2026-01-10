@@ -39,6 +39,7 @@ public class ATM0100AInput {
     private String email;
     private String passEmail;
     private Integer masaSewaBank;
+    private BigDecimal saldo;
 
 
 }

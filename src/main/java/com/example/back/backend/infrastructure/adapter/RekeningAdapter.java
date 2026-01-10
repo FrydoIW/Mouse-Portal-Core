@@ -54,6 +54,7 @@ public class RekeningAdapter implements AtmRepository {
         rekModel.setEmail(globalModel.getEmailRekening());
         rekModel.setPassEmail(globalModel.getPassEmail());
         rekModel.setMasaSewaBank(globalModel.getMasaSewaBank());
+        rekModel.setSaldo(globalModel.getSaldo());
 
         Rekening rekening = RekeningMapper.toRekeningEntity(rekModel);
 
@@ -100,6 +101,7 @@ public class RekeningAdapter implements AtmRepository {
         rekening.setPassEmail(globalModel.getPassEmail());
         rekening.setMasaSewaBank(globalModel.getMasaSewaBank());
         rekening.setUpdDt(LocalDate.now());
+        rekening.setSaldo(globalModel.getSaldo());
 
         log.debug("Update Rekening : [{}]",rekening);
 

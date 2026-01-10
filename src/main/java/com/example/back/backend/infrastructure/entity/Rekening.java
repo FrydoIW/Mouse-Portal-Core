@@ -3,6 +3,7 @@ package com.example.back.backend.infrastructure.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Getter
@@ -105,4 +106,7 @@ public class Rekening {
 
     @Column(name = "UPD_DT")
     private LocalDate updDt;
+
+    @Column(name = "SALDO")
+    private BigDecimal saldo;
 }
