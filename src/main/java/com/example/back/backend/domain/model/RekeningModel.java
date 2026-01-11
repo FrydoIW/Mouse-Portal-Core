@@ -40,5 +40,7 @@ public class RekeningModel {
     private String passEmail;
     private Integer masaSewaBank;
     private BigDecimal saldo;
+    private LocalDate birthDt;
+    private String status;
 
 }

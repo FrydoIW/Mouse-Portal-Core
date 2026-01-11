@@ -70,7 +70,15 @@ public class EMA0300ASVC {
 
     private void sendEmail(CtxSVC ctxSVC) throws Exception {
 
-        String verificationUrl = "http://localhost:8080/api/verifyMail/ema0200?token=" + ctxSVC.token;
+        String publicBaseUrl = System.getenv("PUBLIC_BASE_URL");
+        log.debug("PUBLIC URL : [{}]",publicBaseUrl);
+        if (publicBaseUrl == null || publicBaseUrl.isBlank()) {
+            publicBaseUrl = "https://lightfootedly-booted-phebe.ngrok-free.dev";
+        }
+        publicBaseUrl = publicBaseUrl.replaceAll("/+$", "");
+
+        String verificationUrl = publicBaseUrl + "/api/verifyMail/ema0200?token=" + ctxSVC.token;
+
 
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("sologankerfrydo99@gmail.com");

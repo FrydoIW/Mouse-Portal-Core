@@ -109,4 +109,11 @@ public class Rekening {
 
     @Column(name = "SALDO")
     private BigDecimal saldo;
+
+    @Column(name = "BIRTH_DT")
+    private LocalDate birthDt;
+
+    @Column(name = "STATUS")
+    private String status;
+
 }

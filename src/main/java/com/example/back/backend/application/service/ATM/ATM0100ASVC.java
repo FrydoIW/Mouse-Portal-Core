@@ -80,6 +80,8 @@ public class ATM0100ASVC {
         globalModel.setPassEmail(ctxSVC.input.getPassEmail());
         globalModel.setMasaSewaBank(ctxSVC.input.getMasaSewaBank());
         globalModel.setSaldo(ctxSVC.input.getSaldo());
+        globalModel.setBirthDt(ctxSVC.input.getBirthDt());
+        globalModel.setStatus(ctxSVC.input.getStatus());
 
         log.debug("Global Input : [{}]",globalModel);
 

@@ -95,6 +95,8 @@ public class ATM0300ASVC {
         globalModel.setPassEmail(CompareUtil.getValueOrDefault(ctxSVC.input.getPassEmail(), ctxSVC.rek.getPassEmail()));
         globalModel.setMasaSewaBank(CompareUtil.getValueOrDefault(ctxSVC.input.getMasaSewaBank(), ctxSVC.rek.getMasaSewaBank()));
         globalModel.setSaldo(CompareUtil.getValueOrDefault(ctxSVC.input.getSaldo(),ctxSVC.rek.getSaldo()));
+        globalModel.setBirthDt(CompareUtil.getValueOrDefault(ctxSVC.input.getBirthDt(),ctxSVC.rek.getBirthDt()));
+        globalModel.setStatus(CompareUtil.getValueOrDefault(ctxSVC.input.getStatus(),ctxSVC.rek.getStatus()));
 
         atmRepository.editAtm(globalModel);
 

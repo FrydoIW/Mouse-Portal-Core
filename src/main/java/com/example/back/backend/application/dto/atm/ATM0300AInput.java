@@ -42,4 +42,6 @@ public class ATM0300AInput {
     private String passEmail;
     private Integer masaSewaBank;
     private BigDecimal saldo;
+    private LocalDate birthDt;
+    private String status;
 }
