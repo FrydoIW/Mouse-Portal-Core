@@ -116,4 +116,8 @@ public class Rekening {
     @Column(name = "STATUS")
     private String status;
 
+    @Lob
+    @Column(name = "KTP_IMAGE", columnDefinition = "LONGBLOB")
+    private byte[] ktpImage;
+
 }

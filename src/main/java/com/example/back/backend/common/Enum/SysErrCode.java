@@ -17,7 +17,8 @@ public enum SysErrCode {
     EDIT_ID_NULL("0008","Edit ID should not be null"),
     TOKEN_NOT_FOUND("0009","Verification token Should not be null"),
     EMAIL_INPUT_NULL("0010","Input email may not be null"),
-    ACCOUNT_NOT_FOUND("0011","Account inquiry not found");
+    ACCOUNT_NOT_FOUND("0011","Account inquiry not found"),
+    KTP_IMAGE_NULL("0012","Ktp image should not be null");
 
     private final String code;
     private final String desc;

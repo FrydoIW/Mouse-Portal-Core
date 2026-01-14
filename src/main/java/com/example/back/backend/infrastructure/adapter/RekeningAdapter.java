@@ -112,4 +112,16 @@ public class RekeningAdapter implements AtmRepository {
         rekeningJpa.save(rekening);
 
     }
+
+    @Override
+    public void uploadKtp(GlobalModel globalModel) throws Exception {
+
+        Rekening rekening = rekeningJpa.findById(globalModel.getRekeningId()).orElseThrow(() -> new Exception("Data Not Found"));
+
+        rekening.setKtpImage(rekening.getKtpImage());
+
+        log.debug("Upload KTP : [{}]",rekening);
+
+        rekeningJpa.save(rekening);
+    }
 }

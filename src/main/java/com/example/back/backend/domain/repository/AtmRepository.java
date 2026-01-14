@@ -8,4 +8,6 @@ public interface AtmRepository {
 
     void editAtm(GlobalModel globalModel) throws Exception;
 
+    void uploadKtp(GlobalModel globalModel) throws Exception;
+
 }

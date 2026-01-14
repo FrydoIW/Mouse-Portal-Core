@@ -67,6 +67,7 @@ public class GlobalModel {
     private BigDecimal saldo;
     private LocalDate birthDt;
     private String status;
+    private byte[] ktpImage;
 
     //EXPENSE
     private Long expenseId;

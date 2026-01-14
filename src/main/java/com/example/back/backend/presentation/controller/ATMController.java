@@ -1,10 +1,7 @@
 package com.example.back.backend.presentation.controller;
 
 import com.example.back.backend.application.dto.atm.*;
-import com.example.back.backend.application.service.ATM.ATM0100ASVC;
-import com.example.back.backend.application.service.ATM.ATM0200ASVC;
-import com.example.back.backend.application.service.ATM.ATM0300ASVC;
-import com.example.back.backend.application.service.ATM.ATM0400ASVC;
+import com.example.back.backend.application.service.ATM.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +21,8 @@ public class ATMController {
     private final ATM0300ASVC atm0300ASVC;
 
     private final ATM0400ASVC atm0400ASVC;
+
+    private final ATM0500ASVC atm0500ASVC;
 
     @PostMapping(
             "/addAtm/atm0100"
@@ -58,6 +57,15 @@ public class ATMController {
     public ATM0400AOutput deleteAtm(@RequestBody ATM0400AInput input) throws Exception {
 
         return atm0400ASVC.execute(input);
+
+    }
+
+    @PostMapping(
+            "/uploadKtp/atm0500"
+    )
+    public ATM0500AOutput uploadKtp(@RequestBody ATM0500AInput input) throws Exception {
+
+        return atm0500ASVC.execute(input);
 
     }
 
