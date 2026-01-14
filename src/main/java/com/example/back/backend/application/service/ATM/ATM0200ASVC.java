@@ -87,6 +87,7 @@ public class ATM0200ASVC {
             hashMap.put("saldo",n.getSaldo());
             hashMap.put("birthDt",n.getBirthDt());
             hashMap.put("status",n.getStatus());
+            hashMap.put("ktpImage",n.getKtpImage());
 
             outputMap.add(hashMap);
 
