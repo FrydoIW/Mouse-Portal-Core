@@ -14,7 +14,7 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "PAYROLL")
+@Table(name = "payroll")
 @ToString
 public class Payroll {
 

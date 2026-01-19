@@ -8,19 +8,19 @@ import org.springframework.data.repository.query.Param;
 public interface DaoAdminJpa extends JpaRepository<Admin,Long> {
 
     @Query(value = """
-            SELECT * FROM ADMIN WHERE EMAIL = :email
+            SELECT * FROM admin WHERE EMAIL = :email
         """,
             nativeQuery = true)
     Admin findAdminByEmail(@Param("email") String email);
 
     @Query(value = """
-            SELECT * FROM ADMIN WHERE EMAIL = :email AND EMAIL_VERIFICATION = 1
+            SELECT * FROM admin WHERE EMAIL = :email AND EMAIL_VERIFICATION = 1
         """,
             nativeQuery = true)
     Admin findAdminByEmailVerified(@Param("email") String email);
 
     @Query(value = """
-            SELECT * FROM ADMIN WHERE VERIFICATION_TOKEN = :verificationToken
+            SELECT * FROM admin WHERE VERIFICATION_TOKEN = :verificationToken
         """,
             nativeQuery = true)
     Admin findByVerificationToken(@Param("verificationToken") String verificationToken);

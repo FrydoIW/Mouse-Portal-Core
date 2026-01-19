@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 public interface DaoMemberJpa extends JpaRepository<Member,String> {
 
     @Query(value = """
-       SELECT * FROM MEMBER WHERE EMAIL = :email
+       SELECT * FROM member WHERE EMAIL = :email
         """,
             nativeQuery = true)
     Member findUserByEmail(@Param("email") String email);
