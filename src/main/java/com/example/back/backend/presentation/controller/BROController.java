@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @CrossOrigin(origins = {
         "http://localhost:5173",
+        "https://tikusdashboard.ichmarlabs.com",
         "https://lightfootedly-booted-phebe.ngrok-free.dev"
 })
 public class BROController {
