@@ -73,7 +73,7 @@ public class EMA0300ASVC {
         String publicBaseUrl = System.getenv("PUBLIC_BASE_URL");
         log.debug("PUBLIC URL : [{}]",publicBaseUrl);
         if (publicBaseUrl == null || publicBaseUrl.isBlank()) {
-            publicBaseUrl = "https://lightfootedly-booted-phebe.ngrok-free.dev";
+            publicBaseUrl = "https://tikusdashboard.ichmarlabs.com";
         }
         publicBaseUrl = publicBaseUrl.replaceAll("/+$", "");
 
