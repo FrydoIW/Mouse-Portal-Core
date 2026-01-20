@@ -19,32 +19,32 @@ public class GetAllUserDataJpa {
     public List<HashMap<String, Object>> getAllUserInformation() {
 
         String sql = """
-            SELECT
-                -- MEMBER
-                A.REF_NO AS refNo,
-                A.BRANCH_ID AS branchId,
-                A.NAME AS name,
-                A.ADDRESS AS address,
-                A.GENDER AS gender,
-                A.EMAIL AS email,
-                -- MEMBER_INFO
-                B.POSITION AS position,
-                B.JOIN_WORK_DT AS joinWorkDt,
-                B.RELIGION AS religion,
-                B.WORKING_WEB AS workingWeb,
-                B.CUTI AS cuti,
-                -- PAYROLL
-                C.SALARY_AMT AS salaryAmt,
-                C.REMARK AS remark,
-                C.FOOD_AMOUNT AS foodAmount,
-                C.THR AS thr,
-                C.BONUS AS bonus,
-                C.NO_REKENING AS noRekening,
-                C.LAST_SALARY_INCREASE_DT AS lastSalaryIncreaseDt
-            FROM MEMBER A
-                     JOIN MEMBER_INFO B ON A.REF_NO = B.REF_NO
-                     JOIN PAYROLL C ON A.REF_NO = C.REF_NO
-            """;
+           SELECT
+               -- MEMBER
+               A.REF_NO AS refNo,
+               A.BRANCH_ID AS branchId,
+               A.NAME AS name,
+               A.ADDRESS AS address,
+               A.GENDER AS gender,
+               A.EMAIL AS email,
+               -- MEMBER_INFO
+               B.POSITION AS position,
+               B.JOIN_WORK_DT AS joinWorkDt,
+               B.RELIGION AS religion,
+               B.WORKING_WEB AS workingWeb,
+               B.CUTI AS cuti,
+               -- PAYROLL
+               C.SALARY_AMT AS salaryAmt,
+               C.REMARK AS remark,
+               C.FOOD_AMOUNT AS foodAmount,
+               C.THR AS thr,
+               C.BONUS AS bonus,
+               C.NO_REKENING AS noRekening,
+               C.LAST_SALARY_INCREASE_DT AS lastSalaryIncreaseDt
+           FROM member A
+                    JOIN member_info B ON A.REF_NO = B.REF_NO
+                    JOIN payroll C ON A.REF_NO = C.REF_NO
+           """;
 
         @SuppressWarnings("unchecked")
         List<Object[]> rows = em.createNativeQuery(sql).getResultList();
