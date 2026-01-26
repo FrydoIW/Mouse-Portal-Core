@@ -18,7 +18,8 @@ public enum SysErrCode {
     TOKEN_NOT_FOUND("0009","Verification token Should not be null"),
     EMAIL_INPUT_NULL("0010","Input email may not be null"),
     ACCOUNT_NOT_FOUND("0011","Account inquiry not found"),
-    KTP_IMAGE_NULL("0012","Ktp image should not be null");
+    KTP_IMAGE_NULL("0012","Ktp image should not be null"),
+    WORKSPACE_ADMIN_DEL_ERR("0013", "Cannot delete workspace admin");
 
     private final String code;
     private final String desc;
