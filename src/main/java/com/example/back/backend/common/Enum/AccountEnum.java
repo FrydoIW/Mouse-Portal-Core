@@ -87,4 +87,21 @@ public class AccountEnum {
 
     }
 
+    public enum workspace {
+
+        OWNER("OWNER"),
+        CHILD("CHILD");
+
+        private final String value;
+
+        workspace(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+    }
+
 }

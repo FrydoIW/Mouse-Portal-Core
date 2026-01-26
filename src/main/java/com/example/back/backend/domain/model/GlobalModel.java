@@ -81,7 +81,7 @@ public class GlobalModel {
     private String branchName;
 
     //ADMIN
-    private Long adminId;
+    private int adminId;
     private String adminName;
     private String adminAddress;
     private LocalDate adminBrithDt;
@@ -93,5 +93,10 @@ public class GlobalModel {
     private String adminProfilePict;
     private Boolean emailVerification;
     private String verificationToken;
+
+    //WORKSPACE & WORKSPACE INFO
+    private String workspaceId;
+    private String workspaceHierarchy;
+    private String workspaceName;
 
 }

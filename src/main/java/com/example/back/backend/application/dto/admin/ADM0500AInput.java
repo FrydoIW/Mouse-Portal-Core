@@ -16,6 +16,6 @@ public class ADM0500AInput {
     LocalDate birthDt;
     String gender;
     @NotNull
-    Long id;
+    int id;
 
 }

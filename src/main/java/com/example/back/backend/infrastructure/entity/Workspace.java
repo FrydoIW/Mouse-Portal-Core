@@ -10,16 +10,21 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "branch")
+@Table(name = "workspace")
 @ToString
-public class Branch {
+public class Workspace {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long branchId;
-    private String branchName;
+    @Column(name = "workspace_id")
     private String workspaceId;
-    private LocalDate updDt;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "reg_dt")
     private LocalDate regDt;
+
+    @Column(name = "upd_dt")
+    private LocalDate updDt;
 
 }
