@@ -8,4 +8,8 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 public class WSP0200AOutput {
+
+    private String status;
+    private String remark;
+
 }

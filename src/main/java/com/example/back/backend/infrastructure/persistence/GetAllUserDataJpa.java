@@ -83,4 +83,42 @@ public class GetAllUserDataJpa {
         return result;
     }
 
+    @Transactional(readOnly = true)
+    public List<HashMap<String, Object>> getAllWorkspaceInformation(String adminEmail) {
+
+        String sql = """
+           SELECT
+               wi.workspace_id AS workspaceId,
+               wi.admin_id     AS adminId,
+               a.name          AS namaAdmin,
+               w.name          AS namaWorkspace,
+               wi.hierarchy    AS hierarchy
+           FROM workspace_info wi
+                    JOIN workspace w ON w.workspace_id = wi.workspace_id
+                    JOIN admin a     ON a.id = wi.admin_id
+           WHERE a.email = :adminEmail
+             AND a.email_verification = 1
+           ORDER BY wi.workspace_id, wi.admin_id
+           """;
+
+        @SuppressWarnings("unchecked")
+        List<Object[]> rows = em.createNativeQuery(sql)
+                .setParameter("adminEmail", adminEmail)
+                .getResultList();
+
+        List<HashMap<String, Object>> result = new ArrayList<>();
+
+        for (Object[] row : rows) {
+            HashMap<String, Object> map = new HashMap<>();
+            map.put("workspaceId", row[0]);
+            map.put("adminId", row[1]);
+            map.put("namaAdmin", row[2]);
+            map.put("namaWorkspace", row[3]);
+            map.put("hierarchy", row[4]);
+            result.add(map);
+        }
+
+        return result;
+    }
+
 }

@@ -57,6 +57,7 @@ public class BRO0400ASVC {
             hashMap.put("number",num);
             hashMap.put("branchId",b.getBranchId());
             hashMap.put("branchName",b.getBranchName());
+            hashMap.put("workspaceId",b.getWorkspaceId());
 
             outputMap.add(hashMap);
 

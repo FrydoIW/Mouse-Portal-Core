@@ -8,4 +8,8 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 public class WSP0400AInput {
+
+    String workspaceId;
+    int adminId;
+
 }

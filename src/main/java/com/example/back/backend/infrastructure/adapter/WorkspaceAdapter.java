@@ -50,4 +50,35 @@ public class WorkspaceAdapter implements WorkspaceRepository {
 
     }
 
+    @Override
+    public void addWorkspace(GlobalModel globalModel) throws Exception {
+
+        WorkspaceInfoModel workspaceInfoModel = new WorkspaceInfoModel();
+
+        workspaceInfoModel.setWorkspaceId(globalModel.getWorkspaceId());
+        workspaceInfoModel.setHierarchy(globalModel.getWorkspaceHierarchy());
+        workspaceInfoModel.setAdminId(globalModel.getAdminId());
+
+        WorkspaceInfo workspaceInfo = WorkspaceInfoMapper.toWorkspaceInfoEntity(workspaceInfoModel);
+
+        log.debug("WorkspaceInfo : [{}]",workspaceInfo);
+
+        workspaceInfoJpa.save(workspaceInfo);
+
+    }
+
+    @Override
+    public void editWorkspace(GlobalModel globalModel) throws Exception {
+
+        Workspace workspace = workspaceJpa.findById(globalModel.getWorkspaceId()).orElseThrow(() -> new Exception("Data Not Found"));
+
+        workspace.setName(globalModel.getWorkspaceName());
+
+        log.debug("UPDATE WORKSPACE : [{}]",workspace);
+
+        workspaceJpa.save(workspace);
+    }
+
+
+
 }

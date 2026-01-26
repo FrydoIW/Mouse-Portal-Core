@@ -9,6 +9,7 @@ import lombok.*;
 @ToString
 public class WSP0100AInput {
 
-    
+    String workspaceId;
+    String email;
 
 }

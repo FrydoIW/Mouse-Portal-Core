@@ -10,5 +10,6 @@ import lombok.ToString;
 public class BranchModel {
 
     private String branchName;
+    private String workspaceId;
 
 }

@@ -25,6 +25,7 @@ public class BranchAdapter implements BranchRepository {
         BranchModel branchModel = new BranchModel();
 
         branchModel.setBranchName(globalModel.getBranchName());
+        branchModel.setWorkspaceId(globalModel.getWorkspaceId());
 
         Branch branch = BranchMapper.toBranchEntity(branchModel);
 

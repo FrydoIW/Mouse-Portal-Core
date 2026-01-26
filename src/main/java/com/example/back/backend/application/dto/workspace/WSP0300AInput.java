@@ -8,4 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 public class WSP0300AInput {
+
+    String adminEmail;
+
 }

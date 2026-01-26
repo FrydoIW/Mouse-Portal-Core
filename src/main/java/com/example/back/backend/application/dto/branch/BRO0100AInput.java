@@ -10,5 +10,6 @@ import lombok.*;
 public class BRO0100AInput {
 
     private String branchName;
+    private String workspaceId;
 
 }

@@ -14,6 +14,7 @@ public class BranchMapper {
         Branch branch = new Branch();
 
         branch.setBranchName(branchModel.getBranchName());
+        branch.setWorkspaceId(branchModel.getWorkspaceId());
 
         return branch;
 

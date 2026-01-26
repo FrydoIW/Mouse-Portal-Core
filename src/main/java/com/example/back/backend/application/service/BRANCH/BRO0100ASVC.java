@@ -44,6 +44,7 @@ public class BRO0100ASVC {
         GlobalModel globalModel = new GlobalModel();
 
         globalModel.setBranchName(ctxSVC.input.getBranchName());
+        globalModel.setWorkspaceId(ctxSVC.input.getWorkspaceId());
 
         branchRepository.insertBranchInfo(globalModel);
 

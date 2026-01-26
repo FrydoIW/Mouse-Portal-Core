@@ -8,4 +8,9 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 public class WSP0200AInput {
+
+    String workspaceId;
+    String workspaceName;
+
+
 }
