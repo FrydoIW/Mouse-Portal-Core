@@ -23,7 +23,7 @@ public class WorkspaceInfoMapper {
         workPk.setAdminId(workspaceInfoModel.getAdminId());
 
         workspaceInfo.setId(workPk);
-        workspaceInfo.setHierarchy(workspaceInfo.getHierarchy());
+        workspaceInfo.setHierarchy(workspaceInfoModel.getHierarchy());
         workspaceInfo.setUpdDt(LocalDate.now());
         workspaceInfo.setRegDt(LocalDate.now());
 
