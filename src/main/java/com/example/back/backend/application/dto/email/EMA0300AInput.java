@@ -13,6 +13,6 @@ public class EMA0300AInput {
     @NotNull
     String newAdminEmail;
     @NotNull
-    Long adminId;
+    int adminId;
 
 }
