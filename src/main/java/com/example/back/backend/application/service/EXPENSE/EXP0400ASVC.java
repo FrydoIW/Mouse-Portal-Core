@@ -60,6 +60,7 @@ public class EXP0400ASVC {
             hashMap.put("expenseName",e.getExpenseName());
             hashMap.put("cost",e.getCost());
             hashMap.put("dueDate",e.getDueDate());
+            hashMap.put("branchId",e.getBranchId());
 
             outputMap.add(hashMap);
 
