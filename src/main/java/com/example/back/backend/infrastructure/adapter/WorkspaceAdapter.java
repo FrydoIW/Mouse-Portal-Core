@@ -102,7 +102,6 @@ public class WorkspaceAdapter implements WorkspaceRepository {
 
         WorkspaceInfo savedWorkspaceInfo = workspaceInfoJpa.saveAndFlush(workspaceInfo);
 
-        // AUDIT: workspace_info INSERT
         AuditLog auditLog = new AuditLog();
         auditLog.setTableName("workspace_info");
         auditLog.setPkValue(String.valueOf(savedWorkspaceInfo.getId()));
