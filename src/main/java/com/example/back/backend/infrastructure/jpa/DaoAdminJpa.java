@@ -25,5 +25,10 @@ public interface DaoAdminJpa extends JpaRepository<Admin,Integer> {
             nativeQuery = true)
     Admin findByVerificationToken(@Param("verificationToken") String verificationToken);
 
+    @Query(value = """
+            SELECT name FROM admin WHERE ID = :id
+        """,
+            nativeQuery = true)
+    String getAdminName(@Param("id") int id);
 
 }

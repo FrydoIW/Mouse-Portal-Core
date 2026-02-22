@@ -4,10 +4,10 @@ public class AccountEnum {
 
     public enum HistoryType {
 
-        MEMBER("1"),
-        MEMBER_INFO("2"),
-        MEMBER_CREDENTIAL("3"),
-        PAYROLL("4");
+        INSERT("INSERT"),
+        REGISTER("REGISTER"),
+        UPDATE("UPDATE"),
+        DELETE("DELETE");
 
         private final String value;
 

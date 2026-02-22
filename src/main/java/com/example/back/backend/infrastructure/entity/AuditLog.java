@@ -21,7 +21,8 @@ public class AuditLog {
     String pkValue;
     String action;
     LocalDateTime changeAt;
-    int changeBy; // optional (adminId)
+    int changedBy; // optional (adminId)
+    String changedByName;
     String workspaceId;
     String changeJson;
 
