@@ -1,11 +1,16 @@
 package com.example.back.backend.infrastructure.adapter;
 
+import com.example.back.backend.common.Enum.AccountEnum;
 import com.example.back.backend.common.util.RekeningMapper;
 import com.example.back.backend.domain.model.RekeningModel;
 import com.example.back.backend.domain.model.GlobalModel;
 import com.example.back.backend.domain.repository.AtmRepository;
+import com.example.back.backend.infrastructure.entity.AuditLog;
 import com.example.back.backend.infrastructure.entity.Rekening;
+import com.example.back.backend.infrastructure.jpa.DaoAdminJpa;
+import com.example.back.backend.infrastructure.jpa.DaoAuditLog;
 import com.example.back.backend.infrastructure.jpa.DaoRekeningJpa;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
@@ -13,13 +18,19 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @RequiredArgsConstructor
 @Repository
 @Slf4j
 public class RekeningAdapter implements AtmRepository {
 
+    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+
     private final DaoRekeningJpa rekeningJpa;
+
+    private final DaoAuditLog daoAuditLog;
+    private final DaoAdminJpa daoAdminJpa;
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
@@ -63,17 +74,33 @@ public class RekeningAdapter implements AtmRepository {
         rekening.setRegDt(LocalDate.now());
         rekening.setUpdDt(LocalDate.now());
 
-        log.debug("Insert Rekening : [{}]",rekening);
+        log.debug("Insert Rekening : [{}]", rekening);
 
-        rekeningJpa.save(rekening);
+        Rekening saved = rekeningJpa.saveAndFlush(rekening);
 
+        AuditLog audit = new AuditLog();
+        audit.setTableName("rekening");
+        audit.setPkValue(String.valueOf(saved.getId()));
+        audit.setAction(AccountEnum.HistoryType.INSERT.getValue());
+        audit.setChangeAt(LocalDateTime.now());
+        audit.setChangedBy(globalModel.getAdminId());
+        audit.setChangedByName(daoAdminJpa.getAdminName(globalModel.getAdminId()));
+        audit.setWorkspaceId(globalModel.getWorkspaceId());
+
+        String toJson = OBJECT_MAPPER.writeValueAsString(saved);
+        audit.setChangeJson("{\"from\":null,\"to\":" + toJson + "}");
+
+        daoAuditLog.save(audit);
     }
 
-
     @Override
+    @Transactional
     public void editAtm(GlobalModel globalModel) throws Exception {
 
-        Rekening rekening = rekeningJpa.findById(globalModel.getRekeningId()).orElseThrow(() -> new Exception("Data Not Found"));
+        Rekening rekening = rekeningJpa.findById(globalModel.getRekeningId())
+                .orElseThrow(() -> new Exception("Data Not Found"));
+
+        String fromJson = OBJECT_MAPPER.writeValueAsString(rekening);
 
         rekening.setBranchId(globalModel.getBranchIdRekening());
         rekening.setRekeningNm(globalModel.getRekeningNm());
@@ -107,21 +134,55 @@ public class RekeningAdapter implements AtmRepository {
         rekening.setBirthDt(globalModel.getBirthDt());
         rekening.setStatus(globalModel.getStatus());
 
-        log.debug("Update Rekening : [{}]",rekening);
+        log.debug("Update Rekening : [{}]", rekening);
 
-        rekeningJpa.save(rekening);
+        Rekening saved = rekeningJpa.saveAndFlush(rekening);
 
+        String toJson = OBJECT_MAPPER.writeValueAsString(saved);
+
+        AuditLog audit = new AuditLog();
+        audit.setTableName("rekening");
+        audit.setPkValue(String.valueOf(saved.getId()));
+        audit.setAction(AccountEnum.HistoryType.UPDATE.getValue());
+        audit.setChangeAt(LocalDateTime.now());
+        audit.setChangedBy(globalModel.getAdminId());
+        audit.setChangedByName(daoAdminJpa.getAdminName(globalModel.getAdminId()));
+        audit.setWorkspaceId(globalModel.getWorkspaceId());
+
+        audit.setChangeJson("{\"from\":" + fromJson + ",\"to\":" + toJson + "}");
+
+        daoAuditLog.save(audit);
     }
 
     @Override
+    @Transactional
     public void uploadKtp(GlobalModel globalModel) throws Exception {
 
-        Rekening rekening = rekeningJpa.findById(globalModel.getRekeningId()).orElseThrow(() -> new Exception("Data Not Found"));
+        Rekening rekening = rekeningJpa.findById(globalModel.getRekeningId())
+                .orElseThrow(() -> new Exception("Data Not Found"));
+
+        String fromJson = OBJECT_MAPPER.writeValueAsString(rekening);
 
         rekening.setKtpImage(globalModel.getKtpImage());
+        rekening.setUpdDt(LocalDate.now());
 
-        log.debug("Upload KTP : [{}]",rekening);
+        log.debug("Upload KTP : [{}]", rekening);
 
-        rekeningJpa.save(rekening);
+        Rekening saved = rekeningJpa.saveAndFlush(rekening);
+
+        String toJson = OBJECT_MAPPER.writeValueAsString(saved);
+
+        AuditLog audit = new AuditLog();
+        audit.setTableName("rekening");
+        audit.setPkValue(String.valueOf(saved.getId()));
+        audit.setAction(AccountEnum.HistoryType.UPDATE.getValue());
+        audit.setChangeAt(LocalDateTime.now());
+        audit.setChangedBy(globalModel.getAdminId());
+        audit.setChangedByName(daoAdminJpa.getAdminName(globalModel.getAdminId()));
+        audit.setWorkspaceId(globalModel.getWorkspaceId());
+
+        audit.setChangeJson("{\"from\":" + fromJson + ",\"to\":" + toJson + "}");
+
+        daoAuditLog.save(audit);
     }
 }

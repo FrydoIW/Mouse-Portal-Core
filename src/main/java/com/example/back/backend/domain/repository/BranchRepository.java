@@ -4,7 +4,7 @@ import com.example.back.backend.domain.model.GlobalModel;
 
 public interface BranchRepository {
 
-    public void insertBranchInfo(GlobalModel globalModel);
+    public void insertBranchInfo(GlobalModel globalModel) throws Exception;
 
     public void editBranch(GlobalModel globalModel) throws Exception;
 
