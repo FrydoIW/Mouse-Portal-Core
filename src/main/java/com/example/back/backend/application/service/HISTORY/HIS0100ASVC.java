@@ -32,11 +32,13 @@ public class HIS0100ASVC {
 
     }
 
-    public HIS0100AOutput execute (HIS0100AInput input) {
+    public HIS0100AOutput execute (HIS0100AInput input) throws Exception {
 
         CtxSVC ctxSVC = new CtxSVC();
         ctxSVC.input = input;
         ctxSVC.output = new HIS0100AOutput();
+
+        inquiryData(ctxSVC);
 
         return ctxSVC.output;
 
@@ -75,6 +77,8 @@ public class HIS0100ASVC {
                 size,
                 offset
         );
+
+        log.debug("History Inquiry Result : [{}]",rows);
 
         List<HIS0100AOutput.Row> outRows = new ArrayList<>();
         for (AuditLog al : rows) {
