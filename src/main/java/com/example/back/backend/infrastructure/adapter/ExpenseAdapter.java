@@ -11,6 +11,7 @@ import com.example.back.backend.infrastructure.jpa.DaoAdminJpa;
 import com.example.back.backend.infrastructure.jpa.DaoAuditLog;
 import com.example.back.backend.infrastructure.jpa.DaoExpenseJpa;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
@@ -24,7 +25,11 @@ import java.time.LocalDateTime;
 @Slf4j
 public class ExpenseAdapter implements ExpenseRepository {
 
-    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+    // ✅ FIX: register JavaTimeModule supaya LocalDate/LocalDateTime aman
+    private static final ObjectMapper OBJECT_MAPPER =
+            new ObjectMapper()
+                    .findAndRegisterModules()
+                    .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 
     private final DaoExpenseJpa expenseJpa;
 
@@ -58,6 +63,7 @@ public class ExpenseAdapter implements ExpenseRepository {
         audit.setChangedBy(globalModel.getAdminId());
         audit.setChangedByName(daoAdminJpa.getAdminName(globalModel.getAdminId()));
         audit.setWorkspaceId(globalModel.getWorkspaceId()); // kalau belum ada di GlobalModel, bilang ya
+
         String toJson = OBJECT_MAPPER.writeValueAsString(savedExpense);
         audit.setChangesJson("{\"from\":null,\"to\":" + toJson + "}");
 

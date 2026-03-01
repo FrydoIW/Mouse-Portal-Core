@@ -7,6 +7,7 @@ import com.example.back.backend.domain.repository.RegisterRepository;
 import com.example.back.backend.infrastructure.entity.*;
 import com.example.back.backend.infrastructure.jpa.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
@@ -29,7 +30,11 @@ public class RegisterAdapter implements RegisterRepository {
     private final DaoAdminJpa daoAdminJpa;
     private final DaoBranchJpa branchJpa;
 
-    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+    // ✅ FIX: register JavaTimeModule supaya LocalDate/LocalTime/LocalDateTime aman
+    private static final ObjectMapper OBJECT_MAPPER =
+            new ObjectMapper()
+                    .findAndRegisterModules()
+                    .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)

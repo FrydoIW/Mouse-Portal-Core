@@ -11,6 +11,7 @@ import com.example.back.backend.infrastructure.jpa.DaoAdminJpa;
 import com.example.back.backend.infrastructure.jpa.DaoAuditLog;
 import com.example.back.backend.infrastructure.jpa.DaoBranchJpa;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
@@ -24,7 +25,11 @@ import java.time.LocalDateTime;
 @Slf4j
 public class BranchAdapter implements BranchRepository {
 
-    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+    // ✅ FIX: register JavaTimeModule (but logic tetap sama)
+    private static final ObjectMapper OBJECT_MAPPER =
+            new ObjectMapper()
+                    .findAndRegisterModules()
+                    .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 
     private final DaoBranchJpa branchJpa;
 

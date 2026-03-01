@@ -11,6 +11,7 @@ import com.example.back.backend.infrastructure.jpa.DaoAdminJpa;
 import com.example.back.backend.infrastructure.jpa.DaoAuditLog;
 import com.example.back.backend.infrastructure.jpa.DaoRekeningJpa;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
@@ -25,7 +26,11 @@ import java.time.LocalDateTime;
 @Slf4j
 public class RekeningAdapter implements AtmRepository {
 
-    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+    // ✅ FIX: register JavaTimeModule supaya LocalDate/LocalDateTime aman
+    private static final ObjectMapper OBJECT_MAPPER =
+            new ObjectMapper()
+                    .findAndRegisterModules()
+                    .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 
     private final DaoRekeningJpa rekeningJpa;
 
