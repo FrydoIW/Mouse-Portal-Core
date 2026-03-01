@@ -39,7 +39,7 @@ public class BRO0100ASVC {
 
     }
 
-    private void registerBranch(CtxSVC ctxSVC){
+    private void registerBranch(CtxSVC ctxSVC) throws Exception{
 
         GlobalModel globalModel = new GlobalModel();
 

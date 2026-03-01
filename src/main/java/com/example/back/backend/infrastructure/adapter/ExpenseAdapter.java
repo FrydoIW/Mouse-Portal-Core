@@ -54,12 +54,12 @@ public class ExpenseAdapter implements ExpenseRepository {
         audit.setTableName("expense");
         audit.setPkValue(String.valueOf(savedExpense.getId()));
         audit.setAction(AccountEnum.HistoryType.INSERT.getValue());
-        audit.setChangeAt(LocalDateTime.now());
+        audit.setChangedAt(LocalDateTime.now());
         audit.setChangedBy(globalModel.getAdminId());
         audit.setChangedByName(daoAdminJpa.getAdminName(globalModel.getAdminId()));
         audit.setWorkspaceId(globalModel.getWorkspaceId()); // kalau belum ada di GlobalModel, bilang ya
         String toJson = OBJECT_MAPPER.writeValueAsString(savedExpense);
-        audit.setChangeJson("{\"from\":null,\"to\":" + toJson + "}");
+        audit.setChangesJson("{\"from\":null,\"to\":" + toJson + "}");
 
         daoAuditLog.save(audit);
     }
@@ -88,11 +88,11 @@ public class ExpenseAdapter implements ExpenseRepository {
         audit.setTableName("expense");
         audit.setPkValue(String.valueOf(savedExpense.getId()));
         audit.setAction(AccountEnum.HistoryType.UPDATE.getValue());
-        audit.setChangeAt(LocalDateTime.now());
+        audit.setChangedAt(LocalDateTime.now());
         audit.setChangedBy(globalModel.getAdminId());
         audit.setChangedByName(daoAdminJpa.getAdminName(globalModel.getAdminId()));
         audit.setWorkspaceId(globalModel.getWorkspaceId());
-        audit.setChangeJson("{\"from\":" + fromJson + ",\"to\":" + toJson + "}");
+        audit.setChangesJson("{\"from\":" + fromJson + ",\"to\":" + toJson + "}");
 
         daoAuditLog.save(audit);
     }

@@ -80,7 +80,7 @@ public class HIS0100ASVC {
         for (AuditLog al : rows) {
             HIS0100AOutput.Row r = new HIS0100AOutput.Row();
             r.setId(al.getId());
-            r.setChangeAt(al.getChangeAt());
+            r.setChangeAt(al.getChangedAt());
             r.setWorkspaceId(al.getWorkspaceId());
 
             r.setAdminId(al.getChangedBy());
@@ -91,7 +91,7 @@ public class HIS0100ASVC {
             r.setPkValue(al.getPkValue());
 
             r.setSummary(al.getAction() + " " + al.getTableName() + " (" + al.getPkValue() + ")");
-            r.setChangeJson(al.getChangeJson());
+            r.setChangeJson(al.getChangesJson());
 
             outRows.add(r);
         }

@@ -64,12 +64,12 @@ public class RegisterAdapter implements RegisterRepository {
         audit.setTableName("member");
         audit.setPkValue(savedMember.getRefNo());
         audit.setAction(AccountEnum.HistoryType.INSERT.getValue());
-        audit.setChangeAt(LocalDateTime.now());
+        audit.setChangedAt(LocalDateTime.now());
         audit.setChangedBy(input.getAdminId());
         audit.setChangedByName(daoAdminJpa.getAdminName(input.getAdminId()));
         audit.setWorkspaceId(resolveWorkspaceId(input)); // ✅ workspace id
         String toJson = OBJECT_MAPPER.writeValueAsString(savedMember);
-        audit.setChangeJson("{\"from\":null,\"to\":" + toJson + "}");
+        audit.setChangesJson("{\"from\":null,\"to\":" + toJson + "}");
         daoAuditLog.save(audit);
     }
 
@@ -98,12 +98,12 @@ public class RegisterAdapter implements RegisterRepository {
         audit.setTableName("member_info");
         audit.setPkValue(savedInfo.getRefNo());
         audit.setAction(AccountEnum.HistoryType.INSERT.getValue());
-        audit.setChangeAt(LocalDateTime.now());
+        audit.setChangedAt(LocalDateTime.now());
         audit.setChangedBy(input.getAdminId());
         audit.setChangedByName(daoAdminJpa.getAdminName(input.getAdminId()));
         audit.setWorkspaceId(resolveWorkspaceId(input));
         String toJson = OBJECT_MAPPER.writeValueAsString(savedInfo);
-        audit.setChangeJson("{\"from\":null,\"to\":" + toJson + "}");
+        audit.setChangesJson("{\"from\":null,\"to\":" + toJson + "}");
         daoAuditLog.save(audit);
     }
 
@@ -134,12 +134,12 @@ public class RegisterAdapter implements RegisterRepository {
         audit.setTableName("payroll");
         audit.setPkValue(savedPayroll.getRefNo());
         audit.setAction(AccountEnum.HistoryType.INSERT.getValue());
-        audit.setChangeAt(LocalDateTime.now());
+        audit.setChangedAt(LocalDateTime.now());
         audit.setChangedBy(input.getAdminId());
         audit.setChangedByName(daoAdminJpa.getAdminName(input.getAdminId()));
         audit.setWorkspaceId(resolveWorkspaceId(input));
         String toJson = OBJECT_MAPPER.writeValueAsString(savedPayroll);
-        audit.setChangeJson("{\"from\":null,\"to\":" + toJson + "}");
+        audit.setChangesJson("{\"from\":null,\"to\":" + toJson + "}");
         daoAuditLog.save(audit);
     }
 

@@ -82,13 +82,13 @@ public class RekeningAdapter implements AtmRepository {
         audit.setTableName("rekening");
         audit.setPkValue(String.valueOf(saved.getId()));
         audit.setAction(AccountEnum.HistoryType.INSERT.getValue());
-        audit.setChangeAt(LocalDateTime.now());
+        audit.setChangedAt(LocalDateTime.now());
         audit.setChangedBy(globalModel.getAdminId());
         audit.setChangedByName(daoAdminJpa.getAdminName(globalModel.getAdminId()));
         audit.setWorkspaceId(globalModel.getWorkspaceId());
 
         String toJson = OBJECT_MAPPER.writeValueAsString(saved);
-        audit.setChangeJson("{\"from\":null,\"to\":" + toJson + "}");
+        audit.setChangesJson("{\"from\":null,\"to\":" + toJson + "}");
 
         daoAuditLog.save(audit);
     }
@@ -144,12 +144,12 @@ public class RekeningAdapter implements AtmRepository {
         audit.setTableName("rekening");
         audit.setPkValue(String.valueOf(saved.getId()));
         audit.setAction(AccountEnum.HistoryType.UPDATE.getValue());
-        audit.setChangeAt(LocalDateTime.now());
+        audit.setChangedAt(LocalDateTime.now());
         audit.setChangedBy(globalModel.getAdminId());
         audit.setChangedByName(daoAdminJpa.getAdminName(globalModel.getAdminId()));
         audit.setWorkspaceId(globalModel.getWorkspaceId());
 
-        audit.setChangeJson("{\"from\":" + fromJson + ",\"to\":" + toJson + "}");
+        audit.setChangesJson("{\"from\":" + fromJson + ",\"to\":" + toJson + "}");
 
         daoAuditLog.save(audit);
     }
@@ -176,12 +176,12 @@ public class RekeningAdapter implements AtmRepository {
         audit.setTableName("rekening");
         audit.setPkValue(String.valueOf(saved.getId()));
         audit.setAction(AccountEnum.HistoryType.UPDATE.getValue());
-        audit.setChangeAt(LocalDateTime.now());
+        audit.setChangedAt(LocalDateTime.now());
         audit.setChangedBy(globalModel.getAdminId());
         audit.setChangedByName(daoAdminJpa.getAdminName(globalModel.getAdminId()));
         audit.setWorkspaceId(globalModel.getWorkspaceId());
 
-        audit.setChangeJson("{\"from\":" + fromJson + ",\"to\":" + toJson + "}");
+        audit.setChangesJson("{\"from\":" + fromJson + ",\"to\":" + toJson + "}");
 
         daoAuditLog.save(audit);
     }

@@ -32,11 +32,12 @@ public class WorkspaceAdapter implements WorkspaceRepository {
     private final DaoAuditLog daoAuditLog;
     private final DaoAdminJpa daoAdminJpa;
 
+    // ✅ FIX: pakai ObjectMapper dari Spring (udah auto register JavaTimeModule kalau dependency ada)
+    private final ObjectMapper objectMapper;
+
     @Override
     @Transactional
     public void insertNewWorkspace(GlobalModel globalModel) throws Exception {
-
-        ObjectMapper objectMapper = new ObjectMapper();
 
         WorkspaceModel workspaceModel = new WorkspaceModel();
         workspaceModel.setWorkspaceId(globalModel.getWorkspaceId());
@@ -51,13 +52,13 @@ public class WorkspaceAdapter implements WorkspaceRepository {
         auditLogOne.setTableName("workspace");
         auditLogOne.setPkValue(savedWorkspace.getWorkspaceId());
         auditLogOne.setAction(AccountEnum.HistoryType.INSERT.getValue());
-        auditLogOne.setChangeAt(LocalDateTime.now());
+        auditLogOne.setChangedAt(LocalDateTime.now());
         auditLogOne.setChangedBy(globalModel.getAdminId());
         auditLogOne.setChangedByName(daoAdminJpa.getAdminName(globalModel.getAdminId()));
         auditLogOne.setWorkspaceId(savedWorkspace.getWorkspaceId());
 
         String workspaceToJson = objectMapper.writeValueAsString(savedWorkspace);
-        auditLogOne.setChangeJson("{\"from\":null,\"to\":" + workspaceToJson + "}");
+        auditLogOne.setChangesJson("{\"from\":null,\"to\":" + workspaceToJson + "}");
 
         daoAuditLog.save(auditLogOne);
 
@@ -73,15 +74,15 @@ public class WorkspaceAdapter implements WorkspaceRepository {
 
         AuditLog auditLogTwo = new AuditLog();
         auditLogTwo.setTableName("workspace_info");
-        auditLogTwo.setPkValue(String.valueOf(savedWorkspaceInfo.getId()));
+        auditLogTwo.setPkValue(savedWorkspaceInfo.getId().getWorkspaceId());
         auditLogTwo.setAction(AccountEnum.HistoryType.INSERT.getValue());
-        auditLogTwo.setChangeAt(LocalDateTime.now());
+        auditLogTwo.setChangedAt(LocalDateTime.now());
         auditLogTwo.setChangedBy(globalModel.getAdminId());
         auditLogTwo.setChangedByName(daoAdminJpa.getAdminName(globalModel.getAdminId()));
         auditLogTwo.setWorkspaceId(globalModel.getWorkspaceId());
 
         String workspaceInfoToJson = objectMapper.writeValueAsString(savedWorkspaceInfo);
-        auditLogTwo.setChangeJson("{\"from\":null,\"to\":" + workspaceInfoToJson + "}");
+        auditLogTwo.setChangesJson("{\"from\":null,\"to\":" + workspaceInfoToJson + "}");
 
         daoAuditLog.save(auditLogTwo);
     }
@@ -89,8 +90,6 @@ public class WorkspaceAdapter implements WorkspaceRepository {
     @Override
     @Transactional
     public void addWorkspace(GlobalModel globalModel) throws Exception {
-
-        ObjectMapper objectMapper = new ObjectMapper();
 
         WorkspaceInfoModel workspaceInfoModel = new WorkspaceInfoModel();
         workspaceInfoModel.setWorkspaceId(globalModel.getWorkspaceId());
@@ -104,15 +103,15 @@ public class WorkspaceAdapter implements WorkspaceRepository {
 
         AuditLog auditLog = new AuditLog();
         auditLog.setTableName("workspace_info");
-        auditLog.setPkValue(String.valueOf(savedWorkspaceInfo.getId()));
+        auditLog.setPkValue(savedWorkspaceInfo.getId().getWorkspaceId());
         auditLog.setAction(AccountEnum.HistoryType.INSERT.getValue());
-        auditLog.setChangeAt(LocalDateTime.now());
+        auditLog.setChangedAt(LocalDateTime.now());
         auditLog.setChangedBy(globalModel.getAdminId());
         auditLog.setChangedByName(daoAdminJpa.getAdminName(globalModel.getAdminId()));
         auditLog.setWorkspaceId(globalModel.getWorkspaceId());
 
         String toJson = objectMapper.writeValueAsString(savedWorkspaceInfo);
-        auditLog.setChangeJson("{\"from\":null,\"to\":" + toJson + "}");
+        auditLog.setChangesJson("{\"from\":null,\"to\":" + toJson + "}");
 
         daoAuditLog.save(auditLog);
     }
@@ -120,8 +119,6 @@ public class WorkspaceAdapter implements WorkspaceRepository {
     @Override
     @Transactional
     public void editWorkspace(GlobalModel globalModel) throws Exception {
-
-        ObjectMapper objectMapper = new ObjectMapper();
 
         Workspace workspace = workspaceJpa.findById(globalModel.getWorkspaceId())
                 .orElseThrow(() -> new Exception("Data Not Found"));
@@ -139,16 +136,13 @@ public class WorkspaceAdapter implements WorkspaceRepository {
         auditLog.setTableName("workspace");
         auditLog.setPkValue(saved.getWorkspaceId());
         auditLog.setAction(AccountEnum.HistoryType.UPDATE.getValue());
-        auditLog.setChangeAt(LocalDateTime.now());
+        auditLog.setChangedAt(LocalDateTime.now());
         auditLog.setChangedBy(globalModel.getAdminId());
         auditLog.setChangedByName(daoAdminJpa.getAdminName(globalModel.getAdminId()));
         auditLog.setWorkspaceId(saved.getWorkspaceId());
 
-        auditLog.setChangeJson("{\"from\":" + fromJson + ",\"to\":" + toJson + "}");
+        auditLog.setChangesJson("{\"from\":" + fromJson + ",\"to\":" + toJson + "}");
 
         daoAuditLog.save(auditLog);
     }
-
-
-
 }

@@ -20,10 +20,10 @@ public class AuditLog {
     String tableName;
     String pkValue;
     String action;
-    LocalDateTime changeAt;
+    LocalDateTime changedAt;
     int changedBy; // optional (adminId)
     String changedByName;
     String workspaceId;
-    String changeJson;
+    String changesJson;
 
 }

@@ -51,13 +51,13 @@ public class BranchAdapter implements BranchRepository {
         audit.setTableName("branch");
         audit.setPkValue(String.valueOf(savedBranch.getBranchId()));
         audit.setAction(AccountEnum.HistoryType.INSERT.getValue());
-        audit.setChangeAt(LocalDateTime.now());
+        audit.setChangedAt(LocalDateTime.now());
         audit.setChangedBy(globalModel.getAdminId());
         audit.setChangedByName(daoAdminJpa.getAdminName(globalModel.getAdminId()));
         audit.setWorkspaceId(savedBranch.getWorkspaceId());
 
         String toJson = OBJECT_MAPPER.writeValueAsString(savedBranch);
-        audit.setChangeJson("{\"from\":null,\"to\":" + toJson + "}");
+        audit.setChangesJson("{\"from\":null,\"to\":" + toJson + "}");
 
         daoAuditLog.save(audit);
     }
@@ -84,12 +84,12 @@ public class BranchAdapter implements BranchRepository {
         audit.setTableName("branch");
         audit.setPkValue(String.valueOf(savedBranch.getBranchId()));
         audit.setAction(AccountEnum.HistoryType.UPDATE.getValue());
-        audit.setChangeAt(LocalDateTime.now());
+        audit.setChangedAt(LocalDateTime.now());
         audit.setChangedBy(globalModel.getAdminId());
         audit.setChangedByName(daoAdminJpa.getAdminName(globalModel.getAdminId()));
         audit.setWorkspaceId(savedBranch.getWorkspaceId());
 
-        audit.setChangeJson("{\"from\":" + fromJson + ",\"to\":" + toJson + "}");
+        audit.setChangesJson("{\"from\":" + fromJson + ",\"to\":" + toJson + "}");
 
         daoAuditLog.save(audit);
     }
