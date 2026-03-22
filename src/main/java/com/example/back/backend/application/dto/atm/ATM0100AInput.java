@@ -43,5 +43,8 @@ public class ATM0100AInput {
     private LocalDate birthDt;
     private String status;
 
+    // insert by
+    private int adminEntry;
+
 
 }

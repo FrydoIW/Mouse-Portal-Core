@@ -19,4 +19,7 @@ public class EXP0200AInput {
     private Long branchId;
     private String memo;
 
+    // UPDATE USER
+    private int entryAdmin;
+
 }

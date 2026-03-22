@@ -62,6 +62,9 @@ public class ATM0500ASVC {
         globalModel.setRekeningId(ctxSVC.input.getAtmId());
         globalModel.setKtpImage(ctxSVC.input.getKtpImage());
 
+        //insert by
+        globalModel.setAdminId(ctxSVC.input.getAdminEntry());
+
         atmRepository.uploadKtp(globalModel);
 
 

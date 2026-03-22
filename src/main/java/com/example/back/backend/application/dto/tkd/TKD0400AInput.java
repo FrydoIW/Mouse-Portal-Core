@@ -11,4 +11,7 @@ public class TKD0400AInput {
 
     String refNo;
 
+    //DELETE BY
+    int adminEntry;
+
 }

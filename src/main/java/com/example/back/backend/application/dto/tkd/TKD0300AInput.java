@@ -38,4 +38,7 @@ public class TKD0300AInput {
     private BigDecimal bonus;
     private String noRekening;
     private LocalDate lastSalaryIncreaseDt;
+
+    // UPDATE BY
+    private int adminEntry;
 }

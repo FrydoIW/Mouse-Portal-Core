@@ -51,6 +51,9 @@ public class EXP0100ASVC {
         globalModel.setMemo(ctxSVC.input.getMemo());
         globalModel.setBranchId(ctxSVC.input.getBranchId());
 
+        // INSERT BY
+        globalModel.setAdminId(ctxSVC.input.getAdminEntry());
+
         expenseRepository.insertNewExpense(globalModel);
 
     }

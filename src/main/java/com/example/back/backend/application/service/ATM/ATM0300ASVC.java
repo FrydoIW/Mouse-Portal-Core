@@ -98,6 +98,10 @@ public class ATM0300ASVC {
         globalModel.setBirthDt(CompareUtil.getValueOrDefault(ctxSVC.input.getBirthDt(),ctxSVC.rek.getBirthDt()));
         globalModel.setStatus(CompareUtil.getValueOrDefault(ctxSVC.input.getStatus(),ctxSVC.rek.getStatus()));
 
+        //edit by
+
+        globalModel.setAdminId(ctxSVC.input.getAdminEntry());
+
         atmRepository.editAtm(globalModel);
 
     }

@@ -18,4 +18,7 @@ public class EXP0100AInput {
     private String memo;
     private Long branchId;
 
+    // INSERT BY
+    private int adminEntry;
+
 }

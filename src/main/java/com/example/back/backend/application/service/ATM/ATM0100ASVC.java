@@ -83,6 +83,9 @@ public class ATM0100ASVC {
         globalModel.setBirthDt(ctxSVC.input.getBirthDt());
         globalModel.setStatus(ctxSVC.input.getStatus());
 
+        //insert by admin
+        globalModel.setAdminId(ctxSVC.input.getAdminEntry());
+
         log.debug("Global Input : [{}]",globalModel);
 
         atmRepository.insertNewAtm(globalModel);

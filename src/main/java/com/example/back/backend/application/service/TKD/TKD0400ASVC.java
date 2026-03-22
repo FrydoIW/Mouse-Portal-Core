@@ -59,6 +59,9 @@ public class TKD0400ASVC {
          GlobalModel globalModel = new GlobalModel();
          globalModel.setRefNo(ctxSVC.member.getRefNo());
 
+         // DELETE BY
+         globalModel.setAdminId(ctxSVC.input.getAdminEntry());
+
          updateRepository.deleteUser(globalModel);
 
      }

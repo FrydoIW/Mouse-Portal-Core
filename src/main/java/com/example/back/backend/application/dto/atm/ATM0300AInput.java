@@ -44,4 +44,7 @@ public class ATM0300AInput {
     private BigDecimal saldo;
     private LocalDate birthDt;
     private String status;
+
+    // edit by
+    private int adminEntry;
 }

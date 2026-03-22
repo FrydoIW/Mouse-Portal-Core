@@ -73,6 +73,9 @@ public class EXP0200ASVC {
         globalModel.setBranchId(CompareUtil.getValueOrDefault(ctxSVC.input.getBranchId(),ctxSVC.expense.getBranchId()));
         globalModel.setMemo(CompareUtil.getValueOrDefault(ctxSVC.input.getMemo(),ctxSVC.expense.getMemo()));
 
+        // set admin edit information
+        globalModel.setAdminId(ctxSVC.input.getEntryAdmin());
+
         expenseRepository.editExpense(globalModel);
     }
 

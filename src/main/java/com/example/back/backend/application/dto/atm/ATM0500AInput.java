@@ -12,4 +12,7 @@ public class ATM0500AInput {
     private Long atmId;
     private byte[] ktpImage;
 
+    //insert by
+    private int adminEntry;
+
 }

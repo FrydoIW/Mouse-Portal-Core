@@ -152,6 +152,9 @@ public class TKD0300ASVC {
                 ctxSVC.payroll.getLastSalaryIncreaseDt()
         ));
 
+        // UPDATE BY
+        globalModel.setAdminId(ctxSVC.input.getAdminEntry());
+
         updateAdapter.updateData(globalModel);
 
     }

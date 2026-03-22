@@ -94,6 +94,9 @@ public class TKD0100ASVC {
         // BRANCH INFORMATION
         globInput.setBranchId(ctxSVC.input.getBranchId());
 
+        // ADMIN ENTRY
+        globInput.setAdminId(ctxSVC.input.getAdminEntry());
+
         log.debug("Global Input : [{}]",globInput);
 
         registerRepository.insertMember(globInput);

@@ -39,4 +39,7 @@ public class TKD0100AInput {
     private String noRekening;
     private LocalDate lastSalaryIncreaseDt;
 
+    // WHO TRIGGER
+    private int adminEntry;
+
 }
