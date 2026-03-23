@@ -81,7 +81,7 @@ public class EMA0300ASVC {
 
 
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("sologankerfrydo99@gmail.com");
+        message.setFrom("nusabangun4@gmail.com");
         message.setTo(ctxSVC.input.getNewAdminEmail());
         message.setSubject("Email Verification");
         message.setText("Please verify your email by clicking the following link: " + verificationUrl);
