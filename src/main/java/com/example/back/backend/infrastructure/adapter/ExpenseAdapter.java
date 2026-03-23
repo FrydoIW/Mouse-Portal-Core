@@ -9,6 +9,7 @@ import com.example.back.backend.infrastructure.entity.AuditLog;
 import com.example.back.backend.infrastructure.entity.Expense;
 import com.example.back.backend.infrastructure.jpa.DaoAdminJpa;
 import com.example.back.backend.infrastructure.jpa.DaoAuditLog;
+import com.example.back.backend.infrastructure.jpa.DaoBranchJpa;
 import com.example.back.backend.infrastructure.jpa.DaoExpenseJpa;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -32,7 +33,7 @@ public class ExpenseAdapter implements ExpenseRepository {
                     .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 
     private final DaoExpenseJpa expenseJpa;
-
+    private final DaoBranchJpa branchJpa;
     private final DaoAuditLog daoAuditLog;
     private final DaoAdminJpa daoAdminJpa;
 
@@ -62,7 +63,7 @@ public class ExpenseAdapter implements ExpenseRepository {
         audit.setChangedAt(LocalDateTime.now());
         audit.setChangedBy(globalModel.getAdminId());
         audit.setChangedByName(daoAdminJpa.getAdminName(globalModel.getAdminId()));
-        audit.setWorkspaceId(globalModel.getWorkspaceId()); // kalau belum ada di GlobalModel, bilang ya
+        audit.setWorkspaceId(resolveWorkspaceId(globalModel));
 
         String toJson = OBJECT_MAPPER.writeValueAsString(savedExpense);
         audit.setChangesJson("{\"from\":null,\"to\":" + toJson + "}");
@@ -97,9 +98,19 @@ public class ExpenseAdapter implements ExpenseRepository {
         audit.setChangedAt(LocalDateTime.now());
         audit.setChangedBy(globalModel.getAdminId());
         audit.setChangedByName(daoAdminJpa.getAdminName(globalModel.getAdminId()));
-        audit.setWorkspaceId(globalModel.getWorkspaceId());
+        audit.setWorkspaceId(resolveWorkspaceId(globalModel));
         audit.setChangesJson("{\"from\":" + fromJson + ",\"to\":" + toJson + "}");
 
         daoAuditLog.save(audit);
+    }
+
+    private String resolveWorkspaceId(GlobalModel input) {
+        if (input.getWorkspaceId() != null && !input.getWorkspaceId().isBlank()) {
+            return input.getWorkspaceId();
+        }
+        if (input.getBranchId() != null) {
+            return branchJpa.getWorkspaceIdByBranchId(Math.toIntExact(input.getBranchId()));
+        }
+        return null;
     }
 }
